@@ -31,7 +31,7 @@
                 
                 <input type="text" placeholder="TEL" name="telephone" required> </br>
                 <div class="bouton">
-                <input  type="submit" id='submit' value='Inscrire' ></div>
+                <input  type="submit" id='submit' value='Inscrire' name="inscrire" ></div>
                 </fieldset>
             </form>
         </div>
@@ -59,7 +59,7 @@ body{
 .logo{
     width:175px;
     position:relative;
-    top:-6em;
+    /* top:-6em; */
     border:10px solid #67BE4B;
     Border-radius:50%;
     border-style:2px;
