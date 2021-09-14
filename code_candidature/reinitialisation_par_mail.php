@@ -13,25 +13,18 @@
         <div id="contenu">
             
             
-            <form action="verification.php" method="POST">
+            <form action="        " method="POST">
             <fieldset>  <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="" class="logo"></legend> 
-               <div class="titre"><h1>INSCRIPTION</h1></div> 
-                
-               
-                <input type="text" placeholder="PRENOM" name="prenom" required>
-
-                
-                <input type="text" placeholder="NOM" name="nom" required>
-                
-                <input type="text" placeholder="Mail" name="mail" required>
+               <div class="titre"><h1>Nouveau mot de passe</h1></div> 
+            
                 
                 <input type="text" placeholder="Mot de passe" name="mot_de_passe" required>
                 <input type="text" placeholder="Confirmation " name="mot_de_passe" required>
 
                 
-                <input type="text" placeholder="TEL" name="telephone" required> </br>
+       
                 <div class="bouton">
-                <input  type="submit" id='submit' value='Inscrire' name="inscrire" ></div>
+                <input  type="submit" id='submit' value='Changer' name="Changer" ></div>
                 </fieldset>
             </form>
         </div>
@@ -39,9 +32,6 @@
 </html>
 
 <style>
-    fielsed{
-        
-    }
     .titre{
         text-align:center;
     }
@@ -66,11 +56,12 @@ body{
     border-style:2px;
     background:white;
 }
+
 #contenu{
     width: 600px;
     margin:0 auto;
-    margin-top:2%;
-   
+    margin-top:5%;
+    bottom:;
 }
 /* Bordered form */
 form {
@@ -91,7 +82,7 @@ input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: #67BE4B;
+    display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }

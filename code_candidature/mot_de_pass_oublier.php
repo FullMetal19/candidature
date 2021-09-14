@@ -50,6 +50,7 @@ body{
 
 .logo{
     width:175px;
+    height:175px;
     position:relative;
     /* top:-6em; */
     border:10px solid #67BE4B;
@@ -61,7 +62,7 @@ body{
 #contenu{
     width: 600px;
     margin:0 auto;
-    margin-top:10%;
+    margin-top:5%;
    
 }
 /* Bordered form */
