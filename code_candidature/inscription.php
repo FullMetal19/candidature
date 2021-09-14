@@ -14,7 +14,7 @@
             
             
             <form action="verification.php" method="POST">
-            <fieldset>  <legend> <img src="http://localhost/essai/logo.png" alt="" class="logo"></legend> 
+            <fieldset>  <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="" class="logo"></legend> 
                <div class="titre"><h1>INSCRIPTION</h1></div> 
                 
                
