@@ -35,7 +35,7 @@ margin-bottom: 10%;">
     <p style="font-size: x-large;
     text-align: justify;
     color:black;">
-        // Bonjour ! Mamadou Yaya Mané,
+     Bonjour ! '.$prenom.' '.$nom.',
     </p>
     <p style="font-size: x-large;
     text-align: justify;
@@ -57,7 +57,7 @@ margin-bottom: 10%;">
 
 $header = "From:\"USSEIN CANDIDATURE\"<basse618@gmail.com>\n";
 $header .="Reply-To:basse618@gmail.com\n";
-$header .="Content-Type:text/html; charset=\"iso-8859-1\"";
+$header .="Content-Type:text/html; charset=\"utf-8\"";
 
 mail($destination,$sujet,$message,$header);
 
