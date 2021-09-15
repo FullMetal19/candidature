@@ -42,7 +42,7 @@ margin-bottom: 10%;">
     color:black;">
     Veuillez cliquer sur ce bouton ci-dessous pour la réinitialisation de votre mot de passe.    
     </p>
-    <a href="http://localhost/candidature/changer-mot-de-passe/" style="text-decoration: none;
+    <a href="http://localhost/candidature/reinitialisation-mot-de-passe/" style="text-decoration: none;
     color: black;width: 100%;"><p style="padding: 2%;
     color:white;
     border: 1px solid green;
@@ -55,8 +55,8 @@ margin-bottom: 10%;">
 
 </div>';
 
-$header = "From:\"nash\"<caambdiop.officiel@gmail.com>\n";
-$header .="Reply-To:caambdiop.officiel@gmail.com\n";
+$header = "From:\"USSEIN CANDIDATURE\"<basse618@gmail.com>\n";
+$header .="Reply-To:basse618@gmail.com\n";
 $header .="Content-Type:text/html; charset=\"iso-8859-1\"";
 
 mail($destination,$sujet,$message,$header);
@@ -71,11 +71,11 @@ if(isset($_POST['envoyer'])){
                 header('Location: http://localhost/candidature/connexion/');
             }else{
                 $_SESSION['message_validation'] = "Erreur sur la validation, veuillez vérifier votre mail.";
-                header('Location: http://localhost/candidature/mot-de-passe-oublier/');
+                header('Location: http://localhost/candidature/mot-de-passe-oublie/');
             }
     }else{
         $_SESSION['message_validation'] = "Aucun compte n'est associé à ce mail, veuillez le vérifier.";
-        header('Location: http://localhost/candidature/mot-de-passe-oublier/');
+        header('Location: http://localhost/candidature/mot-de-passe-oublie/');
     }
     
 }

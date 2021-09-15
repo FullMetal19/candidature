@@ -4,10 +4,10 @@ $mail = $_POST['mail'];
 $prenom = $_POST['prenom'];
 $nom = $_POST['nom'];
 $mot_de_passe = $_POST['mot_de_passe'];
-$nouveau_mot_de_passe = $_POST['nouveau_mot_de_passe'];
-$status = -1;
+$nouveau_mot_de_passe = $_POST['confirmation_mot_de_passe'];
+$status = 5;
 // Connexion à la base de données
-include('ouverture_bd.php');
+// include('http://localhost/candidature/code_candidature/ouverture_bd.php');
 
 // envoie de mail
 
@@ -40,7 +40,7 @@ margin-bottom: 10%;">
     <p style="font-size: x-large;
     text-align: justify;
     color:black;">
-        // Bonjour ! Mamadou Yaya Mané,
+        Bonjour ! '.$prenom.' '.$nom.' ,
     </p>
     <p style="font-size: x-large;
     text-align: justify;
@@ -48,7 +48,7 @@ margin-bottom: 10%;">
         La plateforme de candidature de l\'<span style="color: rgb(10, 107, 49);
         font-weight: bold;">USSEIN</span> vous invite à finaliser la création de votre compte en cliquant sur ce bouton ci-dessous:
     </p>
-    <a href="http://localhost/candidature/ussein_mail.php?mail='.$mail.'" style="text-decoration: none;
+    <a href="http://localhost/candidature/code_candidature/ussein_mail.php?mail='.$mail.'" style="text-decoration: none;
     color: black;width: 100%;"><p style="padding: 2%;
     color:white;
     border: 1px solid green;
@@ -61,41 +61,46 @@ margin-bottom: 10%;">
 
 </div>';
 
-$header = "From:\"nash\"<caambdiop.officiel@gmail.com>\n";
-$header .="Reply-To:caambdiop.officiel@gmail.com\n";
-$header .="Content-Type:text/html; charset=\"iso-8859-1\"";
+$header = "From:\"USSEIN CANDIDATURE\"<basse618@gmail.com>\n";
+$header .="Reply-To:basse618@gmail.com\n";
+$header .="Content-Type:text/html; charset=\"utf-8\"";
 
-mail($destination,$sujet,$message,$header);
+// mail($mail,$sujet,$message,$header);
+// 
+$con = mysqli_connect('localhost','root','','ussein_candidature');
 
-if(isset($_POST['valider'])){
+
     $req = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
     $nb = mysqli_num_rows($req);
 
     if($nb>0){
             $_SESSION['message_validation'] = "Un compte est déja enregitré sur ce mail.";
+            header('Location: http://localhost/candidature/inscription/');
     }
     else{
             if($mot_de_passe == $nouveau_mot_de_passe){
-            if (mail($mail,$sujet,$message,$header)){
-                $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','$status')");
-                $_SESSION['message_validation'] = "Veuillez consulter votre mail pour la validation de votre compte.";
-                header('Location: http://localhost/candidature/connexion/');
-            }else{
-                $_SESSION['message_validation'] = "Erreur sur la validation de votre compte.\n Veuillez revoir vos informations.";
-                header('Location: http://localhost/candidature/inscription/');
-            }
-        }else{
+                if (mail($mail,$sujet,$message,$header)){
+                    $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','$status')");
+                    $_SESSION['message_validation'] = "Veuillez consulter votre mail pour la validation de votre compte.";
+                    header('Location: http://localhost/candidature/connexion/');
+                }else{
+                    $_SESSION['message_validation'] = "Erreur sur la validation de votre compte.\n Veuillez revoir vos informations.";
+                    header('Location: http://localhost/candidature/inscription/');
+                }
+              }
+            else{
             $_SESSION['message_validation'] = "Attention!! Mot de passe non identique.";
+            header('Location: http://localhost/candidature/inscription/');
         }
     }
     
-}
+
 
 
 
 
 // déconnexion à la base de données
-include('fermeture_bd.php');
-
+// include('http://localhost/candidature/code_candidature/fermeture_bd.php');
+mysqli_close($con);
 
 ?>
