@@ -13,18 +13,18 @@
         height: 500px;
         width: 400px;
         justify-content: center;
-        margin-left: -200px;
+        margin-left: -214px;
         margin-top: -250px;
         text-align: center;     
         background-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 10px 5px 5px rgb(145, 142, 142);
+        box-shadow: 10px 5px 10px rgb(10,107,49);
 
     }
     .contenu{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-top: 50px;
+        padding-top: 10px;
         
     }
 
@@ -32,9 +32,9 @@
         border-radius: 5px;
         margin: 10px;
         height: 50px;
-        width: 300PX;
+        width:300PX;
         background-color: rgba(255, 255, 255, 0.2);
-        border: 2px solid green;
+        border: 2px solid rgb(10,107,49);
     }
 
     input::placeholder {
@@ -46,7 +46,11 @@
         width: 300px;
         border-radius: 20px;
         font-size: x-large;
-        background-color: green;
+        background-color: rgb(132,181,39);
+        margin-bottom:20px;
+    }
+    .button_connecter:hover{
+        background-color: rgb(10,107,49);
     }
     .lien{
 
@@ -55,8 +59,9 @@
     .lien a{
         text-decoration: none;
         font-size: large;
-        list-style-type: circle;
-        color: green;
+        /* list-style-type: circle; */
+        color: rgb(10,107,49);
+        width: 100%;
     }
    
     
@@ -71,7 +76,8 @@
         position: relative;
         border-radius: 50%;
         width: 200px;
-        border: 5px solid rgb(192, 206, 0);
+        height:200px;
+        border: 5px solid rgb(10,107,49);
         /* margin-bottom: 5px; */
 
     }
@@ -96,7 +102,7 @@
                         <input type="email" placeholder="e-mail" name="mail" ><br>
                     </div>
                     <div class="mot-de-passe">
-                        <input type="password" placeholder=" mot de passe" name="mot_de_passe"><br>
+                        <input type="password" placeholder="mot de passe" name="mot_de_passe"><br>
                     </div>
 
                     <div class='message_erreur'>
@@ -115,7 +121,7 @@
     
                     <div class="lien">
                         <a href="http://localhost/candidature/mot-de-passe-oublie/">Mot de passe oublié?</a>
-
+                            <span>&nbsp;&nbsp;&nbsp;</span>
                         <a href="http://localhost/candidature/inscription/ ">S'inscrire</a>
                     </div>
                 </div>    
