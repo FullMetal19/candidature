@@ -80,7 +80,7 @@ $con = mysqli_connect('localhost','root','','ussein_candidature');
     else{
             if($mot_de_passe == $nouveau_mot_de_passe){
                 if (mail($mail,$sujet,$message,$header)){
-                    $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','$status')");
+                    $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','','','$status','','')");
                     $_SESSION['message_validation'] = "Veuillez consulter votre mail pour la validation de votre compte.";
                     header('Location: http://localhost/candidature/connexion/');
                 }else{

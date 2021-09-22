@@ -9,7 +9,7 @@ if(isset($_SESSION['verification_id_offre'])){
     $id_offre = $_SESSION['verification_id_offre'];
 }
 $id_offre = $_GET['id'];
-
+$mail_candidat = $_SESSION['mail'];
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req = mysqli_query($con,"SELECT * FROM ec_offre WHERE id='$id_offre'");
 $tab_offre = mysqli_fetch_array($req);
@@ -115,7 +115,7 @@ $ufr.=strchr($tab_offre['nom_ufr'],"S");
         </div>
 
         <div class="bouton">
-            <a href="">
+            <a href="http://localhost/candidature/fiche-a-postuler/?info=<?php echo $mail_candidat.' '.$id_offre ?> ">
                 
                 <img src="https://img.icons8.com/ios/50/000000/set-as-resume.png"width="30px"/>
                 <p>Postuler</p>

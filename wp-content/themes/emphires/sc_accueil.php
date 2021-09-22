@@ -1,6 +1,6 @@
 <?php 
 /*
-Template name: accueil
+Template name: accueil candidat
 */
 get_header();
 ?>
@@ -83,6 +83,10 @@ get_header();
                font-size: 1.5em;
           }
      }
+     p#notification{
+          color:rgb(141,54,20);
+          font-size:large;
+     }
      </style>
 
 
@@ -90,6 +94,7 @@ get_header();
             <div class="presentation"></div>
             <div class="offre">
             <h1>Les offres actuels</h1>
+            <p id="notification"><?php if(isset($_SESSION['notificatiion'])){ echo $_SESSION['notificatiion'];}unset($_SESSION['notificatiion']); ?></p>
             <?php
 
             $con = mysqli_connect("localhost","root","","ussein_candidature");

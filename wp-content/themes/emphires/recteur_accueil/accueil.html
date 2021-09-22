@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+</head>
+<style>
+    *{
+        margin: 0;padding: 0;
+    }
+    section.main_body{
+        display: grid;
+        grid-template-rows: 150px auto 150px;
+    }
+    div.header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: white;
+        box-shadow: 0px 5px 3px rgb(141, 54, 20);
+        border-radius: 0% 0% 1% 1%;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+    }
+    div.header img{
+        width: 200px;
+        margin-left: 10%;
+    }
+    div.menu_bar{
+        display: flex;
+        gap: 0.2em;
+        width: 30%;
+        position: absolute;
+        bottom: 0%;
+        right: 1%;
+        flex-wrap: nowrap;
+    }
+    div.menu_bar a{
+        text-decoration: none;
+        color: white;
+        font-size: large;
+        padding: 2%;
+        margin-bottom: 5.5%;
+        background-color: rgb(132, 181, 39);
+        width: 90%;
+        margin-right: 2%;
+        text-align: center;
+        box-shadow: 0px 5px 3px rgb(141, 54, 20);
+        transition: 2s all;
+    }
+    div.menu_bar a:hover{
+        transform: scale(1.05);
+        background-color:rgb(141, 54, 20);
+        box-shadow: 0px 5px 3px rgb(132, 181, 39);
+        transition: 1s all;
+    }
+    img.banner_recteur{
+        width: 100%;
+        margin-top: 1%;
+        box-shadow: 0px 5px 3px rgb(141, 54, 20);
+        height: auto;
+        border-radius: 1% 1% 0% 0%;
+    }
+    div.titre_text h1{
+        background-color: rgb(10, 107, 49);
+        margin: 2% 10%;
+        text-align: center;
+        color: white;
+        box-shadow: 0px 5px 3px rgb(141, 54, 20);
+    }
+    div.titre_text p{
+        margin: 0% 10%;
+        text-align: justify;
+        box-shadow: 0px 5px 3px rgb(141, 54, 20);
+        padding: 2%;
+    }
+    div.titre_text2{
+        display: flex;
+        margin: 2% 5%;
+    }
+   
+    @media(max-width:745px){
+        section.main_body{
+        grid-template-rows: 100px auto 100px;
+    }
+    div.header img{
+        width: 130px;
+    }
+    div.menu_bar a{
+        font-size: small;
+        margin-right: 5%;
+        margin-bottom: 8%;
+    }
+    div.titre_text2{
+        display: flex;
+        flex-direction: column;
+        margin: 2% 0%;
+    }
+    
+    }
+    @media(max-width:745px){
+        div.menu_bar a{
+            font-size: x-small;
+        }
+    }
+    @media(max-width:450px){
+        div.menu_bar a{
+            font-size: 0.5em;
+        }
+    }
+</style>
+<body>
+    <section class="main_body">
+        <div class="header">
+            <div class="logo">
+                <img src="USSEIN-LOGO.png" alt="logo USSEIN">
+            </div>
+            <div class="menu_bar">
+                <a href="#">Se Connecter</a>
+                <a href="#">S'inscrire</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="img_banner">
+                <img src="recteur.png" alt="bannière recteur" class="banner_recteur">
+            </div>
+            <div class="titre_text">
+                <h1>Titre de La Partie</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum aut enim sunt aliquam amet quia temporibus voluptatum nulla nihil similique in omnis facilis cupiditate, ratione fugiat quas autem explicabo perferendis deleniti exercitationem inventore soluta id? Ducimus, repudiandae magni voluptate tempore, ex quod minus ipsa, nulla corrupti assumenda error cupiditate dolorem et veniam sint libero voluptatem at laborum magnam inventore voluptates alias maxime? Enim iure optio odio fugiat ipsa quo ipsam doloremque reprehenderit commodi qui at quod repellendus distinctio, exercitationem eius eligendi illo! Repudiandae, laboriosam tempora. Inventore est sint quidem deleniti unde animi voluptatem officia, nesciunt itaque reiciendis, ratione optio debitis ex ipsum vero beatae ea. Delectus harum accusamus illo atque odit dolorum libero expedita laborum aperiam doloremque, fuga facilis hic inventore molestias maxime. At veniam deserunt ex molestiae exercitationem, laboriosam aliquam nisi adipisci alias vel, ratione vero nostrum accusamus sapiente maxime cupiditate ducimus omnis quod ipsum quibusdam odio doloribus tempora nemo cum? Perspiciatis nemo eos impedit dolorem cumque temporibus exercitationem ratione enim culpa magnam! Officiis ipsam neque harum, praesentium sequi laudantium blanditiis porro, velit at aliquam error voluptate totam sit impedit. Impedit autem aliquid, veniam porro ex nihil qui iusto inventore, rem corporis veritatis harum soluta architecto nobis animi asperiores eius alias modi quibusdam obcaecati perferendis nisi nostrum eos. Nostrum, eligendi ab? Cupiditate nesciunt repudiandae quia vitae vel magni error, saepe quasi neque voluptas laudantium omnis porro eveniet obcaecati ullam architecto eaque laboriosam ab excepturi aut, minus sequi ipsum enim. Repudiandae quasi pariatur magnam a tempora illo! Sapiente quo odit doloremque tempora minima doloribus quia.
+                </p>
+            </div>
+            <div class="titre_text2">
+                <div class="titre_text">
+                    <h1>Titre de La Partie2</h1>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum aut enim sunt aliquam amet quia temporibus voluptatum nulla nihil similique in omnis facilis cupiditate, ratione fugiat quas autem explicabo perferendis deleniti exercitationem inventore soluta id? Ducimus, repudiandae magni voluptate tempore, ex quod minus ipsa, nulla corrupti assumenda error cupiditate dolorem et veniam sint libero voluptatem at laborum magnam inventore voluptates alias maxime? Enim iure optio odio fugiat ipsa quo ipsam doloremque reprehenderit commodi qui at quod repellendus distinctio, exercitationem eius eligendi illo! Repudiandae, laboriosam tempora. Inventore est sint quidem deleniti unde animi voluptatem officia, nesciunt itaque reiciendis, ratione optio debitis ex ipsum vero beatae ea. Delectus harum accusamus illo atque odit dolorum libero expedita laborum aperiam doloremque, fuga facilis hic inventore molestias maxime. At veniam deserunt ex molestiae exercitationem, laboriosam aliquam nisi adipisci alias vel, ratione vero nostrum accusamus sapiente maxime cupiditate ducimus omnis quod ipsum quibusdam odio doloribus tempora nemo cum? Perspiciatis nemo eos impedit dolorem cumque temporibus exercitationem ratione enim culpa magnam! Officiis ipsam neque harum, praesentium sequi laudantium blanditiis porro, velit at aliquam error voluptate totam sit impedit. Impedit autem aliquid, veniam porro ex nihil qui iusto inventore, rem corporis veritatis harum soluta architecto nobis animi asperiores eius alias modi quibusdam obcaecati perferendis nisi nostrum eos. Nostrum, eligendi ab? Cupiditate nesciunt repudiandae quia vitae vel magni error, saepe quasi neque voluptas laudantium omnis porro eveniet obcaecati ullam architecto eaque laboriosam ab excepturi aut, minus sequi ipsum enim. Repudiandae quasi pariatur magnam a tempora illo! Sapiente quo odit doloremque tempora minima doloribus quia.
+                    </p>
+                </div>
+                <div class="titre_text">
+                    <h1>Titre de La Partie3</h1>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum aut enim sunt aliquam amet quia temporibus voluptatum nulla nihil similique in omnis facilis cupiditate, ratione fugiat quas autem explicabo perferendis deleniti exercitationem inventore soluta id? Ducimus, repudiandae magni voluptate tempore, ex quod minus ipsa, nulla corrupti assumenda error cupiditate dolorem et veniam sint libero voluptatem at laborum magnam inventore voluptates alias maxime? Enim iure optio odio fugiat ipsa quo ipsam doloremque reprehenderit commodi qui at quod repellendus distinctio, exercitationem eius eligendi illo! Repudiandae, laboriosam tempora. Inventore est sint quidem deleniti unde animi voluptatem officia, nesciunt itaque reiciendis, ratione optio debitis ex ipsum vero beatae ea. Delectus harum accusamus illo atque odit dolorum libero expedita laborum aperiam doloremque, fuga facilis hic inventore molestias maxime. At veniam deserunt ex molestiae exercitationem, laboriosam aliquam nisi adipisci alias vel, ratione vero nostrum accusamus sapiente maxime cupiditate ducimus omnis quod ipsum quibusdam odio doloribus tempora nemo cum? Perspiciatis nemo eos impedit dolorem cumque temporibus exercitationem ratione enim culpa magnam! Officiis ipsam neque harum, praesentium sequi laudantium blanditiis porro, velit at aliquam error voluptate totam sit impedit. Impedit autem aliquid, veniam porro ex nihil qui iusto inventore, rem corporis veritatis harum soluta architecto nobis animi asperiores eius alias modi quibusdam obcaecati perferendis nisi nostrum eos. Nostrum, eligendi ab? Cupiditate nesciunt repudiandae quia vitae vel magni error, saepe quasi neque voluptas laudantium omnis porro eveniet obcaecati ullam architecto eaque laboriosam ab excepturi aut, minus sequi ipsum enim. Repudiandae quasi pariatur magnam a tempora illo! Sapiente quo odit doloremque tempora minima doloribus quia.
+                    </p>
+                </div>
+            </div>
+            <div class="titre_text">
+                <h1>Titre de La Partie4</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum aut enim sunt aliquam amet quia temporibus voluptatum nulla nihil similique in omnis facilis cupiditate, ratione fugiat quas autem explicabo perferendis deleniti exercitationem inventore soluta id? Ducimus, repudiandae magni voluptate tempore, ex quod minus ipsa, nulla corrupti assumenda error cupiditate dolorem et veniam sint libero voluptatem at laborum magnam inventore voluptates alias maxime? Enim iure optio odio fugiat ipsa quo ipsam doloremque reprehenderit commodi qui at quod repellendus distinctio, exercitationem eius eligendi illo! Repudiandae, laboriosam tempora. Inventore est sint quidem deleniti unde animi voluptatem officia, nesciunt itaque reiciendis, ratione optio debitis ex ipsum vero beatae ea. Delectus harum accusamus illo atque odit dolorum libero expedita laborum aperiam doloremque, fuga facilis hic inventore molestias maxime. At veniam deserunt ex molestiae exercitationem, laboriosam aliquam nisi adipisci alias vel, ratione vero nostrum accusamus sapiente maxime cupiditate ducimus omnis quod ipsum quibusdam odio doloribus tempora nemo cum? Perspiciatis nemo eos impedit dolorem cumque temporibus exercitationem ratione enim culpa magnam! Officiis ipsam neque harum, praesentium sequi laudantium blanditiis porro, velit at aliquam error voluptate totam sit impedit. Impedit autem aliquid, veniam porro ex nihil qui iusto inventore, rem corporis veritatis harum soluta architecto nobis animi asperiores eius alias modi quibusdam obcaecati perferendis nisi nostrum eos. Nostrum, eligendi ab? Cupiditate nesciunt repudiandae quia vitae vel magni error, saepe quasi neque voluptas laudantium omnis porro eveniet obcaecati ullam architecto eaque laboriosam ab excepturi aut, minus sequi ipsum enim. Repudiandae quasi pariatur magnam a tempora illo! Sapiente quo odit doloremque tempora minima doloribus quia.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, cum nobis adipisci dignissimos saepe voluptatibus maxime cupiditate necessitatibus blanditiis repudiandae odio quisquam corporis eveniet aliquam hic. Iusto esse a sint dolore iure, consequuntur cumque vel quasi sit qui necessitatibus laboriosam beatae possimus perferendis nam ex repellendus, tempore deserunt corrupti consequatur eius blanditiis aliquid repellat dolorum! Doloribus ad eaque vel laudantium pariatur delectus accusamus tempore maxime at debitis aspernatur amet, ratione iste doloremque earum commodi vero libero. Dolor fugit sapiente dolorum deserunt quidem eos eveniet velit rem dicta distinctio. Blanditiis dignissimos laboriosam architecto? Voluptates sit nobis consequatur nostrum corrupti, dolorem in dicta voluptatibus eveniet, itaque doloribus repellat atque tempore distinctio? Veritatis dolorem labore cupiditate minus sapiente animi esse distinctio neque. Eum ipsa adipisci ab, ex esse voluptas fuga animi quibusdam dignissimos ratione odio vero asperiores modi nulla voluptatum amet rem itaque error? Necessitatibus aliquam voluptatem nesciunt, doloribus tempore qui dolorem dolor molestiae deserunt magni, temporibus rem voluptate ullam eos cum, ut facere! Aut velit perferendis veniam tempora numquam voluptates cumque molestiae voluptatum sapiente incidunt molestias quod officiis, dicta laborum ratione quasi, aperiam accusantium? Sint adipisci porro magnam aliquam libero optio quae iusto perferendis atque voluptatum harum accusamus ex sapiente maiores, ipsum maxime impedit commodi nemo odio et magni minima cupiditate? Velit blanditiis dicta nostrum cupiditate delectus perferendis, vel enim ipsam? Nobis in tempore, cupiditate voluptatem quam porro, soluta fuga culpa totam, modi possimus neque. Reiciendis, sapiente esse dolor dicta aperiam atque, odit necessitatibus repellat unde voluptate sint numquam sunt eaque, itaque eius! Minus, excepturi! Totam, sequi?
+                </p>
+            </div>
+            
+        </div>
+        <div class="footer">
+
+        </div>
+    </section>
+</body>
+</html>
