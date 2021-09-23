@@ -113,7 +113,7 @@ if(!empty($_FILES['fichier_master'])){
         }
 
 
-        header('location: http://localhost/candidature/wp-content/themes/emphires/sc_compte_candidat.php');
+        header('location: http://localhost/candidature/mon-compte/');
 
 
    

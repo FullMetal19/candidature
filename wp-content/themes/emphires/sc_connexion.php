@@ -10,31 +10,43 @@
         top: 50%;
         left: 50%;
         border-radius: 15px ;
-        height: 500px;
+        height: 550px;
         width: 400px;
         justify-content: center;
         margin-left: -214px;
-        margin-top: -250px;
+        margin-top: -300px;
         text-align: center;     
         background-color: rgba(255, 255, 255, 0.1);
         box-shadow: 10px 5px 10px rgb(10,107,49);
+        border: 1px solid rgb(10,107,49);
 
     }
     .contenu{
+        position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
         padding-top: 10px;
+        margin-top: 1px;
         
     }
 
-    input{
+    .box{
+        position: relative;
         border-radius: 5px;
         margin: 10px;
         height: 50px;
         width:300PX;
         background-color: rgba(255, 255, 255, 0.2);
+        margin: 15px;
+        /* border: 2px solid rgb(10,107,49); */
+    }
+    input{
+        width: 100%;
+        height: 100%;
         border: 2px solid rgb(10,107,49);
+        border-radius: 5px;
+        padding: 3%;
     }
 
     input::placeholder {
@@ -47,13 +59,12 @@
         border-radius: 20px;
         font-size: x-large;
         background-color: rgb(132,181,39);
-        margin-bottom:20px;
+        margin-bottom:5px;
+        color: white;
+        position: relative;
     }
     .button_connecter:hover{
         background-color: rgb(10,107,49);
-    }
-    .lien{
-
     }
 
     .lien a{
@@ -63,15 +74,7 @@
         color: rgb(10,107,49);
         width: 100%;
     }
-   
-    
 
-
-    .principal{
-        background-color: aqua;
-    }
-
-    
     img{
         position: relative;
         border-radius: 50%;
@@ -81,8 +84,56 @@
         /* margin-bottom: 5px; */
 
     }
+    .mail input, .mot_de_passe input {
+        position: absolute;
+        top:0;
+        left:0;
+        background: transparent;
 
-    
+    }
+    label{
+        position: absolute;
+        text-align: left;
+        left: 3px;
+        bottom: 20%;
+        font-size: large;
+        padding: 2%;
+        transition: 0.9s;
+        pointer-events: none;
+        color: rgb(10,107,49);
+    }
+    .contenu .box input:focus ~ .info,
+    .contenu .box input:valid ~ .info{
+        transform: translateX(-5px) translateY(-32px);
+        font-size: 15PX;
+        /* color: ; */
+    } 
+    .message_erreur{
+        color: rgb(141, 54, 20);
+        font-size: large;
+    }
+    .message_erreur_Mail{
+        color: rgb(141, 54, 20);
+        font-size: large;
+       top: 0;
+        text-align: left;
+    }
+    .message_validation{
+        text-align:center;
+        color: rgb(10,107,49);
+    }
+    .titre span{
+        font-size: x-large;
+        color:rgb(10,107,49) ;
+        font-weight: bold;
+        font-style: italic;
+    }
+.connecter{
+    margin-top:30px;
+}
+.mot_de_passe{
+    margin-bottom:1px;
+}
 </style>
 <body>
       
@@ -92,17 +143,20 @@
                 <!-- <label for="">CONNEXION</label> -->
 
                 <div class="contenu">
-                <label > <?php 
-                    if(isset($_SESSION['message_validation'])){
-                        echo $_SESSION['message_validation'];
-                        unset($_SESSION['message_validation']);
-                    }
-                ?></label> 
-                    <div class="mail">
-                        <input type="email" placeholder="e-mail" name="mail" ><br>
+                    <div class="titre">
+                        <span>USSEIN CANDIDATURE</span>
                     </div>
-                    <div class="mot-de-passe">
-                        <input type="password" placeholder="mot de passe" name="mot_de_passe"><br>
+                   
+                    <div class="mail box">
+                        <input type="text"  name="mail" id="email"  required>
+                         <label for="email" class="mail info">e-Mail</label>
+                          <!-- <br> -->
+                    </div>
+                  
+                    <div class="mot_de_passe box">
+                        <input type="password"  name="mot_de_passe" required>
+                        <label for="mot_de_passe" class='mdp info'>Mot de passe</label>
+                        <!-- <br> -->
                     </div>
 
                     <div class='message_erreur'>
@@ -114,8 +168,26 @@
                         ?>
                         
                     </div>
+                    <div class="message_validation">
+                        <label > <?php 
+                        if(isset($_SESSION['message_validation'])){
+                            echo $_SESSION['message_validation'];
+                            unset($_SESSION['message_validation']);
+                        }
+                    ?></label>
+                    </div>
+                    <div class='message_erreur_Mail'>
+                        <?php
+                        if(isset($_SESSION['message_erreur_Mail'])){
+                            echo $_SESSION['message_erreur_Mail'];
+                            unset($_SESSION['message_erreur_Mail']);
+                        }
+                        ?>
+                        
+                    </div>
+               
 
-                    <div class="connecter">
+                    <div class="connecter box">
                         <input type="submit" value="Se connecter" class="button_connecter"> <br>
                     </div>
     

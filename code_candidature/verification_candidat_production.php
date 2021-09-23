@@ -44,6 +44,6 @@ if(!empty($_FILES['brevet'])){
     }
 
 
-    header('location: http://localhost/candidature/wp-content/themes/emphires/sc_compte_candidat.php');
+    header('location: http://localhost/candidature/mon-compte/');
     
 ?>

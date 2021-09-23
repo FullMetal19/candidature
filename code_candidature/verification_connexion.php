@@ -4,6 +4,7 @@
     $mail=$_POST['mail'];
     $mot_de_passe=$_POST['mot_de_passe'];
 
+    if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
     // include("ouverture_bd.php");
     $con = mysqli_connect("localhost","root","","ussein_candidature");
     $verification=mysqli_query($con, "SELECT * FROM ec_connexion WHERE mail='$mail' AND mot_de_passe='$mot_de_passe'" );
@@ -40,6 +41,13 @@
         header('location: http://localhost/candidature/connexion');
         exit();
     }
+}
+else{
+    $_SESSION['message_erreur_Mail']=" Mail invalide";
+    header('location: http://localhost/candidature/connexion');
+    exit();
+}
+
 
 
 

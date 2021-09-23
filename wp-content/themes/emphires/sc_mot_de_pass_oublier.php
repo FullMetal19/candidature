@@ -3,23 +3,32 @@
 /* Template name: mot_de_passe_oublie*/
 ?>
 
-<html>
-    <head>
-       <meta charset="utf-8">
-        
-        
-    </head>
-    <body>
-        <div id="contenu">
-            
-            
-            <form action="http://localhost/candidature/code_candidature/verification_mot_de_passe_oublier.php" method="POST">
-            <fieldset>  <legend> <img src=" http://localhost/candidature/code_candidature/logo.png" alt="" class="logo"></legend> 
-               <div class="titre"><h1>Reinitialisation</h1></div> 
-                
-               
-                <input type="text" placeholder="Entrer votre Mail" name="mail" required>
 
+            
+<fieldset class="connexion">
+            <legend> <img src="http://localhost/candidature/wp-content/uploads/2021/09/USSEIN-LOGO.png" alt="Logo"> </legend>  
+
+            <form action="http://localhost/candidature/code_candidature/verification_mot_de_passe_oublier.php" method="POST">
+                    <div class="titre">
+                        <span>USSEIN CANDIDATURE</span><br>
+                        <span>Reinitialisation de votre mot de passe </span>
+                   </div>
+
+            
+                     <div class="mail box">
+                        <input type="text"  name="mail" id="email"  required>
+                        <label for="email" class=" info">e-Mail</label>
+                          <!-- <br> -->
+                    </div>
+                    <div class='message_erreur_Mail'>
+                        <?php
+                        if(isset($_SESSION['message_erreur_Mail'])){
+                            echo $_SESSION['message_erreur_Mail'];
+                            unset($_SESSION['message_erreur_Mail']);
+                        }
+                        ?>
+                        
+                    </div>
                 <label > <?php 
                     if(isset($_SESSION['message_validation'])){
                         echo $_SESSION['message_validation'];
@@ -27,88 +36,109 @@
                     }
                 ?></label>
                 
-                <div class="bouton">
-                <input  type="submit" id='submit' value='Envoyer' name="envoyer" ></div>
+                <div class="connecter box">
+                     <input  type="submit" id='submit' value='Reinitialiser' name="envoyer" >
+                </div>
+
+                </form>
                 </fieldset>
-            </form>
-        </div>
-    </body>
-</html>
+            
 
 <style>
-    fieldset{
+    .box input:focus ~ .info,
+    .box input:valid ~ .info{
+        transform: translateX(-5px) translateY(-32px);
+        font-size: 15PX;
+        /* color: ; */
+    }
+    label.info{
+        position: absolute;
+        text-align: left;
+        left: 3px;
+        bottom: 20%;
+        font-size: large;
+        padding: 2%;
+        transition: 0.9s;
+        pointer-events: none;
+        color: rgb(10,107,49);
+
+    }
+img{
+        position: relative;
+        border-radius: 50%;
+        width: 200px;
+        height:200px;
+        border: 5px solid rgb(10,107,49);
+        /* margin-bottom: 5px; */
+
+    }
+    .box{
+        position: relative;
+        padding-left: 2px;
+        margin: 10px;
+        height: 50px;
+        width:300PX;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 15px;
+        /* border: 2px solid rgb(10,107,49); */
+    }
+    input{
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgb(10,107,49);
+        border-radius: 5px;
+        padding: 3%;
+    }
+    .connexion{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 15px ;
+        height: 550px;
+        width: 400px;
+        margin-left: -214px;
+        margin-top: -300px;
+        text-align: center;     
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 10px 5px 10px rgb(10,107,49);
+        border: 1px solid rgb(10,107,49);
+
+    }
+    form{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        margin-top: 1px;
+        align-items:center;
+    }
         
+    .connecter input{
+        width: 300px;
+        border-radius: 20px;
+        font-size: x-large;
+        background-color: rgb(132,181,39);
+        margin-bottom:5px;
+        color: white;
     }
-    .titre{
-        text-align:center;
+    .connecter input:hover{
+        background-color: rgb(10,107,49);
     }
-.bouton{
-    margin-top:25px;
-    width:100px;
-}
-legend{
-    text-align:center;
-}
-body{
-    background: #67BE4B;
-}
+    .mail input{
+        position:absolute;
+        background:transparent;
+        left:0;
+        top:0;
 
-.logo{
-    width:175px;
-    height:175px;
-    position:relative;
-    /* top:-6em; */
-    border:10px solid #67BE4B;
-    Border-radius:50%;
-    border-style:2px;
-    background:white;
+    }
     
-}
-#contenu{
-    width: 600px;
-    margin:0 auto;
-    margin-top:5%;
-   
-}
-/* Bordered form */
-form {
-    width:100%;
-    padding: 30px;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-#container h1{
-    width: 38%;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
+    .titre span{
+        font-size: x-large;
+        color:rgb(10,107,49) ;
+        font-weight: bold;
+        font-style: italic;
+    }
 
-/* Full-width inputs */
-input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: #67BE4B;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-input[type=submit] {
-    background-color: #53af57;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-input[type=submit]:hover {
-    background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
-}
 
 </style>
 <?php

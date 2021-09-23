@@ -1,6 +1,11 @@
 <?php 
 /* template name:compte candidat */
+
 session_start();
+ get_header();
+?>
+<?php
+
 $mail= $_SESSION['mail'];
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req_image = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'"); 
@@ -8,13 +13,8 @@ $tab_image = mysqli_fetch_array($req_image);
 
 $tab_genre = array('Masculin','Feminin');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
+
 
 <style>
     *{
@@ -279,8 +279,8 @@ div.case{
     }
 
 </style> 
-<body>
-<?php get_header();?>
+
+
 <div class="case">
 
  <!-- debut du code pour la case -->
@@ -1032,4 +1032,3 @@ div.case{
  </div>
 
     
-</body>
