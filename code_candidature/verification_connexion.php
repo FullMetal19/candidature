@@ -10,17 +10,27 @@
     $nombre=mysqli_num_rows($verification);
     $tab_verification=mysqli_fetch_array($verification);
     
+    // declaration des variables de session
+    $_SESSION['prenom']=$tab_verification['prenom'];
+    $_SESSION['nom']=$tab_verification['nom'];
+    $_SESSION['mail']=$tab_verification['mail'];
+    $_SESSION['telephone']=$tab_verification['telephone'];
+    $_SESSION['date_de_naissance']=$tab_verification['date_de_naissance'];
+    $_SESSION['genre']=$tab_verification['genre'];
+    $_SESSION['adresse']=$tab_verification['adresse'];
+    $_SESSION['image']=$tab_verification['image'];
+
     if($nombre!=0){
         if($tab_verification['status']==0){
-            header('Location: http://localhost/candidature/accueil-offre/');
+            header('location: http://localhost/candidature/accueil-offre/');
         }
         if($tab_verification['status']==1){
             
-            header('Location: http://localhost/candidature/ajout-offre/');
+            header('Location: http:localhost/');
 
         }
         if($tab_verification['status']==5){
-            $_SESSION['message_erreur']=" Verifier votre compte mail pour valider votre compte";
+            $_SESSION['message_erreur']=" Verifier votre compte mail";
             
               header('Location: http://localhost/candidature/connexion');
             }
@@ -30,5 +40,8 @@
         header('location: http://localhost/candidature/connexion');
         exit();
     }
+
+
+
 
 ?>

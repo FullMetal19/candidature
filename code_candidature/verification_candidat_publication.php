@@ -3,11 +3,7 @@ session_start();
 
 $auteur= $_SESSION['mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
-// $requete=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur'");
-// $verification=mysqli_num_rows($requete);
-// if($verification==0){
-//     mkdir('repertoire/'.$auteur);
-//     }
+
 // insertion licence
 if(!empty($_FILES['Article_domaine'])){
     $erreur_fichier=$_FILES['Article_domaine']['error'];
@@ -15,7 +11,7 @@ if(!empty($_FILES['Article_domaine'])){
     $nom_fichier_orgine=$_FILES['Article_domaine']['name'];
     $extension=strrchr($nom_fichier_orgine,".");
     if($extension== ".pdf" || $extension== ".PDF"){
-        $nom_fichier="Article_domaine.pdf";
+        $nom_fichier="article_domaine.pdf";
 
       $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$nom_fichier'");
       $verification1=mysqli_num_rows($requete1);

@@ -1,5 +1,5 @@
 <?php 
-/* template name:fiche a postuler */ 
+/* template name:formulaire pour admin */ 
 session_start();
 
 $auteur =$_SESSION['mail'];
@@ -160,10 +160,12 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         padding: 0;
         box-sizing: border-box;
         color:black;
-        background-color: white;
+    }
+    body{
+       
     }
     div.fichier_recapitulatif{
-        background-color:rgba(10,107,49,0.5);
+        
         display:flex;
         flex-direction:column;
         gap:4em 0;
@@ -732,42 +734,8 @@ $title="Pas de fichier justificatif uplaoder";?>
                         </div> 
                 </div>
                 </fieldset>
-                <form action="http://localhost/candidature/code_candidature/envoie_de_dossier_supplementaire.php" method="POST"  enctype="multipart/form-data">
-
-                 <div class="dossier_supplementaire">
-
-                 <div class="contenu_dossier_supplementaire">
-
-                 <div class="fichier_supplementaire"><label for="cv">votre CV : </label><input type="file" name="cv" id="cv">
-                 <label for="" class="notif_dossier_supp">
-                 <?php if(isset($_SESSION['notif_cv'])){echo $_SESSION['notif_cv']; unset($_SESSION['notif_cv']);} ?></label> 
-                 </div>
-
-                 <div class="fichier_supplementaire"><label for="lettre_de_motivation">votre Demande : </label><input type="file" name="lettre_de_motivation" id="lettre_de_motivation">
-                 <label for="" class="notif_dossier_supp">
-                 <?php if(isset($_SESSION['notif_lm'])){echo $_SESSION['notif_lm']; unset($_SESSION['notif_lm']);} ?></label> 
-                 </div>
-                 
-                 <div class="fichier_supplementaire"><label for="autre_fichier">Aurtes dossier supplementaires : </label><input type="file" name="autre_fichier" id="autre_fichier">
-                 <label for="" class="notif_dossier_supp">
-                 <?php if(isset($_SESSION['notif_af'])){echo $_SESSION['notif_af']; unset($_SESSION['notif_af']);} ?></label> 
-                 </div>
-                 
-                 </div>
-                 <input type="submit" value='Enregistrer' id="enregistrer_dossier">
                
-                 </div>
-            
-                </form> 
-      <!-- </div> -->
-      <div class="bouton_modifier">
-            <form action=" http://localhost/candidature/mon-compte/" method="POST">
-            <input type="submit" value="Modifier" class="bouton modifier">
-            </form>
-            <form action="http://localhost/candidature/code_candidature/envoie_de_candidature.php" method="POST">
-            <input type="submit" value="Envoyer" class="bouton envoyer">
-            </form>
-        </div>
+
     </div>
     </div>
     

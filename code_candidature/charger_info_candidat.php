@@ -12,9 +12,9 @@ $mail_session = $_SESSION['mail'];
 $_SESSION['choix_genre']=$genre;
 
 $con = mysqli_connect("localhost","root","","ussein_candidature");
-$req_info = mysqli_query($con,"UPDATE ec_connexion SET prenom='$prenom',nom='$nom',mail='$mail',date_de_naissance='$date_de_naissance',telephone='$tel',adresse='$adresse',genre='$genre' WHERE email='$mail_session'");
-
+$req_info = mysqli_query($con,"UPDATE ec_connexion SET prenom='$prenom',nom='$nom',date_de_naissance='$date_de_naissance',telephone='$tel',adresse='$adresse',genre='$genre' WHERE mail='$mail_session'");
+$_SESSION['info']="Enregistrement effectuer.Allez dans *Mon dosssier* pour le voir";
 mysqli_close($con);
-header('location: http://localhost/candidature/wp-content/themes/emphires/sc_compte_candidat.php');
+header('location: http://localhost/candidature/mon-compte/');
 
 ?>
