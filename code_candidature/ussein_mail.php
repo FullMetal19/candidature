@@ -12,8 +12,6 @@ if($nb>0){
         $_SESSION['message_validation'] = "Votre compte a été déjà activé. Veuillez vous connecter.";
     }else{
         $req = mysqli_query($con,"UPDATE ec_connexion SET status='0' WHERE mail='$mail'");
-        mkdir('ec_repertoire/'.$mail);
-        
         $_SESSION['message_validation'] = "Votre compte est activé. Veuillez vous connecter.";
     }
     header('Location: http://localhost/candidature/connexion');

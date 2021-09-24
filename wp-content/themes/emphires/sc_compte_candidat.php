@@ -1,20 +1,24 @@
 <?php 
 /* template name:compte candidat */
-
 session_start();
- get_header();
-?>
-<?php
-
 $mail= $_SESSION['mail'];
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req_image = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'"); 
 $tab_image = mysqli_fetch_array($req_image);
 
+
+$requete_infos_candidat =  mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
+$tab_candidat = mysqli_fetch_array($requete_infos_candidat);
+
 $tab_genre = array('Masculin','Feminin');
 ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
 <style>
     *{
@@ -86,7 +90,7 @@ div.info{
 }
 input.champs_de_text ,select.champs_de_text  {
     width:100%;
-    height:3em;
+    height:4em;
     text-indent: 1em;
     border: 2px solid rgb(10,107,49);
     transition: all 1s;
@@ -278,9 +282,27 @@ div.case{
     margin-bottom:1px;
     }
 
+    label#mail{
+        font-size:large;
+        transition:all 1s;
+        color:rgb(10,107,49);
+        border:1px solid;
+        border-radius:10px;
+        background-color:white;
+        padding:0.5em;
+    }
+    label#mail:hover{
+        transition:all 1s;
+        transform:scale(1.04);
+        background-color:rgb(205, 253, 205);
+    }
+    span#notif{
+        color:rgb(141,54,20);
+        font-size:large;
+    }
 </style> 
-
-
+<body>
+<?php get_header();?>
 <div class="case">
 
  <!-- debut du code pour la case -->
@@ -315,10 +337,16 @@ div.case{
                              <div class="info_personnel">
 
                                 <div class="info">
-                                <input type="text" class="champs_de_text" name="prenom" placeholder="Prenom" value="<?php echo $_SESSION['prenom'];?>" required>
-                                <input type="text" class="champs_de_text" name="nom" placeholder="Nom" value="<?php echo $_SESSION['nom'];?>" required>
+                                <input type="text" class="champs_de_text" name="prenom" placeholder="Prenom" value="<?php echo $tab_candidat['prenom'];?>" required>
+                                <input type="text" class="champs_de_text" name="nom" placeholder="Nom" value="<?php echo $tab_candidat['nom'];?>" required>
                                 <label for="date_de_naissance" id="date_de_naissance">Votre date de naissance :</label>
-                                <input type="date" class="champs_de_text" name="date_de_naissance" id="date_de_naissance" value="<?php echo $_SESSION['date_de_naissance'];?>" required>
+                                <input type="date" class="champs_de_text" name="date_de_naissance" id="date_de_naissance" value="<?php echo $tab_candidat['date_de_naissance'];?>" required>
+                                
+                                </div>
+
+                                <div class="info">
+                                <input type="text" class="champs_de_text" name="adresse" placeholder="Adresse domicile" value="<?php echo $tab_candidat['adresse'];?>" required>
+                                <input type="tel" class="champs_de_text" name="tel" placeholder="Telephone" value="<?php echo $tab_candidat['telephone'];?>" required>
                                 <select name="genre" class="champs_de_text" id="genre" required>
                                    <?php
                                    if(isset($_SESSION['choix_genre'])){?>
@@ -332,15 +360,15 @@ div.case{
                                     <?php } }     ?>
                                     
                                 </select>
-                                </div>
+                                <label title='votre mail' id='mail'><?php echo $_SESSION['mail'] ?></label>
+                                <span id="notif">
+                                      <?php if(isset($_SESSION['info'])){ echo $_SESSION['info'];unset($_SESSION['info']) ;} ?>
+                                  </span> 
 
-                                <div class="info">
-                                <input type="text" class="champs_de_text" name="adresse" placeholder="Adresse" value="<?php echo $_SESSION['adresse'];?>" required>
-                                <input type="tel" class="champs_de_text" name="tel" placeholder="Telephone" value="<?php echo $_SESSION['telephone'];?>" required>
-                                <input type="email" class="champs_de_text" name="mail" placeholder="Email" value="<?php echo $_SESSION['mail'];?>" required>
-                                </div>
 
                                 </div>
+                                </div>
+
                                 <input type="submit" value="Enregistrer" id="enregistrer">   
                             </form>
                             </div>    
@@ -1032,3 +1060,4 @@ div.case{
  </div>
 
     
+</body>
