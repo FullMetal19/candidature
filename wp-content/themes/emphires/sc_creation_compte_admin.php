@@ -1,17 +1,11 @@
 <?php
-/*Template name: Visualisation candidat par offre*/
-session_start();
-$id = $_GET['id'];
-$con = mysqli_connect("localhost","root","","ussein_candidature");
-$query3= "SELECT titre FROM ec_offre WHERE id='$id'";
-$result3 = mysqli_query($con, $query3);
-$tab3 = mysqli_fetch_all($result3);
-$titre = $tab3[0][0];
-mysqli_close($con);
+    session_start();
+/* Template name: creation compte admin*/
 ?>
 
-<style>
-    *{
+
+    <style>
+         *{
         margin: 0;
         padding: 0;
     }
@@ -22,6 +16,7 @@ mysqli_close($con);
         background-repeat: no-repeat;
         background-size: cover;
     }
+    
     /* div.container{
         display: grid;
         grid-template-columns:300px auto;
@@ -30,32 +25,8 @@ mysqli_close($con);
         height: 100%;
         width: 100%;
     } */
-    #a{
-    background-color: rgb(192,206,0);
-    color: white;
-    width: 400px;
-    padding: 2%;
-    text-align: justify;
-    position: fixed;
-    right: 10px;
-    border-radius: 10px 100px / 120px;
-    z-index: 9999;
-    animation: alert 1s ease forwards;
-}
-@keyframes alert{
-    0%{
-        transform: translateX(100%);
-    }
-    40%{
-        transform: translateX(-10%);
-    }
-    80%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(-10%);
-    }
-}
+
+   
     div.gauche{
         background-color: rgba(10, 107, 49,0.6);
         display: flex;
@@ -74,7 +45,6 @@ mysqli_close($con);
         left: 0%;
 
     }
-     
     div.droite{
         height: 100%;
         box-sizing: border-box;
@@ -126,11 +96,11 @@ mysqli_close($con);
         text-align: center;
         margin: 0% 10%;
         justify-content: right;
+        color: white;
     }
     div.titre h1{
         margin-top: 5%;
         margin-right: 15%;
-        color:white;
     }
     div.titre img{
         width: 30px;
@@ -138,6 +108,9 @@ mysqli_close($con);
         position: relative;
         top: 20%;
     }
+    div.active{
+        background-color: rgba(141, 54, 20,0.6);
+    }  
     
     @media(max-width:900px){
         div.titre h1{
@@ -171,66 +144,99 @@ mysqli_close($con);
             left: -5%;
         }
     }
-    .titre_page{
-    text-align: center;
-    background: rgb(10, 107, 49);
-    border-radius: 50px;
-    margin-bottom: 2%;
-    color: white;
-  }
-.le_lien{
-  text-align: center;
-  background: rgb(192, 206, 0);
-  width: 25px;
-  border-radius: 50px;
-  transition: 1s all;
- 
-}
-.le_lien:hover {
-           background: rgb(10, 107, 49);
-           transform:scale(1.02);
-            color: white;
-            transition: 1s all;
-        }
-.le_lien a{
-  text-decoration: none;
-  color: white;
-  width: 100%;
-}
-  *,* ::before,*::after{
-    box-sizing: border-box;
-  }
-  body{
-    font-family: sans-serif;
-  }
-  table{
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th,td{
-    padding: 10px;
-    text-align: left;
-    background-color: rgba(10,107,49,0.4);
-    color: white;
-    border: solid 1px green;
    
-  }
-  th{
+    
+    .titre{
+        text-align:center;
+        padding:0px;
+        
+    }
+.bouton{
+    
+    width:100%;
+    border-radius: 25px;
+}
+legend{
+    text-align:center;
+}
+
+
+.logo{
+    
+    position: relative;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        border: 5px solid white;
+        background-color:rgb(10,107,49);
+
+    
+}
+.inscription{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 15px ;
+        height: 600px;
+        width: 400px;
+        justify-content: center;
+        margin-left: -215px;
+        margin-top: -270px;
+        text-align: center;     
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 10px 5px 10px rgb(10,107,49);
+
+   
+}
+fieldset{margin-top: -15px;}
+
+form {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1px;
+    
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=email],input[type=tel] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /* display: #67BE4B; */
+    border-radius:5px;
+    background-color: rgba(10, 107, 49, 0.6);
+    border: 2px solid rgb(10,107,49);
+    /* border: 1px solid #ccc; */
+    /* box-sizing: border-box; */
+}
+
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color: rgb(132,181,39);
+    border: 2px solid rgb(10,107,49);
     color: white;
-  }
-  th{
-    background-color: rgb(10, 107, 49);
-  }
-  div.active{
-    background-color: rgba(141, 54, 20,0.6);
-    } 
-  
+    padding: 14px 20px;
+    margin: 8px 0;
+    /* border: none; */
+    cursor: pointer;
+    width: 100%;
+    border-radius:20px;
+    font-size:large;
+}
+input[type=submit]:hover {
+    background-color: rgb(10,107,49);
+    /* color: ; */
+    border: 1px solid #53af57;
+}
 
 </style>
-<body>
-    <!-- <div class="container"> -->
-                                    
-        <div class="gauche">
+<div class="gauche">
             <div class="titre">
                 <h1>Dashboard</h1>
                 <img src="https://img.icons8.com/ios-filled/50/000000/menu--v4.png"/>
@@ -243,7 +249,7 @@ mysqli_close($con);
                     <img src="https://img.icons8.com/material-rounded/50/000000/discount-finder.png"/>
                 </a>
             </div>
-            <div class="bloc_menu active">
+            <div class="bloc_menu">
                 <a href="http://localhost/candidature/visualisation/">
                     <label>Visualisation</label>
                     <img src="https://img.icons8.com/ios/50/000000/doughnut-chart--v2.png"/>
@@ -255,7 +261,7 @@ mysqli_close($con);
                     <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-calculator-back-to-school-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>
                 </a>
             </div>
-            <div class="bloc_menu">
+            <div class="bloc_menu active">
                 <a href="http://localhost/candidature/creation-compte-admin/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
@@ -271,53 +277,54 @@ mysqli_close($con);
         </div>
         <div class="droite" id="droite">
                 <div class="droite_container">
-                <?php
-                                    if(isset($_SESSION["message_candidat_note"])){
-                                        echo $_SESSION["message_candidat_note"];
-                                        unset($_SESSION["message_candidat_note"]);
-                                    }
-                                    ?> 
-                <h1 class="titre_page">Listes des Candidats</h1>
-                            <table>
-                            <tr>
-                                <th>Nº</th>
-                                <th>PRENOM</th>
-                                <th>NOM</th>
-                                <th class="consulter"></th>
-                            </tr>
-                            <?php 
-                            $con = mysqli_connect("localhost","root","","ussein_candidature");
-                            $query= "SELECT * FROM ec_postuler WHERE id_offre='$id'";
-                            $result = mysqli_query($con, $query); 
-                            $i=1;
-                            while ($ligne1 =  mysqli_fetch_array ($result)) {?>
+                <div id="container">
+            
+            
+           
+            <fieldset class="inscription">  
+                <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="logo" class="logo"></legend> 
 
-                            <div class="contenu">
-                            <?php $id_candidat= $ligne1['id_candidat'];
-                            $requete=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$id_candidat'");
-                            
-                            while( $result2=mysqli_fetch_array($requete)){?>
-                            <div class="candidat"> 
-                                
-                                <tr>
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $result2['prenom'] ; ?></td>
-                                <td><?php echo $result2['nom'];?> </td>
-                                <td class="le_lien"><a href='http://localhost/candidature/calcul-note-candidat-par-offre?id=<?php echo $id_candidat.'&prenom='.$result2['prenom'].'&nom='.$result2['nom'].'&id_offre='.$id.'&titre='.$titre ;?>' class="lien"> Consulter</a> </td>
-                                </tr>
-                            
-                            <?php }?> 
-                            </div>
-                            <?php $i+=1; }?>
+                <div class="titre">Creation Compte</div> 
 
-                            </table>
+                <form action="http://localhost/candidature/code_candidature?verification_creation_compte_admin.php" method="POST">
+<!-- 
+               <div class="titre"><h1>INSCRIPTION</h1></div>  -->
+                
+               
+                <input type="text" placeholder="PRENOM" name="prenom" required>
+
+                
+                <input type="text" placeholder="NOM" name="nom" required>
+                
+                <input type="email" placeholder="Mail" name="mail" required>
+                <input type="tel" placeholder="Telephone" name="telephone" required>
+                <label >Date de naissance</label>
+                <input type="date" placeholder="Date de naissance" name="date_de_naissance" required>
+
+                <input type="password" placeholder="Mot de passe" name="mot_de_passe" required>
+                <input type="password" placeholder="Confirmation " name="confirmation_mot_de_passe" required>
+
+                <label > <?php 
+                    if(isset($_SESSION['message_validation'])){
+                        echo $_SESSION['message_validation'];
+                        unset($_SESSION['message_validation']);
+                    }?>
+                </label> 
+
+                
+                <!-- <input type="tel" placeholder="TEL" name="telephone" required> </br> -->
+                <div class="bouton">
+                <input  type="submit" id='submit' value="Valider" name="Valider" ></div>
+                </form>
+                </fieldset>
+ 
+        </div>
+
                 </div>
         </div>
 
-        <script>
-     // alerte message
 
-     setTimeout(function(){
-        document.getElementById('a').style.display="none";
-    },5000);
-</script>
+
+
+
+        

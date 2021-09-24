@@ -16,11 +16,11 @@
         }
         if($tab_verification['status']==1){
             
-            header('Location: http:localhost/');
+            header('Location: http://localhost/candidature/ajout-offre/');
 
         }
         if($tab_verification['status']==5){
-            $_SESSION['message_erreur']=" Verifier votre compte mail";
+            $_SESSION['message_erreur']=" Verifier votre compte mail pour valider votre compte";
             
               header('Location: http://localhost/candidature/connexion');
             }

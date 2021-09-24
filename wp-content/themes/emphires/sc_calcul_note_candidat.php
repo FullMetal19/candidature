@@ -424,7 +424,7 @@ tr td:last-child{
             
             <hr>
             <div class="bloc_menu">
-                <a href="">
+                <a href="http://localhost/candidature/ajout-offre/">
                     <label>Les Offres</label>
                     <img src="https://img.icons8.com/material-rounded/50/000000/discount-finder.png"/>
                 </a>
@@ -442,13 +442,13 @@ tr td:last-child{
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
+                <a href="http://localhost/candidature/creation-compte-admin/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
+                <a href="http://localhost/candidature/code_candidature/verification_deconnexion.php">
                     <label> Déconnexion</label>
                     <img src="https://img.icons8.com/ios/50/000000/exit.png"/>
                 </a>
