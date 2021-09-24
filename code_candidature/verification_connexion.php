@@ -12,7 +12,7 @@
     
     if($nombre!=0){
         if($tab_verification['status']==0){
-            header('Location: http:localhost/');
+            header('Location: http://localhost/candidature/accueil-offre/');
         }
         if($tab_verification['status']==1){
             

@@ -129,7 +129,7 @@
         </div>
         <div class="container">
             <div class="img_banner">
-                <img src="http://localhost/candidature/wp-content/uploads/2021/09/recteur.png" alt="bannière recteur" class="banner_recteur">
+                <img src="http://localhost/candidature/wp-content/uploads/2021/09/banner_cand.png" alt="bannière recteur" class="banner_recteur">
             </div>
             <div class="titre_text">
                 <h1>Titre de La Partie</h1>
