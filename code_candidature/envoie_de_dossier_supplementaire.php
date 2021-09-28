@@ -9,7 +9,7 @@ $con=mysqli_connect("localhost","root","","ussein_candidature");
 // if($verification==0){
 //     mkdir('repertoire/'.$auteur);
 //     }
-// insertion licence
+// insertion cv
 if(!empty($_FILES['cv'])){
     $erreur_fichier=$_FILES['cv']['error'];
     if($erreur_fichier==0){

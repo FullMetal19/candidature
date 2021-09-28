@@ -2,11 +2,9 @@
 /* template name:formulaire pour admin */ 
 session_start();
 
-$auteur =$_SESSION['mail'];
-$info = $_GET['info'];
-$_SESSION['info_candidat']=$info;
+
 $title="";
-$lien = 'http://localhost/candidature/code_candidature/ec_repertoire/'.$auteur.'/';
+$lien = 'http://localhost/candidature/code_candidature/ec_offre/'.$id_offre.'/'.$auteur.'/';
 // $auteur= $_SESSION['mail'];
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 
@@ -161,11 +159,14 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         box-sizing: border-box;
         color:black;
     }
+    
+      
+    
     body{
-       
+        background-image:url("http://localhost/candidature/wp-content/uploads/2021/09/background-scaled.jpg");
     }
     div.fichier_recapitulatif{
-        
+        /* background-color:rgba(10,107,49,0.5) */
         display:flex;
         flex-direction:column;
         gap:4em 0;
@@ -176,7 +177,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     div.bordure_interne_du_fichier{
        padding: 2% 4%;
        border: 1px dotted rgb(10,107,49);
-       
+       background-color:rgba(10,107,49,0.5)
     }
     div.entete_du_fichier{
         display:flex;
@@ -188,6 +189,9 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     div.contenu_entete{
         display: flex;
         flex-direction: column;
+        background-color:white;
+        opacity:0.5;
+        padding:1em;
     
         /* align-items: center; */
     }
@@ -223,6 +227,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     }
     label.diplome{
         font-weight:bold;
+        font-size:large;
     }
     input.bouton{
        margin-top:2em;
@@ -240,9 +245,11 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         float:right;
     }
  
-    fieldset.filed{
+    fieldset.field{
         border-color:rgb(10,107,49) ;
         margin-bottom:4%;
+        background-color:white;
+        opacity:0.5
     }
     legend{
         text-align: center;
@@ -531,7 +538,10 @@ else{
 
 $selecteur_gestion['nom_fichier']="NEANT";
 $title="Pas de fichier justificatif uplaoder";?>
-<a title="<?php echo $title ?>" class="justificatif"><?php echo $selecteur_gestion['nom_fichier'] ?></a>
+<a title="<?php echo $title ?>" class="justificatif"><?php echo $selecteur_gestion['nom_fichier'] ;
+
+
+?></a>
 <?php  }  ?> 
 
                     </div> 

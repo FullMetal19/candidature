@@ -1,56 +1,67 @@
 <?php
-/* template name:insertion candidature */ 
 session_start();
+
 $mail = $_SESSION['mail'];
 $id= strchr($_SESSION['info_candidat'],' ');
 $id_offre =trim($id);
 
-
+$date = date('d - m - Y');
 
 $con = mysqli_connect("localhost","root","","ussein_candidature");
+
+
+if(file_exists('ec_repertoire/'.$mail) && is_dir('ec_repertoire/'.$mail)){
+    $rep = 'ec_repertoire/'.$mail;
+    $acces = opendir($rep);
+    $table = array('.','..');
+     
+    if(file_exists('ec_offre/'.$id_offre) && is_dir('ec_offre/'.$id_offre)) { 
+
+        if(file_exists('ec_offre/'.$id_offre.'/'.$mail) && is_dir('ec_offre/'.$id_offre.'/'.$mail)){
+               exit();
+        }
+        else{
+            mkdir('ec_offre/'.$id_offre.'/'.$mail);
+        }
+    }
+    else{
+        $_SESSION['notificatiion'] = "l'offre : ".$tab_nom_offre['titre']."n'existe plus . Veillez postuler pour d'autre offre";
+    }
+        while($fichier = readdir($acces)){
+            if(!in_array($fichier,$table)){
+           
+                copy('ec_repertoire/'.$mail.'/'.$fichier , 'ec_offre/'.$id_offre.'/'.$mail.'/'.$fichier); 
+             
+            }
+        }
+    closedir($acces);
+}
+
+
+ 
 
 $req_nom_offre = mysqli_query($con,"SELECT * FROM ec_offre WHERE id='$id_offre'");
 $tab_nom_offre = mysqli_fetch_array($req_nom_offre);
 
-$req_offre = mysqli_query($con,"SELECT * FROM ec_offre WHERE id='$id_offre'");
-$tab_offre = mysqli_fetch_array($req_offre);
 
-$chemin_dossier_candidat = 'ec_repertoire/'.$mail;
-$chemin_dossier_offre = 'ec_offre/'.$tab_nom_offre['titre'].'/'.$mail ;
-$repertoire='ec_offre/'.$tab_nom_offre['titre'];
+$req_candidat = mysqli_query($con,"SELECT * FROM ec_offre WHERE id_offre='$id_offre' AND id_candidat='$mail'");
+$num_rows_candidat = mysqli_num_rows($req_candidat);
 
-if(file_exists($repertoire)){
-
-   $acces_repertoire = opendir($repertoire);
-   copy($chemin_dossier_candidat,$chemin_dossier_offre);
-   closedir($acces_repertoire);
-
-
-
-
-
-// $req_candidat = mysqli_query($con,"SELECT * FROM ec_offre WHERE id_offre='$id_offre' AND id_candidat='$mail'");
-// $num_rows_candidat = mysqli_num_rows($req_candidat);
-
-// if($num_rows_candidat >0){
-//     $req = mysqli_query($con,"UPDATE ec_postuler SET id_offre='$id_offre', id_candidat='$mail' WHERE id_candidat='$mail' and id_offre='$id_offre'");
-// }
-// else{
-$req = mysqli_query($con,"INSERT INTO ec_postuler VALUES('$id_offre','$mail')");
-
-$_SESSION['notificatiion'] = "Vous venez de postuler pour l'offre : ".$tab_offre['titre'];
+if($num_rows_candidat >0){
+    $req = mysqli_query($con,"UPDATE ec_postuler SET date='$date' WHERE id_candidat='$mail' and id_offre='$id_offre'");
+    $_SESSION['notificatiion'] = "Vous venez de repostuler pour l'offre : ".$tab_nom_offre['titre'];
 }
-
 else{
-    $_SESSION['notificatiion'] = "l'offre : ".$tab_offre['titre']."n'existe plus";
+    $requete = mysqli_query($con , "INSERT INTO ec_postuler VALUES ('$id_offre','$mail','0','$date')");
+    $_SESSION['notificatiion'] = "Vous venez de postuler pour l'offre : ".$tab_nom_offre['titre'];
 }
+
+// else{
+//     $_SESSION['notificatiion'] = "l'offre : ".$tab_nom_offre['titre']."n'existe plus . Veillez postuler pour d'autre offre";
+// }
 unset($_SESSION['info_candidat']);
-// // }
-
-
 
 
 mysqli_close($con);
-
 header('location: http://localhost/candidature/accueil-offre/');
-?>
+?> 

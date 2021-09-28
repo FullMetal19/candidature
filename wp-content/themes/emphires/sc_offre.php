@@ -115,7 +115,7 @@ $ufr.=strchr($tab_offre['nom_ufr'],"S");
         </div>
 
         <div class="bouton">
-            <a href="http://localhost/candidature/fiche-a-postuler/?info=<?php echo $mail_candidat.' '.$id_offre ?> ">
+            <a href="http://localhost/candidature/fiche-a-postuler/?info=<?php echo $mail_candidat.' '.$id_offre ?>">
                 
                 <img src="https://img.icons8.com/ios/50/000000/set-as-resume.png"width="30px"/>
                 <p>Postuler</p>

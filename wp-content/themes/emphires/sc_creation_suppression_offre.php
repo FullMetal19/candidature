@@ -174,6 +174,6 @@
                     <h1>Titre de la Partie à Visualiser</h1>
                 </div>
                 <div class="droite_container">
-dd
+
                 </div>
         </div>

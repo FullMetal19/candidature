@@ -278,6 +278,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         flex-direction:column;
         align-items:center;
         border:2px solid rgb(10,107,49);
+        margin-top:1em;
     }
     div.contenu_dossier_supplementaire{
         display:flex;

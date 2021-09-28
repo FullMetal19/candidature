@@ -26,7 +26,7 @@
         }
         if($tab_verification['status']==1){
             
-            header('Location: http:localhost/');
+            header('Location: http://localhost/candidature/ajout-offre/');
 
         }
         if($tab_verification['status']==5){
@@ -36,7 +36,7 @@
             }
     }
     else{
-        $_SESSION['message_erreur']=" Verifier";
+        $_SESSION['message_erreur']=" Verifier votre mot de passe ou votre mail";
         header('location: http://localhost/candidature/connexion');
         exit();
     }
