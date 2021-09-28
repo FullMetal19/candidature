@@ -146,40 +146,35 @@ session_start();
     }
 
     .principal{
-          display: flex;
+          /* display: flex; */
           flex-direction: column;
           align-items: center;
           width: 100%;
           height: 100%;
           align-items: center;
+        margin-top:-75px;
+
           
       }
         .suppression{
-            display: flex;
+            /* display: flex; */
             flex-direction: column;
             align-items: center;
-            width: 100%;
+            width: 90%;
             margin: auto;
-            padding: 0;
+            padding: 5%;
+            margin: 2% 0%;
+           
+
 
         }
         .conter{
-             display: flex;
+             /* display: flex; */
              flex-direction: column;
              align-items: center;
             width: 100%;
             }
-            .titre02  h2{
-            display: flex;
-             background-color: rgba(10, 107, 49,0.6);
-             padding: 1% ;
-             justify-content: center;
-             margin: 5% 0 3% 0;
-             font-size: 20px;
-             color: white;
-             box-shadow: 5px -5px 5px rgba(132, 181, 31,0.6);
-             width: 800px;   
-         }
+            
          .supprimer{
              color: black;
              padding: 1%;
@@ -197,49 +192,92 @@ session_start();
 
     .offre01{
         display: flex;
-        
         flex-direction: column;
         
+        
     }
+    select{
+        outline: none;
+        border: none;
+        /* background-color: transparent; */
+        color: white;
+        
+        
+    }
+    .zone_de_saisi{
+        text-align: right;
+        /* color: #fff; */
+        padding: 3% 5%;
+        margin: 0% 35%;
+        text-align:center;
+        height:25%;
+        display:flex;
+    }
+    .placeholder{
+        color:white;
+    }
+    input[type=text], input[type=date]{
+    width: 95%;
+    padding: 3% 0%;
+    margin: 0% 3%;
+    /* display: #67BE4B;
+     */
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    /* background-color: rgba(132, 181, 31,0.1);  */
+
+    
+    /* color:white; */
+}
+
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color: rgba(10, 107, 49,0.9);
+    color:white ;
+    padding: 3% 5%;
+    margin: 0% 35%;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    transition:1s all;
+}
+
+input[type=submit]:hover{
+    background-color: rgba(141, 54, 20,0.9);
+    transition:1s all;
+    transform:scale(1.02);
+    border-radius:50%;
+   
+}
      
 
-       input{
-           display: flex;
-           justify-content: space-around;
-           width:100%;
-           height: 50%;
-           font-size: 15px;
-           
-       }
+      
        fieldset{
-           display: flex;
-           width: 700px;
-           height: 700px;
+           text-align: center;
+           width: 75%;
            align-items: center;
            position: relative;
-           background-color: rgba(132, 181, 31,0.6);
+            background-color: rgba(132, 181, 31,0.1); 
            
        }
        .main{
             width: 100%;
+            
            display: flex;
            flex-direction: column;
            gap: 1em;
            }
 
-           
-       select{
-           
-           color: black;
-       }
+    
 
        
          .offre{
+             
              display: flex;
              justify-content: space-around;
              gap:0 1em;
              background-color: rgba(132, 181, 31,0.6);
-             width: 700px;
+             width: 100%;
               padding: 1em; 
               margin: 0 0 2em 0 
               
@@ -251,24 +289,28 @@ session_start();
              color: white;
 
          }
-         .titre01{
-             align-items: center;
-         }
         
-        .titre01 h1{
+        
+        
+        .titre01 h1, .titre02  h2{
              display: flex;
-             background-color: rgba(10, 107, 49,0.6);
-             padding: 1% ;
+             background-color: rgba(10, 107, 49,0.8);
+             padding: 3% ;
              justify-content: center;
              margin: 2% 0%;
              color: blanchedalmond;
-             font-size: 20px;
+             font-size: 30px;
             box-shadow: 5px -5px 5px rgba(132, 181, 31,0.6);
-            width: 100%;
+            width: 94%;
+            border-radius: 50px;
+         }
+         .selection_ufr{
+             color:white;
+             font-size:15px;
          }
        
          label{
-             color: rgb(141, 54, 20);
+             /* color: rgb(141, 54, 20); */
          }
          #ufr{
              color: black;
@@ -278,7 +320,7 @@ session_start();
              display: flex;
              justify-content: center;
              width: 100%;
-         }
+               }
 
 </style>
 <body>
@@ -335,18 +377,19 @@ session_start();
 <div class="body">
 <fieldset>
        <div class="main">
-           <label for="UFR"></label>
+           <div class="zone_de_saisi">
+            <div class="selection_ufr"><label for="UFR"> Véillez séléctionner un UFR</label></div>
             <select name="ufr" id="ufr">
             <option value="sfi">SFI</option>
             <option value="sejtses"> SES </option>
             <option value="ses"> SEJT </option>
             <option value="seapan"> SEAPAN </option>
-            </select> <br>
-
+            </select></div> <br>
+             
             <input type="text" name="titre" id="titre" placeholder="Titre"><br>
             <input type="text" name="description" id="description" placeholder="description"><br>
             <input type="date" name ="date_limite" id="date_limite" placeholder="date limite de dépot"><br>
-            <input type="file" name="fichier" ><br>
+            <input  type="file" name="fichier" ><br>
             <label >
             <?php
             if(isset($_SESSION['obligatoire'])){
@@ -361,10 +404,11 @@ session_start();
 </div>
 </form> 
 </div>
-<div class="suppression">
-    <div class="titre02">
+<div class="titre02">
        <h2>suppresion offre</h2>
        </div>
+<div class="suppression">
+    
        <?php
 
         $con = mysqli_connect("localhost","root","","ussein_candidature");
@@ -382,7 +426,7 @@ session_start();
           </span> 
           <div class="supprimer">
         
-        <a  href="http://localhost/candidature/code_candidature/verification_supprimer_offre.php?id=<?php echo $tab['id'] ?>">supprimer</a>
+        <a  href="http://localhost/candidature/code_candidature/verification_supprimer_offre.php?id=<?php echo $tab['id']?>">Supprimer</a>
         
         </div>
         </div>
