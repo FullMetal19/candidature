@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 29 sep. 2021 à 08:42
+-- Généré le :  mer. 29 sep. 2021 à 09:25
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -202,10 +202,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_aid` (
 --
 
 INSERT INTO `ec_note_aid` (`nom`, `note`, `defaut`) VALUES
-('aid_a1', 5, 0),
-('aid_a2', 4, 0),
-('aid_a3', 3, 0),
-('aid_aa', 1, 0);
+('aid_a1', 5, 5),
+('aid_a2', 4, 4),
+('aid_a3', 3, 3),
+('aid_aa', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -225,9 +225,9 @@ CREATE TABLE IF NOT EXISTS `ec_note_aihd` (
 --
 
 INSERT INTO `ec_note_aihd` (`nom`, `note`, `defaut`) VALUES
-('aihd_a1', 2, 0),
-('aihd_a2', 1.5, 0),
-('aihd_a3', 1, 0),
+('aihd_a1', 2, 2),
+('aihd_a2', 1.5, 1.5),
+('aihd_a3', 1, 1),
 ('aihd_aa', 0, 0);
 
 -- --------------------------------------------------------
@@ -248,10 +248,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_autre_experience` (
 --
 
 INSERT INTO `ec_note_autre_experience` (`nom`, `note`, `defaut`) VALUES
-('gestion', 0.5, 0),
-('investigateur_projet_oui', 2, 0),
+('gestion', 0.5, 0.5),
+('investigateur_projet_oui', 2, 2),
 ('investigateur_projet_non', 0, 0),
-('coordonateur_reseau_oui', 1, 0),
+('coordonateur_reseau_oui', 1, 1),
 ('coordonateur_reseau_non', 0, 0);
 
 -- --------------------------------------------------------
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_brevet` (
 --
 
 INSERT INTO `ec_note_brevet` (`nom`, `note`, `defaut`) VALUES
-('brevet_oui', 10, 0),
+('brevet_oui', 10, 10),
 ('brevet_non', 0, 0);
 
 -- --------------------------------------------------------
@@ -293,12 +293,12 @@ CREATE TABLE IF NOT EXISTS `ec_note_communication_conference` (
 --
 
 INSERT INTO `ec_note_communication_conference` (`nom`, `note`, `defaut`) VALUES
-('communication_orale_internationale', 1, 0),
-('poster_discussion_internationale', 0.75, 0),
-('communication_orale_nationale', 0.5, 0),
-('communication_nationale_affichee', 0.25, 0),
-('conferencier_invite_international', 2, 0),
-('conferencier_national', 1, 0);
+('communication_orale_internationale', 1, 1),
+('poster_discussion_internationale', 0.75, 0.75),
+('communication_orale_nationale', 0.5, 0.5),
+('communication_nationale_affichee', 0.25, 0.25),
+('conferencier_invite_international', 2, 2),
+('conferencier_national', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -318,13 +318,13 @@ CREATE TABLE IF NOT EXISTS `ec_note_diplome` (
 --
 
 INSERT INTO `ec_note_diplome` (`nom`, `note`, `defaut`) VALUES
-('diplome1', 35, 0),
-('diplome3', 25, 0),
-('diplome4', 20, 0),
-('diplome5', 15, 0),
-('diplome6', 5, 0),
+('diplome1', 35, 35),
+('diplome3', 25, 25),
+('diplome4', 20, 20),
+('diplome5', 15, 15),
+('diplome6', 5, 5),
 ('diplome7', 0, 0),
-('diplome2', 30, 0);
+('diplome2', 30, 30);
 
 -- --------------------------------------------------------
 
@@ -344,8 +344,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_distinction` (
 --
 
 INSERT INTO `ec_note_distinction` (`nom`, `note`, `defaut`) VALUES
-('prix_concours', 2, 0),
-('decoration', 1, 0);
+('prix_concours', 2, 2),
+('decoration', 1, 1),
+('prix_concours', 2, 2),
+('decoration', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -365,16 +367,27 @@ CREATE TABLE IF NOT EXISTS `ec_note_doctorat` (
 --
 
 INSERT INTO `ec_note_doctorat` (`nom`, `note`, `defaut`) VALUES
-('these_troisieme_cycle1', 4, 0),
-('these_troisieme_cycle2', 2, 0),
+('these_troisieme_cycle1', 4, 4),
+('these_troisieme_cycle2', 2, 2),
 ('these_troisieme_cycle3', 0, 0),
-('these_unique_phD1', 4, 0),
-('these_unique_phD2', 2, 0),
+('these_unique_phD1', 4, 4),
+('these_unique_phD2', 2, 2),
 ('these_unique_phD3', 0, 0),
-('these_etat1', 4, 0),
-('these_etat2', 2, 0),
+('these_etat1', 4, 4),
+('these_etat2', 2, 2),
 ('these_etat3', 0, 0),
-('these_exercice1', 1, 0),
+('these_exercice1', 1, 1),
+('these_exercice2', 0, 0),
+('these_troisieme_cycle1', 4, 4),
+('these_troisieme_cycle2', 2, 2),
+('these_troisieme_cycle3', 0, 0),
+('these_unique_phD1', 4, 4),
+('these_unique_phD2', 2, 2),
+('these_unique_phD3', 0, 0),
+('these_etat1', 4, 4),
+('these_etat2', 2, 2),
+('these_etat3', 0, 0),
+('these_exercice1', 1, 1),
 ('these_exercice2', 0, 0);
 
 -- --------------------------------------------------------
@@ -395,8 +408,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_pedagogique` (
 --
 
 INSERT INTO `ec_note_experience_pedagogique` (`nom`, `note`, `defaut`) VALUES
-('secondaire', 0.5, 0),
-('superieur', 1, 0);
+('secondaire', 0.5, 0.5),
+('superieur', 1, 1),
+('secondaire', 0.5, 0.5),
+('superieur', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -416,10 +431,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_recherche` (
 --
 
 INSERT INTO `ec_note_experience_recherche` (`nom`, `note`, `defaut`) VALUES
-('er1', 1, 0),
-('er2', 0.75, 0),
-('er3', 0.5, 0),
-('er4', 0.5, 0);
+('er1', 1, 1),
+('er2', 0.75, 0.75),
+('er3', 0.5, 0.5),
+('er4', 0.5, 0.5);
 
 -- --------------------------------------------------------
 
@@ -440,10 +455,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_grade` (
 
 INSERT INTO `ec_note_grade` (`nom`, `note`, `defaut`) VALUES
 ('prof_enseignement_secondaire', 2, 0),
-('assistant', 5, 0),
-('maitre_assistant', 10, 0),
-('maitre_de_conference', 20, 0),
-('prof_titulaire', 35, 0);
+('assistant', 5, 5),
+('maitre_assistant', 10, 10),
+('maitre_de_conference', 20, 20),
+('prof_titulaire', 35, 35);
 
 -- --------------------------------------------------------
 
@@ -463,10 +478,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_ldd` (
 --
 
 INSERT INTO `ec_note_ldd` (`nom`, `note`, `defaut`) VALUES
-('ldd_a1', 5, 0),
-('ldd_a2', 4, 0),
-('ldd_a3', 3, 0),
-('ldd_aa', 1, 0);
+('ldd_a1', 5, 5),
+('ldd_a2', 4, 4),
+('ldd_a3', 3, 3),
+('ldd_aa', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -486,10 +501,10 @@ CREATE TABLE IF NOT EXISTS `ec_note_licence_master` (
 --
 
 INSERT INTO `ec_note_licence_master` (`nom`, `note`, `defaut`) VALUES
-('licence3ans_oui', 3, 0),
+('licence3ans_oui', 3, 3),
 ('licence3ans_non', 0, 0),
-('master3ans_oui', 3, 0),
-('master3ans_non', 0, 0),
+('master2ans_oui', 3, 3),
+('master2ans_non', 0, 0),
 ('autre_oui', 0, 0),
 ('autre_non', 0, 0);
 
