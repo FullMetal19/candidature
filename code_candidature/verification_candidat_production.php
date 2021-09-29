@@ -2,6 +2,8 @@
 session_start();
 
 $auteur= $_SESSION['mail'];
+
+$url_brevet=$_POST['lien_brevet'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 // $requete=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur'");
 // $verification=mysqli_num_rows($requete);
@@ -28,10 +30,10 @@ if(!empty($_FILES['brevet'])){
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
           if($verification >0){
-          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier' WHERE auteur='$auteur'");
+          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier', lien='' WHERE auteur='$auteur' AND nom_fichier='$nom_fichier'");
            } 
           else{
-            $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier','$auteur')");
+            $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier','$auteur','')");
             }
         }
         $_SESSION['message_erreur_brevet']="Le fichier pdf est bien enregistrer.";
@@ -41,6 +43,21 @@ if(!empty($_FILES['brevet'])){
         $_SESSION['message_erreur_brevet']="Le fichier doit être en pdf.";
         }
     }
+    }
+
+    if($url_brevet!=""){
+        $fichier_licence="brevet.pdf";
+            
+        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
+        $verification1=mysqli_num_rows($requete1);
+            
+            if($verification1 >0){
+            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_brevet' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
+             } 
+            else{
+              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_brevet')");
+              }
+              $_SESSION['message_erreur_grade']="Le lien est bien enregistré.";
     }
 
 

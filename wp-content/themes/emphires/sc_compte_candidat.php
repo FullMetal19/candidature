@@ -2,9 +2,13 @@
 /* template name:compte candidat */
 session_start();
 $mail= $_SESSION['mail'];
+$lien_suppression="http://localhost/candidature/code_candidature/suppression_justificatif.php/?fiche=";
+
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req_image = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'"); 
 $tab_image = mysqli_fetch_array($req_image);
+
+
 
 
 $requete_infos_candidat =  mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
@@ -234,7 +238,7 @@ div.case{
       transition: all 1s;
       display:flex;
       flex-direction:column;
-      gap:2em 0;
+      gap: 1px 0;
   }
    div.contenu_licence:hover{
       transform:scale(1.05);
@@ -300,6 +304,17 @@ div.case{
         color:rgb(141,54,20);
         font-size:large;
     }
+    input.lien{
+        margin-bottom: 1px;
+    }
+    a.suppression{
+        /* border:1px solid red; */
+        border-radius:10%;
+        background-color:rgb(141,54,20);
+        font-size:large;
+        
+    }
+
 </style> 
 <body>
 <?php get_header();?>
@@ -405,7 +420,10 @@ div.case{
 
                                 <div class="contenu_licence">
                                 <span>Licence</span>
+                                <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_licence" class="lien">
+                                <span>ou</span>
                                 <p><input type="file" name="fichier_licence" class=""></p>
+                                <a href="<?php echo $lien_suppression."licence.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                 <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_l'])){
@@ -419,14 +437,17 @@ div.case{
                                     echo $_SESSION['message_validation_l'];
                                     unset($_SESSION['message_validation_l']);
                                 }
-                                ?></label>
+                                  ?></label>
                                 </div>
                                 
 
                                 
                                     <div class="contenu_licence">
                                     <span>Master</span>
+                                    <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_master" class="lien">
+                                      <span>ou</span>
                                     <p><input type="file" name="fichier_master" class=""></p>
+                                     <a href="<?php echo $lien_suppression."master.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                     <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_m'])){
@@ -447,7 +468,10 @@ div.case{
                                 
                                     <div class="contenu_licence">
                                     <span>Doctorat</span>
-                                    <p><input type="file" name="fichier_doctorat" class=""></p>
+                                    <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_doctorat" class="lien">
+                                <span>ou</span>
+                                <p><input type="file" name="fichier_doctorat" class=""></p>
+                                <a href="<?php echo $lien_suppression."doctorat.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                     <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_d'])){
@@ -500,7 +524,10 @@ div.case{
                                   
                                         <div class="contenu_licence contenu_licence2 ">
                                             <span>Secondaire</span>                                             
-                                            <p><input type="file" name="secondaire"></p>
+                                            <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_secondaire" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="secondaire" class=""></p>
+                                            <a href="<?php echo $lien_suppression."secondaire.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                             <label class="message_erreur"> 
                                             <?php
                                             if(isset($_SESSION['message_erreur_secondaire'])){
@@ -519,7 +546,10 @@ div.case{
                                         
                                         <div class="contenu_licence contenu_licence2 ">
                                             <span>Supérieur</span>                            
-                                            <p><input type="file" name="supérieur"></p>
+                                            <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_superieur" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="superieur" class=""></p>
+                                            <a href="<?php echo $lien_suppression."superieur.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                             <label class="message_erreur"> 
                                             <?php
                                             if(isset($_SESSION['message_erreur_supérieur'])){
@@ -546,7 +576,10 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Laboratoire académique</span>                                         
-                                        <p><input type="file" name="laboratoire"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_laboratoire" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="laboratoire" class=""></p>
+                                            <a href="<?php echo $lien_suppression."laboratoire.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur"> 
                                         <?php
                                         if(isset($_SESSION['message_erreur_laboratoire'])){
@@ -564,7 +597,10 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Institution de recherche</span>                                         
-                                        <p><input type="file" name="institution"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_institution" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="institution" class=""></p>
+                                            <a href="<?php echo $lien_suppression."institution.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur "> 
                                         <?php
                                         if(isset($_SESSION['message_erreur_institution'])){
@@ -582,7 +618,10 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Industrie ou structure de développement</span>                                         
-                                        <p><input type="file" name="industrie"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_industrie" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="industrie" class=""></p>
+                                            <a href="<?php echo $lien_suppression."industrie.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur "> 
                                         <?php
                                         if(isset($_SESSION['message_erreur_industrie'])){
@@ -609,7 +648,10 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Gestion de programme dans les ONG, associations, collectivités et structures étatiques</span>                                         
-                                        <p><input type="file" name="gestion"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_gestion" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="gestion" class=""></p>
+                                            <a href="<?php echo $lien_suppression."gestion.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur "> 
                                         <?php
                                         if(isset($_SESSION['message_erreur_gestion'])){
@@ -628,7 +670,10 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Investigateur principal de projet</span>                                         
-                                        <p><input type="file" name="insvestigateur"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_investigateur" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="investigateur" class=""></p>
+                                            <a href="<?php echo $lien_suppression."investigateur.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur"> 
                                         <?php
                                         if(isset($_SESSION['message_erreur_insvestigateur'])){
@@ -647,19 +692,22 @@ div.case{
 
                                     <div class="contenu_licence contenu_licence2 ">
                                         <span>Coordonnateur de réseau</span>                                         
-                                        <p><input type="file" name="coordonateur"></p>
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_coordonnateur" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="coordonnateur" class=""></p>
+                                            <a href="<?php echo $lien_suppression."coordonnateur.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                         <label class="message_erreur"> 
                                         <?php
-                                        if(isset($_SESSION['message_erreur_coordonateur'])){
-                                            echo $_SESSION['message_erreur_coordonateur'];
-                                            unset($_SESSION['message_erreur_coordonateur']);
+                                        if(isset($_SESSION['message_erreur_coordonnateur'])){
+                                            echo $_SESSION['message_erreur_coordonnateur'];
+                                            unset($_SESSION['message_erreur_coordonnateur']);
                                         }
                                         ?></label>
                                         <label class="message_validation"> 
                                         <?php
-                                        if(isset($_SESSION['message_validation_coordonateur'])){
-                                            echo $_SESSION['message_validation_coordonateur'];
-                                            unset($_SESSION['message_validation_coordonateur']);
+                                        if(isset($_SESSION['message_validation_coordonnateur'])){
+                                            echo $_SESSION['message_validation_coordonnateur'];
+                                            unset($_SESSION['message_validation_coordonnateur']);
                                         }
                                         ?></label>
                                     </div>
@@ -699,7 +747,10 @@ div.case{
 
                                 <div class="contenu_licence">
                                 <span>Distinction</span>
-                                <p><input type="file" name="distinction" class=""></p>
+                                <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_distinction" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="distinction" class=""></p>
+                                            <a href="<?php echo $lien_suppression."distinction.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                 <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_distinction'])){
@@ -750,7 +801,10 @@ div.case{
 
                                 <div class="contenu_licence">
                                 <span>Grade</span>
-                                <p><input type="file" name="grade" class=""></p>
+                                <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_grade" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="grade" class=""></p>
+                                            <a href="<?php echo $lien_suppression."grade.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                 <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_grade'])){
@@ -804,7 +858,10 @@ div.case{
 
                                 <div class="contenu_licence">
                                     <span>Brevet</span>
-                                    <p><input type="file" name="brevet" class=""></p>
+                                    <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_brevet" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="brevet" class=""></p>
+                                            <a href="<?php echo $lien_suppression."brevet.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                     <label class="message_erreur"> 
                                     <?php
                                     if(isset($_SESSION['message_erreur_brevet'])){
@@ -853,31 +910,37 @@ div.case{
 
                            <!-- Article domaine -->
                         <div class="experience">
-                                    <span class="titre2">Article indéxé du domaine</span> 
+                                    <!-- <span class="titre2">Article indéxé du domaine</span>  -->
                                     <div class="experience2">
                                   
                                         <div class="contenu_licence contenu_licence2 ">
                                             <span>Article indéxé du domaine</span>                                             
-                                            <p><input type="file" name="Article_domaine"></p>
+                                            <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_article_domaine" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="article_domaine" class=""></p>
+                                            <a href="<?php echo $lien_suppression."article_domaine.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                             <label class="message_erreur"> 
                                             <?php
-                                            if(isset($_SESSION['message_erreur_Article_domaine'])){
-                                                echo $_SESSION['message_erreur_Article_domaine'];
-                                                unset($_SESSION['message_erreur_Article_domaine']);
+                                            if(isset($_SESSION['message_erreur_article_domaine'])){
+                                                echo $_SESSION['message_erreur_article_domaine'];
+                                                unset($_SESSION['message_erreur_article_domaine']);
                                             }?>
                                             </label>
                                             <label class="message_validation"> 
                                             <?php
-                                            if(isset($_SESSION['message_validation_Article_domaine'])){
-                                                echo $_SESSION['message_validation_Article_domaine'];
-                                                unset($_SESSION['message_validation_Article_domaine']);
+                                            if(isset($_SESSION['message_validation_article_domaine'])){
+                                                echo $_SESSION['message_validation_article_domaine'];
+                                                unset($_SESSION['message_validation_article_domaine']);
                                             }
                                             ?></label>
                                         </div>
 
                                         <div class="contenu_licence contenu_licence2 ">
                                             <span>Article indexé hors domaine, article non indexé du domaine et article de vulgarisation</span>                                             
-                                            <p><input type="file" name="article_hors_domaine"></p>
+                                            <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_article_hors_domaine" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="article_hors_domaine" class=""></p>
+                                            <a href="<?php echo $lien_suppression."article_hors_domaine.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                             <label class="message_erreur"> 
                                             <?php
                                             if(isset($_SESSION['message_erreur_article_hors_domaine'])){
@@ -896,7 +959,10 @@ div.case{
 
                                         <div class="contenu_licence contenu_licence2 ">
                                             <span>Livre du domaine</span>                                             
-                                            <p><input type="file" name="livre_domaine"></p>
+                                            <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_livre_domaine" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="livre_domaine" class=""></p>
+                                            <a href="<?php echo $lien_suppression."livre_domaine.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                             <label class="message_erreur"> 
                                             <?php
                                             if(isset($_SESSION['message_erreur_livre_domaine'])){
@@ -913,8 +979,11 @@ div.case{
                                             ?></label>
                                         </div>
                                         <div class="contenu_licence contenu_licence2 ">
-                                            <span>Livre de vulgarisation et fiche technique du domaine</span>                                             
-                                            <p><input type="file" name="livre_vulgarisation"></p>
+                                        <span>Livre de vulgarisation et fiche technique du domaine</span> 
+                                        <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_livre_vulgarisation" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="livre_vulgarisation" class=""></p>
+                                            <a href="<?php echo $lien_suppression."livre_vulgarisation.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>       
                                             <label class="message_erreur"> 
                                             <?php
                                             if(isset($_SESSION['message_erreur_livre_vulgarisation'])){
@@ -970,7 +1039,10 @@ div.case{
 
                                 <div class="contenu_licence">
                                 <span>Proccedings ou chapitre d'un livre du domaine</span>
-                                <p><input type="file" name="procceding" class=""></p>
+                                 <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_procceding" class="lien">
+                                            <span>ou</span>
+                                            <p><input type="file" name="procceding" class=""></p>
+                                            <a href="<?php echo $lien_suppression."procceding.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                                 <label class="message_erreur"> 
                                 <?php
                                 if(isset($_SESSION['message_erreur_procceding'])){
@@ -1025,7 +1097,10 @@ div.case{
 
                    <div class="contenu_licence">
                    <span>Communication et conférence</span>
-                   <p><input type="file" name="communication" class=""></p>
+                   <input type="url" placeholder="Vous pouvez ajoutez un lien" name="lien_communication" class="lien">
+                    <span>ou</span>
+                    <p><input type="file" name="communication" class=""></p>
+                    <a href="<?php echo $lien_suppression."communication.pdf" ?>" class="suppression">Supprimer justificatif actuel</a>
                    <label class="message_erreur"> 
                    <?php
                    if(isset($_SESSION['message_erreur_communication'])){

@@ -2,6 +2,8 @@
 session_start();
 
 $auteur= $_SESSION['mail'];
+$url_communication=$_POST['lien_communication'];
+
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 // $requete=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur'");
 // $verification=mysqli_num_rows($requete);
@@ -28,10 +30,10 @@ if(!empty($_FILES['communication'])){
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
           if($verification >0){
-          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier' WHERE auteur='$auteur'");
+          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier', lien='' WHERE auteur='$auteur' AND nom_fichier='$nom_fichier'");
            } 
           else{
-            $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier','$auteur')");
+            $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier','$auteur','')");
             }
             $_SESSION['message_validation_communication']="Le fichier pdf est bien enregisté.";
         }
@@ -41,6 +43,20 @@ if(!empty($_FILES['communication'])){
         $_SESSION['message_erreur_communication']="Le fichier doit être en pdf.";
         }
     }
+    }
+    if($url_communication!=""){
+        $fichier_licence="communication.pdf";
+            
+        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
+        $verification1=mysqli_num_rows($requete1);
+            
+            if($verification1 >0){
+            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_communication' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
+             } 
+            else{
+              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_communication')");
+              }
+              $_SESSION['message_validation_l']="Le fichier pdf est bien enregistré.";
     }
 
 
