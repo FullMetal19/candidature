@@ -83,7 +83,7 @@ if(!empty($_FILES['fichier_master'])){
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
           if($verification2 >0){
-          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_master', lien='' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
+          $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_master', lien='' WHERE auteur='$auteur' AND nom_fichier='$fichier_master' ");
            } 
           else{
             $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_master','$auteur','')");
@@ -134,7 +134,7 @@ if(!empty($_FILES['fichier_master'])){
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
               
               if($verification3 >0){
-              $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_doctorat',lien='' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
+              $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_doctorat',lien='' WHERE auteur='$auteur' AND nom_fichier='$fichier_doctorat'");
                } 
               else{
                 $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_doctorat','$auteur','')");

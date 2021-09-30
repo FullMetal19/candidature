@@ -31,12 +31,9 @@ if(!empty($_FILES['secondaire'])){
       $chemin_fichier_arriver='ec_repertoire/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
-          
-        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-        $verification1=mysqli_num_rows($requete1);
-            
+
             if($verification1 >0){
-                $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier', lien='' WHERE auteur='$auteur'AND nom_fichier='$nom_fichier'");
+                $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier', lien='' WHERE auteur='$auteur' AND nom_fichier='$nom_fichier'");
              } 
           else{
             $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier','$auteur','')");
@@ -55,18 +52,18 @@ if(!empty($_FILES['secondaire'])){
 
     if($url_secondaire!=""){
         $fichier_licence="secondaire.pdf";
-            
+  
         $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
         $verification1=mysqli_num_rows($requete1);
             
-         if($verification1 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$nom_fichier', lien='$url_secondaire' WHERE auteur='$auteur'AND nom_fichier='$nom_fichier'");
+            if($verification1 >0){
+            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_secondaire' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
              } 
             else{
               $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_secondaire')");
               }
-              $_SESSION['message_erreur_secondaire']="Le lien est bien enregistré.";
-    }
+              $_SESSION['message_validation_secondaire']="Le fichier pdf est bien enregistré.";
+      }
 
 
 // insertion licence
