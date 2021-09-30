@@ -95,6 +95,9 @@
         text-align: center;
 
     }
+    div.active{
+        background-color: rgba(141, 54, 20,0.6);
+    }  
     @media(max-width:900px){
         div.titre h1{
             font-size: 1.2em;
@@ -137,21 +140,21 @@
             </div>
             
             <hr>
-            <div class="bloc_menu">
-                <a href="">
+            <div class="bloc_menu active" >
+                <a href="http://localhost/candidature/ajout-offre/">
                     <label>Les Offres</label>
                     <img src="https://img.icons8.com/material-rounded/50/000000/discount-finder.png"/>
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
+                <a href="http://localhost/candidature/visualisation/">
                     <label>Visualisation</label>
                     <img src="https://img.icons8.com/ios/50/000000/doughnut-chart--v2.png"/>
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
-                    <label>Calcul</label>
+            <a href="http://localhost/candidature/point-modulable/">
+                    <label>Point Modulable</label>
                     <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-calculator-back-to-school-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>
                 </a>
             </div>

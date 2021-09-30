@@ -1,5 +1,5 @@
 <?php 
-/* template name:fiche a postuler */ 
+/* template name:recapitulatif */ 
 session_start();
 get_header();
 $auteur =$_SESSION['mail'];
@@ -387,7 +387,7 @@ $title="Pas de fichier justificatif uplaoder";?>
                     <div class="box_diplome">
                     <label class="diplome">Experience secondaire : </label>
                     <?php 
-                    if(($selecteur_licence['lien'])!=""){
+                    if(($selecteur_secondaire['lien'])!=""){
 
                         $title="votre fichier justificatif";?>
                         <a href="<?php echo $selecteur_secondaire['lien'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_secondaire['nom_fichier'] ?></a>
@@ -424,7 +424,7 @@ $title="Pas de fichier justificatif uplaoder";?>
 
 $title="votre fichier justificatif"; ?>
 
-<a href="<?php echo $lien.$selecteur_superieur['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif"><?php echo $selecteur_superieur['nom_fichier'] ?></a>
+<a href="<?php echo $lien.$selecteur_superieur['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_superieur['nom_fichier'] ?></a>
 
 <?php }
 
@@ -788,7 +788,7 @@ $title="Pas de fichier justificatif uplaoder";?>
 
 $title="votre fichier justificatif"; ?>
 
-<a href="<?php echo $lien.$selecteur_brevet['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" ><?php echo $selecteur_brevet['nom_fichier'] ?></a>
+<a href="<?php echo $lien.$selecteur_brevet['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_brevet['nom_fichier'] ?></a>
 
 <?php }
 

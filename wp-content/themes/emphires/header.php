@@ -12,6 +12,15 @@
  * @version 1.0
  */
 session_start();
+session_start();
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js no-svg">
 <head>

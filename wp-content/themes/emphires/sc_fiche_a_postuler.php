@@ -155,9 +155,6 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     <title>Document</title>
 </head>
 <style>
-     .cspt-title-bar-wrapper{
-               display: none;
-          }         
     *{
         margin: 0;
         padding: 0;
@@ -166,6 +163,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         background-color: white;
     }
     div.fichier_recapitulatif{
+        background-color:rgba(10,107,49,0.5);
         display:flex;
         flex-direction:column;
         gap:4em 0;
@@ -224,14 +222,20 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     label.diplome{
         font-weight:bold;
     }
-   
     input.bouton{
-        margin-top:1em;
-        float:right;
-        padding: 0.5em 4%;
+       margin-top:2em;
+        padding: 1.5% 4%;
         color: white;
         font-size: large;
+    }
+    input.modifier{
+        background-color: rgb(141,54,20);
+        float:left;
+        
+    }
+    input.envoyer{
         background-color: rgb(10,107,49);
+        float:right;
     }
  
     fieldset.filed{
@@ -268,6 +272,44 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
       align-items: center;
       padding:1em 2em;
       box-shadow:0 0 20px gray;
+    }
+    div.dossier_supplementaire{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        border:2px solid rgb(10,107,49);
+        margin-top:1em;
+    }
+    div.contenu_dossier_supplementaire{
+        display:flex;
+        /* width:100%; */
+       
+        padding:2em 1em;
+        gap:1em;
+        flex-wrap:wrap;
+    }
+    div.fichier_supplementaire{
+        display:flex;
+        flex-wrap:wrap;
+        width:100%;
+        padding:1em;
+        gap:1em;
+        border:2px solid rgb(10,107,49);
+    }
+    input#enregistrer_dossier{
+        margin-bottom:1em;
+        color:white;
+        font-size:large;
+        background:gray;
+        padding:1% 4%;
+    }
+    div.fichier_supplementaire label{
+        font-weight:bold;
+        font-size:large;
+    }
+    label.notif_dossier_supp{
+        color:rgb(141,54,20);
+        font-size:large;
     }
 </style>
 <body>
@@ -387,7 +429,7 @@ $title="Pas de fichier justificatif uplaoder";?>
                     <div class="box_diplome">
                     <label class="diplome">Experience secondaire : </label>
                     <?php 
-                    if(($selecteur_licence['lien'])!=""){
+                    if(($selecteur_secondaire['lien'])!=""){
 
                         $title="votre fichier justificatif";?>
                         <a href="<?php echo $selecteur_secondaire['lien'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_secondaire['nom_fichier'] ?></a>
@@ -424,7 +466,7 @@ $title="Pas de fichier justificatif uplaoder";?>
 
 $title="votre fichier justificatif"; ?>
 
-<a href="<?php echo $lien.$selecteur_superieur['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif"><?php echo $selecteur_superieur['nom_fichier'] ?></a>
+<a href="<?php echo $lien.$selecteur_superieur['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_superieur['nom_fichier'] ?></a>
 
 <?php }
 
@@ -788,7 +830,7 @@ $title="Pas de fichier justificatif uplaoder";?>
 
 $title="votre fichier justificatif"; ?>
 
-<a href="<?php echo $lien.$selecteur_brevet['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" ><?php echo $selecteur_brevet['nom_fichier'] ?></a>
+<a href="<?php echo $lien.$selecteur_brevet['nom_fichier'] ;?>" title="<?php echo $title ?>" class="justificatif" target="_blank"><?php echo $selecteur_brevet['nom_fichier'] ?></a>
 
 <?php }
 

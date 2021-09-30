@@ -214,8 +214,8 @@
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
-                    <label>Calcul</label>
+                <a href="http://localhost/candidature/point-modulable/">
+                    <label>Point Modulable</label>
                     <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-calculator-back-to-school-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>
                 </a>
             </div>
