@@ -1,8 +1,18 @@
 <?php
     session_start();
 /* Template name: mot_de_passe_oublie*/
-?>
 
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}?>
+
+<div class="imgbackground">
+        </div>
+        <!-- ARRIERE PLAN FLOU -->
 
             
 <fieldset class="connexion">
@@ -45,6 +55,25 @@
             
 
 <style>
+    .imgbackground{
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        filter : blur(12px); 
+        animation: image 30s linear infinite both;
+    }
+
+@keyframes image{
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
+    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/3.jpg");}
+    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/1.jpg");}
+    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/4.jpg");}
+    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/5.jpg");}
+}
     .box input:focus ~ .info,
     .box input:valid ~ .info{
         transform: translateX(-5px) translateY(-32px);
@@ -99,7 +128,7 @@ img{
         margin-left: -214px;
         margin-top: -300px;
         text-align: center;     
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.3);
         box-shadow: 10px 5px 10px rgb(10,107,49);
         border: 1px solid rgb(10,107,49);
 

@@ -10,6 +10,27 @@
         
     </head>
     <style>
+
+
+.imgbackground{
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        filter : blur(12px); 
+        animation: image 30s linear infinite both;
+    }
+
+@keyframes image{
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
+    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/3.jpg");}
+    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/1.jpg");}
+    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/4.jpg");}
+    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/5.jpg");}
+}
     
     .titre{
         text-align:center;
@@ -47,7 +68,7 @@ body{
         margin-left: -215px;
         margin-top: -300px;
         text-align: center;     
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.3);
         box-shadow: 10px 5px 10px rgb(10,107,49);
 
    
@@ -135,7 +156,11 @@ form {
     
 </style>
 
-    <body>  
+    <body> 
+    <div class="imgbackground">
+        </div>
+        <!-- ARRIERE PLAN FLOU -->
+
         <fieldset class="inscription">  
                 <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="logo" class="logo"></legend> 
                 <form action="http://localhost/candidature/code_candidature/inscription_mail.php" method="POST">

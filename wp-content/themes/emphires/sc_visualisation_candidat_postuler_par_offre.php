@@ -1,6 +1,13 @@
 <?php
 /*Template name: Visualisation candidat par offre*/
 session_start();
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}
 $id = $_GET['id'];
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $query3= "SELECT titre FROM ec_offre WHERE id='$id'";
@@ -224,6 +231,33 @@ mysqli_close($con);
   div.active{
     background-color: rgba(141, 54, 20,0.6);
     } 
+    .bouton_finalisation{
+        float:right;
+        margin-right:5%;
+        height: 40px;
+        width: 150px;
+        background-color:rgb(141, 54, 20);
+        font-size:x-large;
+        color:white;
+
+    }
+    .bouton_finalisation:hover{
+        background-color:rgb(10, 107, 49);
+    }
+   .classement_Fin{
+    float:right;
+        margin-right:38%;
+        margin-bottom:2%;
+        height: 40px;
+        width: 270px;
+        background-color:rgb(192, 206, 0);
+        font-size:x-large;
+        color:white;
+   }
+   .classement_Fin:hover{
+        background-color:rgb(10, 107, 49);
+   }
+
   
 
 </style>
@@ -278,6 +312,12 @@ mysqli_close($con);
                                     }
                                     ?> 
                 <h1 class="titre_page">Listes des Candidats</h1>
+                <div class="classement_final" >
+               <?php if(isset($_SESSION['classement'])){?>               
+                
+                    <a href="http://localhost/candidature/classement-final/?id=<?php echo $id ?>"> <input type="button"  value="Voir le classement final" class="classement_Fin"></a>
+              <?php  } ?>
+            </div>
                             <table>
                             <tr>
                                 <th>Nº</th>
@@ -312,6 +352,7 @@ mysqli_close($con);
 
                             </table>
                 </div>
+                <a href="http://localhost/candidature/code_candidature/lien_classement_final.php">  <input type="button" name="finaliser" value="Finaliser" class="bouton_finalisation" ></a>
         </div>
 
         <script>
@@ -320,4 +361,6 @@ mysqli_close($con);
      setTimeout(function(){
         document.getElementById('a').style.display="none";
     },5000);
+
+
 </script>

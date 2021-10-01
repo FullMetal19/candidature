@@ -1,6 +1,13 @@
 <?php
 /*Template name: Calcul Note Candidat Par Offre*/
 session_start();
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}
 // include("http://localhost/candidature/code_candidature/variable_point_calcul.php");
 
 

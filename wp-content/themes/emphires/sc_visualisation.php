@@ -1,6 +1,13 @@
 <?php
 /*Template name: Visualisation*/
 session_start();
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $mail = $_SESSION['mail'];
 $requete3=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
