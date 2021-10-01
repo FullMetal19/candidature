@@ -126,7 +126,7 @@ $tab_offre = mysqli_fetch_array($req);
                <div class="description">
                <div class="titre">
                <p><?php echo $tab_offre['titre'] ?></p>
-               <p><?php echo $tab_offre['description'] ?></p>
+               <!-- <p><?php echo $tab_offre['description'] ?></p> -->
                </div>
                
                <div class="fichier">

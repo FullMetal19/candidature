@@ -25,7 +25,7 @@ $file_path = $_FILES['fichier']['tmp_name'];
         
 
 $con = mysqli_connect('localhost','root','','ussein_candidature');
-$req = mysqli_query($con,"INSERT INTO ec_offre VALUES (null,'$titre','','$file_name','$dateLimite')");
+$req = mysqli_query($con,"INSERT INTO ec_offre VALUES (null,'','$titre','','$file_name','$dateLimite')");
 
 
 $selection = mysqli_query($con,"SELECT id FROM  ec_offre WHERE titre='$titre'");
