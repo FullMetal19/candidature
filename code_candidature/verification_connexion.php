@@ -34,6 +34,10 @@
             
               header('Location: http://localhost/candidature/connexion');
             }
+            if($tab_verification['status']==2){
+         header('Location: http://localhost/candidature/visualisation/');
+                }
+
     }
     else{
         $_SESSION['message_erreur']=" Verifier votre mot de passe ou votre mail";

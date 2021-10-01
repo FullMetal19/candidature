@@ -2,6 +2,10 @@
 /*
 Template name: point modulable
 */
+session_start();
+
+ 
+
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req1 = mysqli_query($con,"SELECT note FROM note_age");
 $tab1 = mysqli_fetch_all($req1);
@@ -131,7 +135,16 @@ $can_note_communication_conference_3 = $tab14[2][0];
 $can_note_communication_conference_4 = $tab14[3][0];
 $can_note_communication_conference_5 = $tab14[4][0];
 $can_note_communication_conference_6 = $tab14[5][0];
-?>
+   
+       //requete pour admin simple
+$mail=$_SESSION['mail'];
+$requete=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
+$tab=mysqli_fetch_array($requete); 
+   ?>
+    
+
+
+
 <style>
          *{
         margin: 0;
@@ -299,6 +312,15 @@ $can_note_communication_conference_6 = $tab14[5][0];
         text-align:center;
         background-color: rgba(10, 107, 49,0.5);
     }
+    .phrase{
+    text-align:center;
+    background-color: rgba(10, 107, 49,0.6);
+    color:#fff;
+    padding: 10% 0%;
+    margin: 10%;
+    border-radius:25px ;
+    font-size:100%;
+}
     td{
         color: #fff;
     }
@@ -403,6 +425,12 @@ div.div_reinitialiser:hover{
         </div>
         <div class="droite" id="droite">
                 <div class="droite_container">
+
+                    <?php
+                    if($tab['status']==2){ ?>
+                    <p class="phrase">VOUS N'AVEZ PAS ACCES DANS CETTE PAGE !</p>
+                    <?php } else{ ?>
+
                     <h1>Paramétrer Les Points</h1>
                 <form action="http://localhost/candidature/code_candidature/verification_point_modulable.php" method="post">
                         <!-- Partie Formulaire âge -->
@@ -749,4 +777,5 @@ div.div_reinitialiser:hover{
                 
                 </div>
         </div>
+        <?php }  ?>
         

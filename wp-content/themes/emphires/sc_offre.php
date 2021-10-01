@@ -14,10 +14,6 @@ $con = mysqli_connect("localhost","root","","ussein_candidature");
 $req = mysqli_query($con,"SELECT * FROM ec_offre WHERE id='$id_offre'");
 $tab_offre = mysqli_fetch_array($req);
 
-$ufr = "ufr-";
-$ufr.=strchr($tab_offre['nom_ufr'],"S");
-
-
 ?>
     <style>
         *{
@@ -27,7 +23,7 @@ $ufr.=strchr($tab_offre['nom_ufr'],"S");
         .contener{
             display: grid;
             grid-template-rows: auto auto;
-            margin: 2% 5%;
+            margin: 0% 5%;
         }
        .titre p{
         text-align: center;
@@ -43,11 +39,13 @@ $ufr.=strchr($tab_offre['nom_ufr'],"S");
           }
        .fichier img {
            width: 70%;
-
        }
        .fichier{
+           display:flex;
+           flex-direction:column;
            text-align: center;
            width: 100%;
+           height:100%;
        }
        .bouton{
            position: fixed;
@@ -96,21 +94,51 @@ $ufr.=strchr($tab_offre['nom_ufr'],"S");
                width: 15px;
            }
        }
+       embed{
+           width:100%;
+           height:1000px;
+       }
+       .baner{
+          width: 100%;
+    height: 300px;
+    margin: 5% auto;
+    box-shadow: 0px 15px 10px -5px #777;
+    background-color: #EDEDED;
+    background-size: cover;
+    background-attachment: scroll;
+    animation: fondu 15s ease-in-out infinite both;
+     }
+}
+     .baner:hover{
+          animation-play-state: paused;
+     }
+     @keyframes fondu{
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/09/ufr-sfi.png");}
+    33.33%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/09/ufr-saepan.png");}
+    66.67%{background-image: url("https://www.ussein.sn/wp-content/uploads/2019/12/ff.jpg");}
+    100%{background-image: url("https://www.ussein.sn/wp-content/uploads/2019/12/ii.jpg");}
+}
        
     </style>
 
         <div class="contener">
-              <div class="baner">
-               <img src="http://localhost/candidature/wp-content/uploads/2021/09/<?php echo $ufr ?>.png" alt="baner" width="100%" height="264px">
-               </div>
+              <div class="baner"></div>
                <div class="description">
                <div class="titre">
                <p><?php echo $tab_offre['titre'] ?></p>
+               <p><?php echo $tab_offre['description'] ?></p>
                </div>
                
                <div class="fichier">
-                   <img src="<?php echo $tab_offre['nom_fichier'] ?>" alt="offre">
-               </div>
+                    <?php if(strpos($tab_offre['nom_fichier'],'.pdf') or strpos($tab_offre['nom_fichier'],'.PDF')){ ?>
+                    <embed src="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>" type="application/pdf">
+                   <?php }
+                   elseif(strpos($tab_offre['nom_fichier'],'.png') or strpos($tab_offre['nom_fichier'],'.jpg') or strpos($tab_offre['nom_fichier'],'.JPG') or strpos($tab_offre['nom_fichier'],'.PNG')){ ?>
+                        <img src="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>" alt="offre">
+                    <?php } ?>
+                   
+                   
+                </div>
                </div>
         </div>
 

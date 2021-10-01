@@ -1,5 +1,6 @@
 <?php
 /*Template name: Visualisation*/
+session_start();
 ?>
 <style>
     *{
@@ -235,19 +236,28 @@
         </div>
         <div class="droite" id="droite">
                 <div class="droite_container">
+                <fieldset class="principal"> <legend class="titre_des_offres">Les Offres</legend>
                 <?php 
 
                             $con = mysqli_connect("localhost","root","","ussein_candidature");
-                            $query= "SELECT * FROM ec_offre";
+                            $mail = $_SESSION['mail'];
+                            $query1 = mysqli_query($con,"SELECT adresse FROM ec_connexion WHERE mail='$mail'");
+                            $tab_query = mysqli_fetch_array($query1);
+                            $tab_adresse = explode(";",$tab_query['adresse']);
+                            $nb_tab_adresse = substr_count($tab_query['adresse'],";");
+                            for($i=0;$i<$nb_tab_adresse;$i++){
+                            $id = $tab_adresse[$i];
+                            $query= "SELECT * FROM ec_offre WHERE id='$id'";
                             $rs_result = mysqli_query($con, $query);
                             ?>
-                            <fieldset class="principal"> <legend class="titre_des_offres">Les Offres</legend>
+                            
                             <?php
                             while ($ligne = mysqli_fetch_array($rs_result)) { ?>
 
                             <a class="offre" href="http://localhost/candidature/visualisation-candidats-par-offre?id=<?php echo $ligne['id'].'&titre='.$ligne['titre'];?>"><?php echo $ligne['titre'] ?></a>
 
                             <?php
+                            }
                             }?>
                             </fieldset>
                 </div>

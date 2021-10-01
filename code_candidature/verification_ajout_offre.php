@@ -4,6 +4,7 @@ $UFR=$_POST['ufr'];
 $TITRE=$_POST['titre'];
 $DESCRIPTION=$_POST['description'];
 $dateLimite=$_POST['date_limite'];
+
  
 
 $nom=$_FILES['fichier']['name'];

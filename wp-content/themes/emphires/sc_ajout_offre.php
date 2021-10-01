@@ -3,6 +3,14 @@
 template name: ajout-et-suppression-d'offre
 */
 session_start();
+
+//requete pour admin simple
+$con=mysqli_connect('localhost','root','','ussein_candidature');
+$mail=$_SESSION['mail'];
+$requete=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
+$tab=mysqli_fetch_array($requete);
+
+
 ?>
  <style>
     *{
@@ -85,11 +93,11 @@ session_start();
     div.bloc_menu a{
         text-decoration: none;
         color: black;
-        transition: 1s;
+        transition: 1s all;
     }
     div.bloc_menu a:hover{
         color: white;
-        transition: 1s;
+        transition: 1s all;
     }
     div.titre{
         display: flex;
@@ -146,8 +154,6 @@ session_start();
     }
 
     .principal{
-          /* display: flex; */
-          flex-direction: column;
           align-items: center;
           width: 100%;
           height: 100%;
@@ -157,36 +163,28 @@ session_start();
           
       }
         .suppression{
-            /* display: flex; */
-            flex-direction: column;
             align-items: center;
             width: 90%;
             margin: auto;
-            padding: 5%;
+            padding: 1% 2%;
             margin: 2% 0%;
-           
-
-
         }
-        .conter{
-             /* display: flex; */
-             flex-direction: column;
-             align-items: center;
-            width: 100%;
-            }
+
             
-         .supprimer{
-             color: black;
+        .supprimer{
+             color: white;
              padding: 1%;
-             background-color: white;
-             box-shadow: 5px -5px 5px  black;
+             background-color: rgba(141,54,20,0.6);
+             box-shadow: 5px 5px 5px  rgba(141,54,20,0.6);
              border-radius: 5px 10px ;
-             font-size: 15px;
-             
+             font-size: 15px; 
+             text-decoration:none;   
+             float:right;
          }
          .supprimer:hover {
             transform: scale(1.1 );
              transition: 0.5s all;
+             
          }
         
 
@@ -199,14 +197,10 @@ session_start();
     select{
         outline: none;
         border: none;
-        /* background-color: transparent; */
-        color: white;
-        
-        
+        color: white;   
     }
     .zone_de_saisi{
         text-align: right;
-        /* color: #fff; */
         padding: 3% 5%;
         margin: 0% 35%;
         text-align:center;
@@ -220,20 +214,30 @@ session_start();
     width: 95%;
     padding: 3% 0%;
     margin: 0% 3%;
-    /* display: #67BE4B;
-     */
+    background-color:transparent;
+    color:#fff;
+    font-size:large;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    /* background-color: rgba(132, 181, 31,0.1);  */
-
-    
-    /* color:white; */
+}
+.phrase{
+    text-align:center;
+    background-color: rgba(10, 107, 49,0.6);
+    color:#fff;
+    padding: 10% 0%;
+    margin: 10%;
+    border-radius:25px ;
+    font-size:100%;
 }
 
-/* Set a style for all buttons */
+::placeholder{
+    color:#fff;
+}
+
 input[type=submit] {
-    background-color: rgba(10, 107, 49,0.9);
+    background-color: rgba(10, 107, 49,0.6);
     color:white ;
+    font-size:large;
     padding: 3% 5%;
     margin: 0% 35%;
     border: none;
@@ -243,15 +247,13 @@ input[type=submit] {
 }
 
 input[type=submit]:hover{
-    background-color: rgba(141, 54, 20,0.9);
+    background-color: rgba(141, 54, 20,0.6);
     transition:1s all;
     transform:scale(1.02);
     border-radius:50%;
    
 }
      
-
-      
        fieldset{
            text-align: center;
            width: 75%;
@@ -268,37 +270,40 @@ input[type=submit]:hover{
            gap: 1em;
            }
 
-    
+         .offre{             
+            display: flex;
+            justify-content: space-between;
+            gap:0 1em;
+            background-color: rgba(132, 181, 31,0.6);
+            width: 80%;
+            padding: 1em; 
+            margin:2% 10%;
+            border-radius:5px 10px;
 
-       
-         .offre{
-             
-             display: flex;
-             justify-content: space-around;
-             gap:0 1em;
-             background-color: rgba(132, 181, 31,0.6);
-             width: 100%;
-              padding: 1em; 
-              margin: 0 0 2em 0 
-              
          }
          span {
-             /* width: 100%; */
-             /* font-size: 15px; */
-             /* flex-wrap: wrap; */
              color: white;
-
+         }
+         #fichier{
+         display: none;
          }
         
         
-        
-        .titre01 h1, .titre02  h2{
+        .telecharger{
+           background-color: transparent;
+           border:1px solid white;
+           margin: 0% 3%;
+           cursor: pointer;
+           color:#fff;
+           padding:3%;
+        }
+        .titre01 h1, .titre02  h1{
              display: flex;
              background-color: rgba(10, 107, 49,0.8);
-             padding: 3% ;
+             padding: 2%;
              justify-content: center;
              margin: 2% 0%;
-             color: blanchedalmond;
+             color: white;
              font-size: 30px;
             box-shadow: 5px -5px 5px rgba(132, 181, 31,0.6);
             width: 94%;
@@ -308,13 +313,9 @@ input[type=submit]:hover{
              color:white;
              font-size:15px;
          }
-       
-         label{
-             /* color: rgb(141, 54, 20); */
-         }
+
          #ufr{
-             color: black;
-             
+             color: black;   
          }
          .body{
              display: flex;
@@ -324,7 +325,7 @@ input[type=submit]:hover{
 
 </style>
 <body>
-    <!-- <div class="container"> -->
+    <div class="container">
         <div class="gauche">
             <div class="titre">
                 <h1>Dashboard</h1>
@@ -345,8 +346,8 @@ input[type=submit]:hover{
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="">
-                    <label>Calcul</label>
+            <a href="http://localhost/candidature/point-modulable/">
+                    <label>Point Modulable</label>
                     <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-calculator-back-to-school-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>
                 </a>
             </div>
@@ -366,6 +367,10 @@ input[type=submit]:hover{
         </div>
         <div class="droite" id="droite">
                 <div class="droite_container">
+                    <?php
+                    if($tab['status']==2){ ?>
+                    <p class="phrase">VOUS N'AVEZ PAS ACCES DANS CETTE PAGE !</p>
+                    <?php } else{ ?>
                 <div class="principal">
     <div class="offre01">
 
@@ -378,18 +383,19 @@ input[type=submit]:hover{
 <fieldset>
        <div class="main">
            <div class="zone_de_saisi">
-            <div class="selection_ufr"><label for="UFR"> Véillez séléctionner un UFR</label></div>
+            <!-- <div class="selection_ufr"><label for="UFR"> Véillez séléctionner un UFR</label></div>
             <select name="ufr" id="ufr">
             <option value="sfi">SFI</option>
             <option value="sejtses"> SES </option>
             <option value="ses"> SEJT </option>
-            <option value="seapan"> SEAPAN </option>
+            <option value="seapan"> SEAPAN </option> -->
             </select></div> <br>
              
             <input type="text" name="titre" id="titre" placeholder="Titre"><br>
-            <input type="text" name="description" id="description" placeholder="description"><br>
-            <input type="date" name ="date_limite" id="date_limite" placeholder="date limite de dépot"><br>
-            <input  type="file" name="fichier" ><br>
+            <input type="text" name="description" id="description" placeholder="Description"><br>
+            <input type="date" name ="date_limite" id="date_limite" placeholder="Date limite de dépot"><br>
+            <input  type="file" id="fichier" name="fichier" ><br>
+            <label class="telecharger" for="fichier">Veuillez choisir un fichier</label>
             <label >
             <?php
             if(isset($_SESSION['obligatoire'])){
@@ -399,13 +405,13 @@ input[type=submit]:hover{
             ?>
             </label>
             <input type="submit" value="envoyer">
-        </div>
+        <!-- </div> -->
 </fieldset>
 </div>
 </form> 
 </div>
 <div class="titre02">
-       <h2>suppresion offre</h2>
+       <h1>Suppresion Offre</h1>
        </div>
 <div class="suppression">
     
@@ -413,7 +419,7 @@ input[type=submit]:hover{
 
         $con = mysqli_connect("localhost","root","","ussein_candidature");
         $req = mysqli_query($con,"SELECT * FROM ec_offre");?>
- <div class="conter">
+
 
       <?php  while($tab=mysqli_fetch_array($req)){
             ?>
@@ -424,18 +430,18 @@ input[type=submit]:hover{
 
         ?>
           </span> 
-          <div class="supprimer">
+    
         
-        <a  href="http://localhost/candidature/code_candidature/verification_supprimer_offre.php?id=<?php echo $tab['id']?>">Supprimer</a>
+        <a class="supprimer"  href="http://localhost/candidature/code_candidature/verification_supprimer_offre.php?id=<?php echo $tab['id']?>">Supprimer</a>
         
-        </div>
+
         </div>
         <?php } ?>
-        
-       </div>  
+          
 
 
        </div>
      </div> 
-                </div>
+        </div>
         </div>   
+<?php } ?>

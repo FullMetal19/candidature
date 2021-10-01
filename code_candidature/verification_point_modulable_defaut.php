@@ -133,8 +133,8 @@ $req_update7 = mysqli_query($con,"UPDATE ec_note_autre_experience SET note='$can
 $req13 = mysqli_query($con,"SELECT defaut FROM ec_note_distinction");
 $tab13= mysqli_fetch_all($req13);
 
-echo $can_note_par_defaut_distinction_1 = $tab13[0][0];
-echo $can_note_par_defaut_distinction_2 = $tab13[1][0];
+$can_note_par_defaut_distinction_1 = $tab13[0][0];
+$can_note_par_defaut_distinction_2 = $tab13[1][0];
 
 $update_distinction_1 = mysqli_query($con,"UPDATE ec_note_distinction SET note='$can_note_par_defaut_distinction_1' WHERE nom='prix_concours'");
 $update_distinction_2 = mysqli_query($con,"UPDATE ec_note_distinction SET note='$can_note_par_defaut_distinction_2' WHERE nom='decoration'");
@@ -237,5 +237,5 @@ $update_com_conference_4 = mysqli_query($con,"UPDATE ec_note_communication_confe
 $update_com_conference_5 = mysqli_query($con,"UPDATE ec_note_communication_conference SET note='$can_note_par_defaut_communication_conference_5' WHERE nom='conferencier_invite_international'");
 $update_com_conference_6 = mysqli_query($con,"UPDATE ec_note_communication_conference SET note='$can_note_par_defaut_communication_conference_6' WHERE nom='conferencier_national'");
 
-
+header('Location: http://localhost/candidature/point-modulable/');
 ?>
