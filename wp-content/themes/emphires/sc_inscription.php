@@ -24,12 +24,12 @@
         animation: image 30s linear infinite both;
     }
 
-@keyframes image{
-    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
-    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/3.jpg");}
-    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/1.jpg");}
-    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/4.jpg");}
-    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/5.jpg");}
+    @keyframes image{
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/6.jpg");}
+    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
+    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/7.jpg");}
+    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/8.jpg");}
+    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/9.jpg");}
 }
     
     .titre{
@@ -119,6 +119,8 @@ form {
         font-size: x-large;
         color: white;
         /* padding:1em; */
+        padding-top:0;
+        padding-bottom:0;
         cursor: pointer;
         background-color:rgb(132,181,39);
         
@@ -192,7 +194,7 @@ form {
                     <div class="button_inscription box">
                     <input  type="submit" id='submit' value="S'inscrire" name="inscrire" ></div>
                     </div>
-                    <div class="box"></div>
+                    
                 </div>
                
 

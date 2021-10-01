@@ -19,11 +19,11 @@
     }
 
 @keyframes image{
-    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
-    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/3.jpg");}
-    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/1.jpg");}
-    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/4.jpg");}
-    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/5.jpg");}
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/6.jpg");}
+    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
+    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/7.jpg");}
+    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/8.jpg");}
+    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/9.jpg");}
 }
     .connexion{
         position: absolute;
@@ -136,9 +136,12 @@
         color: rgb(141, 54, 20);
         font-size: large;
        top: 0;
-        text-align: left;
+        text-align: center;
+        /* margin-bottom:1px; */
     }
     .message_validation{
+        font-size: large;
+       top: 0;
         text-align:center;
         color: rgb(10,107,49);
     }
@@ -180,7 +183,7 @@
                         <input type="password"  name="mot_de_passe" required>
                         <label for="mot_de_passe" class='mdp info'>Mot de passe</label>
                         <!-- <br> -->
-                    </div>
+                    </div><br>
 
                     <div class='message_erreur'>
                         <?php

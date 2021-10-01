@@ -1,7 +1,6 @@
 <?php 
 /* template name:fiche a postuler */ 
 session_start();
-get_header();
 $auteur =$_SESSION['mail'];
 $info = $_GET['info'];
 $_SESSION['info_candidat']=$info;

@@ -63,16 +63,16 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
         width: 100%;
         height: 100%;
         background-size: cover;
-        filter : blur(12px); 
-        animation: image 30s linear infinite both;
+        filter : blur(17px); 
+        animation: image 40s linear infinite both;
     }
 
-@keyframes image{
-    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
-    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/3.jpg");}
-    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/1.jpg");}
-    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/4.jpg");}
-    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/5.jpg");}
+    @keyframes image{
+    0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/6.jpg");}
+    25%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/2.jpg");}
+    50{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/7.jpg");}
+    75%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/8.jpg");}
+    100%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/10/9.jpg");}
 }
     .box input:focus ~ .info,
     .box input:valid ~ .info{

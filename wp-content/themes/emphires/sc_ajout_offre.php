@@ -291,9 +291,9 @@ input[type=submit]:hover{
          span {
              color: white;
          }
-         #fichier{
+         /* #fichier{
          display: none;
-         }
+         } */
         
         
         .telecharger{
@@ -380,30 +380,21 @@ input[type=submit]:hover{
                     <?php } else{ ?>
                 <div class="principal">
     <div class="offre01">
-
-    <div class="titre01">
        <h1> Ajout d'un offre</h1>
        </div>
 
-<form action=" http://localhost/candidature/code_candidature/verification_ajout_offre.php" enctype="multipart/form-data" method="POST">
+<form action="http://localhost/candidature/code_candidature/verification_ajout_offre.php" enctype="multipart/form-data" method="POST">
 <div class="body">
 <fieldset>
        <div class="main">
-           <div class="zone_de_saisi">
-            <!-- <div class="selection_ufr"><label for="UFR"> Véillez séléctionner un UFR</label></div>
-            <select name="ufr" id="ufr">
-            <option value="sfi">SFI</option>
-            <option value="sejtses"> SES </option>
-            <option value="ses"> SEJT </option>
-            <option value="seapan"> SEAPAN </option> -->
-            </select></div> <br>
+           
              
             <input type="text" name="titre" id="titre" placeholder="Titre"><br>
-            <input type="text" name="description" id="description" placeholder="Description"><br>
+            <!-- <input type="text" name="description" id="description" placeholder="Description"><br> -->
             <input type="date" name ="date_limite" id="date_limite" placeholder="Date limite de dépot"><br>
             <input  type="file" id="fichier" name="fichier" ><br>
-            <label class="telecharger" for="fichier">Veuillez choisir un fichier</label>
-            <label >
+            <!-- <label class="telecharger" for="fichier">Veuillez choisir un fichier</label> -->
+            <label>
             <?php
             if(isset($_SESSION['obligatoire'])){
                 echo $_SESSION['obligatoire'];
@@ -412,12 +403,12 @@ input[type=submit]:hover{
             ?>
             </label>
             <input type="submit" value="envoyer">
-        <!-- </div> -->
+        </div>
 </fieldset>
 </div>
 </form> 
-</div>
-<div class="titre02">
+
+<div class="titre01">
        <h1>Suppresion Offre</h1>
        </div>
 <div class="suppression">
@@ -452,3 +443,4 @@ input[type=submit]:hover{
         </div>
         </div>   
 <?php } ?>
+      </body>

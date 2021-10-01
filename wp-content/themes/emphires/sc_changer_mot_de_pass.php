@@ -24,16 +24,22 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
             <fieldset>  <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="" class="logo"></legend> 
                <div class="titre"><h1>Changer votre mot de passe</h1></div> 
                 
-               
+               <label for="">
+                    <?php  if(isset($_SESSION['notif'])){
+                        echo $_SESSION['notif'];
+                        unset ($_SESSION['notif']);
+
+                    }?>
+               </label>
                 
 
                 
                 
                 
-                <input type="text" placeholder="Ancien mot de passe" name="mot_de_passe" required>
+                <input type="password" placeholder="Ancien mot de passe" name="mot_de_passe" required>
                 
-                <input type="text" placeholder="Mot de passe" name="mot_de_passe_1" required>
-                <input type="text" placeholder="Confirmation " name="mot_de_passe_1" required>
+                <input type="password" placeholder="Mot de passe" name="mot_de_passe_1" required>
+                <input type="password" placeholder="Confirmation " name="mot_de_passe_2" required>
 
                 
        

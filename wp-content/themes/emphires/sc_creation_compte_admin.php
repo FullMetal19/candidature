@@ -7,7 +7,6 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
     }
     
 }
-?
 /* Template name: creation compte admin*/
 
 $con=mysqli_connect('localhost','root','','ussein_candidature');
