@@ -1,6 +1,10 @@
 <?php
 /*Template name: Visualisation*/
 session_start();
+$con = mysqli_connect("localhost","root","","ussein_candidature");
+$mail = $_SESSION['mail'];
+$requete3=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
+$tab3=mysqli_fetch_array($requete3);
 ?>
 <style>
     *{
@@ -237,11 +241,9 @@ session_start();
         <div class="droite" id="droite">
                 <div class="droite_container">
                 <fieldset class="principal"> <legend class="titre_des_offres">Les Offres</legend>
-                <?php 
-
-                            $con = mysqli_connect("localhost","root","","ussein_candidature");
-                            $mail = $_SESSION['mail'];
-                            $query1 = mysqli_query($con,"SELECT adresse FROM ec_connexion WHERE mail='$mail'");
+                <?php
+                if($tab3['status']==2){
+                $query1 = mysqli_query($con,"SELECT adresse FROM ec_connexion WHERE mail='$mail'");
                             $tab_query = mysqli_fetch_array($query1);
                             $tab_adresse = explode(";",$tab_query['adresse']);
                             $nb_tab_adresse = substr_count($tab_query['adresse'],";");
@@ -258,7 +260,20 @@ session_start();
 
                             <?php
                             }
-                            }?>
+                            }
+                        ?>
+                <?php } else{
+                    $query= "SELECT * FROM ec_offre";
+                    $rs_result = mysqli_query($con, $query);
+                            while ($ligne = mysqli_fetch_array($rs_result)) { ?>
+
+                            <a class="offre" href="http://localhost/candidature/visualisation-candidats-par-offre?id=<?php echo $ligne['id'].'&titre='.$ligne['titre'];?>"><?php echo $ligne['titre'] ?></a>
+
+                            <?php
+                            }
+
+                } ?>
+                        
                             </fieldset>
                 </div>
         </div>
