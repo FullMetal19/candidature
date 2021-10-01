@@ -20,7 +20,7 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
         <div id="contenu">
             
             
-            <form action="        " method="POST">
+            <form action="http://localhost/candidature/code_candidature/verif_changer_mot_de_passe.php" method="POST">
             <fieldset>  <legend> <img src="http://localhost/candidature/code_candidature/logo.png" alt="" class="logo"></legend> 
                <div class="titre"><h1>Changer votre mot de passe</h1></div> 
                 
