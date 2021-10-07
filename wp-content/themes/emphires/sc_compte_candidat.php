@@ -1,6 +1,13 @@
 <?php 
 /* template name:compte candidat */
 session_start();
+if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+    if(!is_page('mot-de-passe-oublie')||(!is_page('inscription'))){
+        wp_redirect( home_url( 'accueil' ));
+            exit;
+    }
+    
+}
 $mail= $_SESSION['mail'];
 $lien_suppression="http://localhost/candidature/code_candidature/suppression_justificatif.php/?fiche=";
 

@@ -2,13 +2,13 @@
     session_start();
 /* Template name: mot_de_passe_oublie*/
 
-if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
-    if(!is_page('mot-de-passe-oublier')||(!is_page('inscription'))){
-        wp_redirect( home_url( 'accueil' ));
-            exit;
-    }
+// if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
+//     if(!is_page('mot-de-passe-oublie')||(!is_page('inscription'))){
+//         wp_redirect( home_url( 'accueil' ));
+//             exit;
+//     }
     
-}?>
+// }?>
 
 <div class="imgbackground">
         </div>

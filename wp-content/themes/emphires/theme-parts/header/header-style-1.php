@@ -7,6 +7,12 @@
  * @version 1.0
  */
 ?>
+<style>
+	.wrap img{
+		width:150px;
+		height:90px
+	}
+</style>
 <?php get_template_part( 'theme-parts/header/pre-header',	cspt_get_base_option('header-style') ); ?>
 <div class="cspt-header-height-wrapper" style="min-height:<?php echo cspt_get_base_option('header-height'); ?>px;">
 	<div class="<?php cspt_header_class(); ?> <?php cspt_header_bg_class(); ?> <?php cspt_sticky_class(); ?>">
@@ -15,7 +21,8 @@
 				<div class="cspt-logo-menuarea">
 					<div class="site-branding cspt-logo-area">
 						<div class="wrap">
-							<?php echo cspt_logo(); ?><!-- Logo area -->
+							<img src="http://localhost/candidature/wp-content/uploads/2021/10/ussein.ico" alt="LOGO" >
+							<!-- <?php echo cspt_logo(); ?>Logo area -->
 						</div><!-- .wrap -->
 					</div><!-- .site-branding -->
 					<!-- Top Navigation Menu -->
