@@ -26,6 +26,7 @@ get_header();
      .contener{
           display: grid;
           grid-template-rows: auto auto;
+          width:100%;
           margin: 2% 10%;
      }
 

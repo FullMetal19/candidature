@@ -237,5 +237,7 @@ $update_com_conference_4 = mysqli_query($con,"UPDATE ec_note_communication_confe
 $update_com_conference_5 = mysqli_query($con,"UPDATE ec_note_communication_conference SET note='$can_note_par_defaut_communication_conference_5' WHERE nom='conferencier_invite_international'");
 $update_com_conference_6 = mysqli_query($con,"UPDATE ec_note_communication_conference SET note='$can_note_par_defaut_communication_conference_6' WHERE nom='conferencier_national'");
 
+mysqli_close($con);
+
 header('Location: http://localhost/candidature/point-modulable/');
 ?>

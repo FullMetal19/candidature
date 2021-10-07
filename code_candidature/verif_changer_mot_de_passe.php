@@ -19,11 +19,11 @@ if($val >0){
     if($mot_de_passe1 == $mot_de_passe2){
  
     $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
-    $_SESSION['notification1']="Votre mot de paase est modifier";
+    $_SESSION['notification1']="Votre mot de passe est modifié.";
     header('location: http://localhost/candidature/accueil-offre/');
 }
     else{
-    $_SESSION['notif']="Veiller revoir votre mot de passe de cofirmation ";
+    $_SESSION['notif']="Veuiller revoir votre mot de passe de confirmation !";
     header('location: http://localhost/candidature/changer-mot-de-passe/');
 }
 }
@@ -32,18 +32,36 @@ if($tab['status'] == 2){
     if($mot_de_passe1 == $mot_de_passe2){
  
         $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
-        $_SESSION['notification1']="Votre mot de paase est modifier";
-        header('location: http://localhost/candidature/ajout-offre/');
+        $_SESSION['notification1']='<div id="a">
+                                        <img src="https://img.icons8.com/fluency/48/000000/verified-account.png" width="20px" height="20px" />
+                                        <span>Votre mot de passe est bien modifié.</span>
+                                    </div>';
+        header('location: http://localhost/candidature/parametre/');
     }
     else{
-        $_SESSION['notif']="Veiller revoir votre mot de passe de cofirmation ";
+        $_SESSION['notif']="Veuillez revoir votre mot de passe de confirmation !";
         header('location: http://localhost/candidature/changer-mot-de-passe/');
     }
 
 }
+if($tab['status'] == 1){
+    if($mot_de_passe1 == $mot_de_passe2){
+ 
+        $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
+        $_SESSION['notification1']='<div id="a">
+                                        <img src="https://img.icons8.com/fluency/48/000000/verified-account.png" width="20px" height="20px" />
+                                        <span>Votre mot de passe est bien modifié.</span>
+                                    </div>';
+        header('location: http://localhost/candidature/parametre/');
+    }
+    else{
+        $_SESSION['notif']="Veuillez revoir votre mot de passe de confirmation !";
+        header('location: http://localhost/candidature/changer-mot-de-passe/');
+    }
+}
 }
 else{
-    $_SESSION['notif']="Veillez verifier votre ancien mot de passe  ";   
+    $_SESSION['notif']="Veuillez vérifier votre ancien mot de passe  !";   
     header('location: http://localhost/candidature/changer-mot-de-passe/');
 }
 

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 07 oct. 2021 à 09:27
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Généré le : jeu. 07 oct. 2021 à 20:11
+-- Version du serveur :  10.6.3-MariaDB
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ussein_candidature`
+-- Base de données : `ussein_candidature`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +30,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `ec_admin`;
 CREATE TABLE IF NOT EXISTS `ec_admin` (
   `mail` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -42,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `ec_admin` (
 DROP TABLE IF EXISTS `ec_candidat`;
 CREATE TABLE IF NOT EXISTS `ec_candidat` (
   `mail` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -117,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `ec_connexion` (
   `genre` varchar(30) NOT NULL,
   `adresse` varchar(250) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_connexion`
@@ -129,10 +128,11 @@ INSERT INTO `ec_connexion` (`prenom`, `nom`, `mail`, `mot_de_passe`, `telephone`
 ('Mouhamadou', 'DIALLO', 'diallomouha007@gmail.com', '1234', '', '', 0, '', '', ''),
 ('Mamadou Yaya', 'Mane', 'manemamadouyaya@gmail.com', 'azerty', '770000123', '1999-09-19', 0, 'Masculin', 'Cite comico 4 de Yeumbeul villa d123', 'image_candidat.png'),
 ('Al', 'Niang', 'alouzz@gmail.com', '123', '+221771', '2021-08-30', 1, 'neant', 'neant', ''),
-('DR DIOP', 'diop', 'dio@Mmail.com', '123', '77', '01-01-2000', 2, 'h', 'neant', 'neant'),
-('Moussa', 'Ndiaye', 'moussa@gmail.com', '1234', '777777777', '2021-10-13', 2, 'neant', '3;4;', ''),
+('DR DIOP', 'diop', 'dio@Mmail.com', '123', '77', '01-01-2000', 2, 'h', '5;', 'neant'),
+('Moussa', 'Ndiaye', 'moussa@gmail.com', '1234', '777777777', '2021-10-13', 2, 'neant', '0', ''),
 ('Mouhamed', 'SANE', 'mouhamed.sane@etu.ussein.edu.sn', '123456', '00221777240514', '2021-09-26', 0, 'Masculin', 'Sing sing', 'image_candidat.jpg'),
-('Adji', 'DIOUF', 'adji@gmail.com', '1234', '77777777', '2021-10-15', 2, 'neant', '5;', '');
+('Adji', 'DIOUF', 'adji@gmail.com', '1234', '77777777', '2021-10-15', 2, 'neant', '5;', ''),
+('Abdoulaye', 'Sène', 'sene.abdoulaye@gmail.com', '1234', '787887777', '1955-06-08', 2, 'neant', '6;', 'neant.png');
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `ec_dossier` (
   `nom_fichier` text NOT NULL,
   `auteur` varchar(100) NOT NULL,
   `lien` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_dossier`
@@ -159,12 +159,14 @@ INSERT INTO `ec_dossier` (`nom_fichier`, `auteur`, `lien`) VALUES
 ('cv.pdf', 'manemamadouyaya@gmail.com', ''),
 ('autre_fichier.pdf', 'manemamadouyaya@gmail.com', ''),
 ('cv.pdf', 'manemamadouyaya@gmail.com', ''),
-('licence.pdf', 'manemamadouyaya@gmail.com', ''),
+('doctorat.pdf', 'manemamadouyaya@gmail.com', ''),
 ('article_hors_domaine.pdf', 'manemamadouyaya@gmail.com', ''),
 ('master.pdf', 'mouhamadou.diallo@etu.ussein.edu.sn', ''),
 ('licence.pdf', 'mouhamed.sane@etu.ussein.edu.sn', ''),
 ('master.pdf', 'mouhamed.sane@etu.ussein.edu.sn', 'https://github.com/FullMetal19/candidature'),
-('doctorat.pdf', 'mouhamed.sane@etu.ussein.edu.sn', 'https://www.youtube.com/c/supersport/channels');
+('doctorat.pdf', 'mouhamed.sane@etu.ussein.edu.sn', 'https://www.youtube.com/c/supersport/channels'),
+('master.pdf', 'manemamadouyaya@gmail.com', ''),
+('licence.pdf', 'manemamadouyaya@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -202,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_aid` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_aid`
@@ -225,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_aihd` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_aihd`
@@ -248,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_autre_experience` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_autre_experience`
@@ -272,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_brevet` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_brevet`
@@ -293,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_communication_conference` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_communication_conference`
@@ -318,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_diplome` (
   `nom` varchar(25) NOT NULL,
   `note` int(11) NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_diplome`
@@ -344,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_distinction` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_distinction`
@@ -367,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_doctorat` (
   `nom` varchar(100) NOT NULL,
   `note` int(11) NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_doctorat`
@@ -408,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_pedagogique` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_experience_pedagogique`
@@ -431,7 +433,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_recherche` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_experience_recherche`
@@ -454,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_grade` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_grade`
@@ -478,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_ldd` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_ldd`
@@ -501,7 +503,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_licence_master` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_licence_master`
@@ -526,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_lv` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_lv`
@@ -549,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_proccedings` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_proccedings`
@@ -568,21 +570,20 @@ INSERT INTO `ec_note_proccedings` (`nom`, `note`, `defaut`) VALUES
 DROP TABLE IF EXISTS `ec_offre`;
 CREATE TABLE IF NOT EXISTS `ec_offre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_ufr` varchar(200) NOT NULL,
-  `titre` varchar(200) NOT NULL,
-  `description` text NOT NULL,
-  `nom_fichier` varchar(200) NOT NULL,
+  `titre` text NOT NULL,
+  `nom_fichier` text NOT NULL,
   `dateLimite` text NOT NULL,
+  `finaliser` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_offre`
 --
 
-INSERT INTO `ec_offre` (`id`, `nom_ufr`, `titre`, `description`, `nom_fichier`, `dateLimite`) VALUES
-(1, 'UFR SFI', 'Appel a candidatures pour le recrutement d\'un attache temporaire d\'enseignement et de recherche (ATER) en informatique a l\'UFR science fondamentale de l\'ingénierie', 'néant', 'https://www.ussein.sn/wp-content/uploads/2021/09/0002-scaled.jpg', ''),
-(5, '', 'Appel Ã  candidature pour un stage au niveau de la DISI ', '', 'Fiche_Apprenez-a-programmer-en-javascript.pdf', '2021-10-15');
+INSERT INTO `ec_offre` (`id`, `titre`, `nom_fichier`, `dateLimite`, `finaliser`) VALUES
+(5, 'Appel Ã  candidature pour un stage au niveau de la DISI ', 'Fiche_Apprenez-a-programmer-en-javascript.pdf', '2021-10-15', 0),
+(6, 'Appel à candidature pour le recrutement d\'un prof informatique', 'Groupe et Anneau 1.pdf', '2021-10-31', 0);
 
 -- --------------------------------------------------------
 
@@ -599,7 +600,7 @@ CREATE TABLE IF NOT EXISTS `ec_options` (
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`),
   KEY `autoload` (`autoload`)
-) ENGINE=MyISAM AUTO_INCREMENT=544 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=565 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Déchargement des données de la table `ec_options`
@@ -710,7 +711,7 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (102, 'WPLANG', 'fr_FR', 'yes'),
 (103, 'widget_block', 'a:6:{i:2;a:1:{s:7:\"content\";s:19:\"<!-- wp:search /-->\";}i:3;a:1:{s:7:\"content\";s:159:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Articles récents</h2><!-- /wp:heading --><!-- wp:latest-posts /--></div><!-- /wp:group -->\";}i:4;a:1:{s:7:\"content\";s:233:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Commentaires récents</h2><!-- /wp:heading --><!-- wp:latest-comments {\"displayAvatar\":false,\"displayDate\":false,\"displayExcerpt\":false} /--></div><!-- /wp:group -->\";}i:5;a:1:{s:7:\"content\";s:146:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Archives</h2><!-- /wp:heading --><!-- wp:archives /--></div><!-- /wp:group -->\";}i:6;a:1:{s:7:\"content\";s:151:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Catégories</h2><!-- /wp:heading --><!-- wp:categories /--></div><!-- /wp:group -->\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (104, 'sidebars_widgets', 'a:9:{s:19:\"wp_inactive_widgets\";a:0:{}s:17:\"cspt-sidebar-post\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:17:\"cspt-sidebar-page\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}s:19:\"cspt-sidebar-search\";a:0:{}s:13:\"cspt-footer-1\";a:0:{}s:13:\"cspt-footer-2\";a:0:{}s:13:\"cspt-footer-3\";a:0:{}s:13:\"cspt-footer-4\";a:0:{}s:13:\"array_version\";i:3;}', 'yes'),
-(105, 'cron', 'a:6:{i:1633599418;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1633610218;a:5:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1633612297;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1633612300;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1634042218;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}s:7:\"version\";i:2;}', 'yes'),
+(105, 'cron', 'a:7:{i:1633639018;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1633653418;a:4:{s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1633696618;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1633698697;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1633698700;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1634042218;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}s:7:\"version\";i:2;}', 'yes'),
 (106, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (107, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (108, 'widget_archives', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -724,10 +725,10 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (116, 'widget_nav_menu', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (117, 'widget_custom_html', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (119, 'recovery_keys', 'a:0:{}', 'yes'),
-(121, 'https_detection_errors', 'a:2:{s:23:\"ssl_verification_failed\";a:1:{i:0;s:32:\"La vérification SSL a échoué.\";}s:17:\"bad_response_code\";a:1:{i:0;s:9:\"Not Found\";}}', 'yes'),
+(121, 'https_detection_errors', 'a:1:{s:20:\"https_request_failed\";a:1:{i:0;s:28:\"La demande HTTPS a échoué.\";}}', 'yes'),
 (120, 'theme_mods_twentytwentyone', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1631625136;s:4:\"data\";a:3:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:9:\"sidebar-2\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}}}}', 'yes'),
-(498, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:10:\"no_content\";s:0:\"\";s:11:\"new_bundled\";s:0:\"\";s:7:\"partial\";s:0:\"\";s:8:\"rollback\";s:0:\"\";}s:7:\"current\";s:5:\"5.8.1\";s:7:\"version\";s:5:\"5.8.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.6\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1633580175;s:15:\"version_checked\";s:5:\"5.8.1\";s:12:\"translations\";a:1:{i:0;a:7:{s:4:\"type\";s:4:\"core\";s:4:\"slug\";s:7:\"default\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"5.8.1\";s:7:\"updated\";s:19:\"2021-10-05 10:27:50\";s:7:\"package\";s:64:\"https://downloads.wordpress.org/translation/core/5.8.1/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}}', 'no'),
-(499, '_site_transient_update_themes', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1633580175;s:7:\"checked\";a:4:{s:8:\"emphires\";s:3:\"2.1\";s:14:\"twentynineteen\";s:3:\"2.1\";s:12:\"twentytwenty\";s:3:\"1.8\";s:15:\"twentytwentyone\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:9:\"no_update\";a:3:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.2.1.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:12:\"twentytwenty\";a:6:{s:5:\"theme\";s:12:\"twentytwenty\";s:11:\"new_version\";s:3:\"1.8\";s:3:\"url\";s:42:\"https://wordpress.org/themes/twentytwenty/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/theme/twentytwenty.1.8.zip\";s:8:\"requires\";s:3:\"4.7\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:15:\"twentytwentyone\";a:6:{s:5:\"theme\";s:15:\"twentytwentyone\";s:11:\"new_version\";s:3:\"1.4\";s:3:\"url\";s:45:\"https://wordpress.org/themes/twentytwentyone/\";s:7:\"package\";s:61:\"https://downloads.wordpress.org/theme/twentytwentyone.1.4.zip\";s:8:\"requires\";s:3:\"5.3\";s:12:\"requires_php\";s:3:\"5.6\";}}s:12:\"translations\";a:0:{}}', 'no'),
+(553, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:10:\"no_content\";s:0:\"\";s:11:\"new_bundled\";s:0:\"\";s:7:\"partial\";s:0:\"\";s:8:\"rollback\";s:0:\"\";}s:7:\"current\";s:5:\"5.8.1\";s:7:\"version\";s:5:\"5.8.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.6\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1633626672;s:15:\"version_checked\";s:5:\"5.8.1\";s:12:\"translations\";a:1:{i:0;a:7:{s:4:\"type\";s:4:\"core\";s:4:\"slug\";s:7:\"default\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"5.8.1\";s:7:\"updated\";s:19:\"2021-10-07 07:42:12\";s:7:\"package\";s:64:\"https://downloads.wordpress.org/translation/core/5.8.1/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}}', 'no'),
+(554, '_site_transient_update_themes', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1633626674;s:7:\"checked\";a:4:{s:8:\"emphires\";s:3:\"2.1\";s:14:\"twentynineteen\";s:3:\"2.1\";s:12:\"twentytwenty\";s:3:\"1.8\";s:15:\"twentytwentyone\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:9:\"no_update\";a:3:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.2.1.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:12:\"twentytwenty\";a:6:{s:5:\"theme\";s:12:\"twentytwenty\";s:11:\"new_version\";s:3:\"1.8\";s:3:\"url\";s:42:\"https://wordpress.org/themes/twentytwenty/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/theme/twentytwenty.1.8.zip\";s:8:\"requires\";s:3:\"4.7\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:15:\"twentytwentyone\";a:6:{s:5:\"theme\";s:15:\"twentytwentyone\";s:11:\"new_version\";s:3:\"1.4\";s:3:\"url\";s:45:\"https://wordpress.org/themes/twentytwentyone/\";s:7:\"package\";s:61:\"https://downloads.wordpress.org/theme/twentytwentyone.1.4.zip\";s:8:\"requires\";s:3:\"5.3\";s:12:\"requires_php\";s:3:\"5.6\";}}s:12:\"translations\";a:0:{}}', 'no'),
 (134, 'auto_core_update_notified', 'a:4:{s:4:\"type\";s:7:\"success\";s:5:\"email\";s:21:\"candidature@gmail.com\";s:7:\"version\";s:5:\"5.8.1\";s:9:\"timestamp\";i:1631536646;}', 'no'),
 (142, '_transient_health-check-site-status-result', '{\"good\":13,\"recommended\":6,\"critical\":0}', 'yes'),
 (160, 'finished_updating_comment_type', '1', 'yes'),
@@ -741,17 +742,19 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (157, '_transient_emphires_merlin_redirect', '1', 'yes'),
 (214, 'merlin_emphires_completed', '1633539392', 'yes'),
 (215, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
-(500, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1633580175;s:8:\"response\";a:1:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.2.1\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.2.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"5.0\";s:6:\"tested\";s:5:\"5.8.1\";s:12:\"requires_php\";b:0;}}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:1:{s:9:\"hello.php\";O:8:\"stdClass\":10:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:5:\"1.7.2\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/hello-dolly.1.7.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=2052855\";s:2:\"1x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=2052855\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:66:\"https://ps.w.org/hello-dolly/assets/banner-772x250.jpg?rev=2052855\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"4.6\";}}s:7:\"checked\";a:2:{s:19:\"akismet/akismet.php\";s:6:\"4.1.10\";s:9:\"hello.php\";s:5:\"1.7.2\";}}', 'no'),
-(537, '_site_transient_timeout_theme_roots', '1633581975', 'no'),
-(538, '_site_transient_theme_roots', 'a:4:{s:8:\"emphires\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";s:12:\"twentytwenty\";s:7:\"/themes\";s:15:\"twentytwentyone\";s:7:\"/themes\";}', 'no'),
+(549, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1633669839', 'no'),
+(550, '_site_transient_community-events-d41d8cd98f00b204e9800998ecf8427e', 'a:4:{s:9:\"sandboxed\";b:0;s:5:\"error\";N;s:8:\"location\";a:1:{s:2:\"ip\";b:0;}s:6:\"events\";a:2:{i:0;a:10:{s:4:\"type\";s:6:\"meetup\";s:5:\"title\";s:65:\"Quiero contribuir al proyecto de WordPress, ¿Por dónde empiezo?\";s:3:\"url\";s:68:\"https://www.meetup.com/learn-wordpress-discussions/events/281200478/\";s:6:\"meetup\";s:27:\"Learn WordPress Discussions\";s:10:\"meetup_url\";s:51:\"https://www.meetup.com/learn-wordpress-discussions/\";s:4:\"date\";s:19:\"2021-10-11 06:00:00\";s:8:\"end_date\";s:19:\"2021-10-11 07:00:00\";s:20:\"start_unix_timestamp\";i:1633957200;s:18:\"end_unix_timestamp\";i:1633960800;s:8:\"location\";a:4:{s:8:\"location\";s:6:\"Online\";s:7:\"country\";s:2:\"US\";s:8:\"latitude\";d:37.779998779297;s:9:\"longitude\";d:-122.41999816895;}}i:1;a:10:{s:4:\"type\";s:8:\"wordcamp\";s:5:\"title\";s:18:\"WordCamp Nicaragua\";s:3:\"url\";s:36:\"https://nicaragua.wordcamp.org/2021/\";s:6:\"meetup\";N;s:10:\"meetup_url\";N;s:4:\"date\";s:19:\"2021-10-08 08:00:00\";s:8:\"end_date\";s:19:\"2021-10-09 00:00:00\";s:20:\"start_unix_timestamp\";i:1633701600;s:18:\"end_unix_timestamp\";i:1633759200;s:8:\"location\";a:4:{s:8:\"location\";s:6:\"Online\";s:7:\"country\";s:2:\"NI\";s:8:\"latitude\";d:12.1057485;s:9:\"longitude\";d:-86.2960539;}}}}', 'no'),
+(546, '_site_transient_timeout_theme_roots', '1633628404', 'no'),
+(547, '_site_transient_theme_roots', 'a:4:{s:8:\"emphires\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";s:12:\"twentytwenty\";s:7:\"/themes\";s:15:\"twentytwentyone\";s:7:\"/themes\";}', 'no'),
 (541, '_transient_timeout_dash_v2_bd94b8f41e74bae2f4dc72e9bd8379af', '1633631910', 'no'),
 (542, '_transient_dash_v2_bd94b8f41e74bae2f4dc72e9bd8379af', '<div class=\"rss-widget\"><p><strong>Erreur RSS :</strong> WP HTTP Error: L’URL fournie n’est pas valide.</p></div><div class=\"rss-widget\"><p><strong>Erreur RSS :</strong> WP HTTP Error: L’URL fournie n’est pas valide.</p></div>', 'no'),
 (455, '_site_transient_timeout_browser_11c4338e6d26ae4a4427e08a45877225', '1633688910', 'no'),
 (456, '_site_transient_browser_11c4338e6d26ae4a4427e08a45877225', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"94.0.4606.61\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
 (457, '_site_transient_timeout_php_check_7772753a7ea0fe5c6dd1e8406c9ba6ba', '1633688910', 'no'),
 (458, '_site_transient_php_check_7772753a7ea0fe5c6dd1e8406c9ba6ba', 'a:5:{s:19:\"recommended_version\";s:3:\"7.4\";s:15:\"minimum_version\";s:6:\"5.6.20\";s:12:\"is_supported\";b:0;s:9:\"is_secure\";b:1;s:13:\"is_acceptable\";b:1;}', 'no'),
-(532, '_site_transient_timeout_wp_remote_block_patterns_527bcd237fc018d54dc68c879d3bf033', '1633545204', 'no'),
-(533, '_site_transient_wp_remote_block_patterns_527bcd237fc018d54dc68c879d3bf033', 'O:8:\"WP_Error\":3:{s:6:\"errors\";a:1:{s:19:\"http_request_failed\";a:1:{i:0;s:55:\"cURL error 6: Could not resolve host: api.wordpress.org\";}}s:10:\"error_data\";a:0:{}s:18:\"\0*\0additional_data\";a:0:{}}', 'no');
+(560, '_site_transient_timeout_wp_remote_block_patterns_527bcd237fc018d54dc68c879d3bf033', '1633626820', 'no'),
+(561, '_site_transient_wp_remote_block_patterns_527bcd237fc018d54dc68c879d3bf033', 'O:8:\"WP_Error\":3:{s:6:\"errors\";a:1:{s:19:\"http_request_failed\";a:1:{i:0;s:89:\"cURL error 28: Operation timed out after 5005 milliseconds with 0 out of 0 bytes received\";}}s:10:\"error_data\";a:0:{}s:18:\"\0*\0additional_data\";a:0:{}}', 'no'),
+(555, '_site_transient_update_plugins', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1633626674;s:8:\"response\";a:1:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.2.1\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.2.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"5.0\";s:6:\"tested\";s:5:\"5.8.1\";s:12:\"requires_php\";b:0;}}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:1:{s:9:\"hello.php\";O:8:\"stdClass\":10:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:5:\"1.7.2\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/hello-dolly.1.7.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=2052855\";s:2:\"1x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=2052855\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:66:\"https://ps.w.org/hello-dolly/assets/banner-772x250.jpg?rev=2052855\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"4.6\";}}}', 'no');
 
 -- --------------------------------------------------------
 
@@ -768,7 +771,7 @@ CREATE TABLE IF NOT EXISTS `ec_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Déchargement des données de la table `ec_postmeta`
@@ -870,7 +873,7 @@ INSERT INTO `ec_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (100, 66, '_wp_page_template', 'sc_creation_compte_admin.php'),
 (101, 68, '_edit_lock', '1632510301:1'),
 (102, 68, '_wp_page_template', 'formulaire_candidature_pour_admin.php'),
-(103, 72, '_edit_lock', '1632935291:1'),
+(149, 90, '_edit_lock', '1633626536:1'),
 (104, 73, '_edit_lock', '1632951659:1'),
 (105, 73, '_wp_page_template', 'sc_point_modulable.php'),
 (106, 75, '_edit_lock', '1633080643:1'),
@@ -912,7 +915,13 @@ INSERT INTO `ec_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (145, 86, '_wp_trash_meta_status', 'publish'),
 (146, 86, '_wp_trash_meta_time', '1633523276'),
 (147, 89, '_wp_attached_file', '2021/10/ussein.ico'),
-(148, 89, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:0;s:6:\"height\";i:221;s:4:\"file\";s:18:\"2021/10/ussein.ico\";s:5:\"sizes\";a:0:{}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}');
+(148, 89, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:0;s:6:\"height\";i:221;s:4:\"file\";s:18:\"2021/10/ussein.ico\";s:5:\"sizes\";a:0:{}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
+(150, 90, '_wp_page_template', 'sc_parametre.php'),
+(151, 92, '_edit_lock', '1633626605:1'),
+(152, 92, '_wp_page_template', 'sc_liste_admin_niveau2.php'),
+(153, 94, '_edit_lock', '1633626662:1'),
+(154, 94, '_wp_page_template', 'sc_update_admin_niveau2.php'),
+(155, 96, '_edit_lock', '1633626878:1');
 
 -- --------------------------------------------------------
 
@@ -950,7 +959,7 @@ CREATE TABLE IF NOT EXISTS `ec_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Déchargement des données de la table `ec_posts`
@@ -960,7 +969,7 @@ INSERT INTO `ec_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (1, 1, '2021-09-13 14:36:57', '2021-09-13 12:36:57', '<!-- wp:paragraph -->\n<p>Bienvenue sur WordPress. Ceci est votre premier article. Modifiez-le ou supprimez-le, puis commencez à écrire !</p>\n<!-- /wp:paragraph -->', 'Bonjour tout le monde !', '', 'publish', 'open', 'open', '', 'bonjour-tout-le-monde', '', '', '2021-09-13 14:36:57', '2021-09-13 12:36:57', '', 0, 'http://localhost/candidature/?p=1', 0, 'post', '', 1),
 (2, 1, '2021-09-13 14:36:57', '2021-09-13 12:36:57', '<!-- wp:paragraph -->\n<p>Ceci est une page d’exemple. C’est différent d’un article de blog parce qu’elle restera au même endroit et apparaîtra dans la navigation de votre site (dans la plupart des thèmes). La plupart des gens commencent par une page «&nbsp;À propos&nbsp;» qui les présente aux personnes visitant du site. Cela pourrait ressembler à quelque chose comme cela&nbsp;:</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:quote -->\n<blockquote class=\"wp-block-quote\"><p>Bonjour&nbsp;! Je suis un mécanicien qui aspire à devenir acteur, et voici mon site. J’habite à Bordeaux, j’ai un super chien baptisé Russell, et j’aime la vodka (ainsi qu’être surpris par la pluie soudaine lors de longues balades sur la plage au coucher du soleil).</p></blockquote>\n<!-- /wp:quote -->\n\n<!-- wp:paragraph -->\n<p>…ou quelque chose comme cela&nbsp;:</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:quote -->\n<blockquote class=\"wp-block-quote\"><p>La société 123 Machin Truc a été créée en 1971, et n’a cessé de proposer au public des machins-trucs de qualité depuis lors. Située à Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson, 123 Machin Truc emploie 2 000 personnes, et fabrique toutes sortes de bidules supers pour la communauté bouzemontoise.</p></blockquote>\n<!-- /wp:quote -->\n\n<!-- wp:paragraph -->\n<p>En tant que nouvel utilisateur ou utilisatrice de WordPress, vous devriez vous rendre sur <a href=\"http://localhost/candidature/wp-admin/\">votre tableau de bord</a> pour supprimer cette page et créer de nouvelles pages pour votre contenu. Amusez-vous bien&nbsp;!</p>\n<!-- /wp:paragraph -->', 'Page d’exemple', '', 'publish', 'closed', 'open', '', 'page-d-exemple', '', '', '2021-09-22 11:26:45', '2021-09-22 09:26:45', '', 0, 'http://localhost/candidature/?page_id=2', 0, 'page', '', 0),
 (3, 1, '2021-09-13 14:36:57', '2021-09-13 12:36:57', '<!-- wp:heading --><h2>Qui sommes-nous ?</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>L’adresse de notre site est : http://localhost/candidature.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Commentaires</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Quand vous laissez un commentaire sur notre site, les données inscrites dans le formulaire de commentaire, mais aussi votre adresse IP et l’agent utilisateur de votre navigateur sont collectés pour nous aider à la détection des commentaires indésirables.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Une chaîne anonymisée créée à partir de votre adresse e-mail (également appelée hash) peut être envoyée au service Gravatar pour vérifier si vous utilisez ce dernier. Les clauses de confidentialité du service Gravatar sont disponibles ici : https://automattic.com/privacy/. Après validation de votre commentaire, votre photo de profil sera visible publiquement à coté de votre commentaire.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Médias</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Si vous téléversez des images sur le site, nous vous conseillons d’éviter de téléverser des images contenant des données EXIF de coordonnées GPS. Les personnes visitant votre site peuvent télécharger et extraire des données de localisation depuis ces images.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Cookies</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Si vous déposez un commentaire sur notre site, il vous sera proposé d’enregistrer votre nom, adresse e-mail et site dans des cookies. C’est uniquement pour votre confort afin de ne pas avoir à saisir ces informations si vous déposez un autre commentaire plus tard. Ces cookies expirent au bout d’un an.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement à la fermeture de votre navigateur.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos informations de connexion et vos préférences d’écran. La durée de vie d’un cookie de connexion est de deux jours, celle d’un cookie d’option d’écran est d’un an. Si vous cochez « Se souvenir de moi », votre cookie de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de connexion sera effacé.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur. Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l’ID de la publication que vous venez de modifier. Il expire au bout d’un jour.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Contenu embarqué depuis d’autres sites</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Les articles de ce site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles…). Le contenu intégré depuis d’autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d’un compte connecté sur leur site web.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Utilisation et transmission de vos données personnelles</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Si vous demandez une réinitialisation de votre mot de passe, votre adresse IP sera incluse dans l’e-mail de réinitialisation.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Durées de stockage de vos données</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Si vous laissez un commentaire, le commentaire et ses métadonnées sont conservés indéfiniment. Cela permet de reconnaître et approuver automatiquement les commentaires suivants au lieu de les laisser dans la file de modération.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Pour les comptes qui s’inscrivent sur notre site (le cas échéant), nous stockons également les données personnelles indiquées dans leur profil. Tous les comptes peuvent voir, modifier ou supprimer leurs informations personnelles à tout moment (à l’exception de leur identifiant). Les gestionnaires du site peuvent aussi voir et modifier ces informations.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Les droits que vous avez sur vos données</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Si vous avez un compte ou si vous avez laissé des commentaires sur le site, vous pouvez demander à recevoir un fichier contenant toutes les données personnelles que nous possédons à votre sujet, incluant celles que vous nous avez fournies. Vous pouvez également demander la suppression des données personnelles vous concernant. Cela ne prend pas en compte les données stockées à des fins administratives, légales ou pour des raisons de sécurité.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Transmission de vos données personnelles</h2><!-- /wp:heading --><!-- wp:paragraph --><p><strong class=\"privacy-policy-tutorial\">Texte suggéré : </strong>Les commentaires des visiteurs peuvent être vérifiés à l’aide d’un service automatisé de détection des commentaires indésirables.</p><!-- /wp:paragraph -->', 'Politique de confidentialité', '', 'draft', 'closed', 'open', '', 'politique-de-confidentialite', '', '', '2021-09-13 14:36:57', '2021-09-13 12:36:57', '', 0, 'http://localhost/candidature/?page_id=3', 0, 'page', '', 0),
-(71, 1, '2021-09-29 17:55:32', '0000-00-00 00:00:00', '', 'Brouillon auto', '', 'auto-draft', 'open', 'open', '', '', '', '', '2021-09-29 17:55:32', '0000-00-00 00:00:00', '', 0, 'http://localhost/candidature/?p=71', 0, 'post', '', 0),
+(91, 1, '2021-10-07 19:11:08', '2021-10-07 17:11:08', '', 'Paramètre', '', 'inherit', 'closed', 'closed', '', '90-revision-v1', '', '', '2021-10-07 19:11:08', '2021-10-07 17:11:08', '', 90, 'http://localhost/candidature/?p=91', 0, 'revision', '', 0),
 (5, 1, '2021-09-14 15:17:49', '2021-09-14 13:17:49', '', 'Connexion', '', 'publish', 'closed', 'closed', '', 'connexion', '', '', '2021-09-14 15:17:49', '2021-09-14 13:17:49', '', 0, 'http://localhost/candidature/?page_id=5', 0, 'page', '', 0),
 (6, 1, '2021-09-14 15:17:49', '2021-09-14 13:17:49', '', 'Connexion', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2021-09-14 15:17:49', '2021-09-14 13:17:49', '', 5, 'http://localhost/candidature/?p=6', 0, 'revision', '', 0),
 (7, 1, '2021-09-14 15:19:41', '2021-09-14 13:19:41', '', 'inscription', '', 'publish', 'closed', 'closed', '', 'inscription', '', '', '2021-09-14 15:19:41', '2021-09-14 13:19:41', '', 0, 'http://localhost/candidature/?page_id=7', 0, 'page', '', 0),
@@ -1020,7 +1029,7 @@ INSERT INTO `ec_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (67, 1, '2021-09-24 18:58:18', '2021-09-24 16:58:18', '', 'creation compte admin', '', 'inherit', 'closed', 'closed', '', '66-revision-v1', '', '', '2021-09-24 18:58:18', '2021-09-24 16:58:18', '', 66, 'http://localhost/candidature/?p=67', 0, 'revision', '', 0),
 (68, 1, '2021-09-24 21:05:36', '2021-09-24 19:05:36', '', 'formulaire deja postuler', '', 'publish', 'closed', 'closed', '', 'formulaire-deja-postuler', '', '', '2021-09-24 21:05:36', '2021-09-24 19:05:36', '', 0, 'http://localhost/candidature/?page_id=68', 0, 'page', '', 0),
 (69, 1, '2021-09-24 21:05:36', '2021-09-24 19:05:36', '', 'formulaire deja postuler', '', 'inherit', 'closed', 'closed', '', '68-revision-v1', '', '', '2021-09-24 21:05:36', '2021-09-24 19:05:36', '', 68, 'http://localhost/candidature/?p=69', 0, 'revision', '', 0),
-(72, 1, '2021-09-29 19:08:10', '0000-00-00 00:00:00', '', 'Brouillon auto', '', 'auto-draft', 'open', 'open', '', '', '', '', '2021-09-29 19:08:10', '0000-00-00 00:00:00', '', 0, 'http://localhost/candidature/?p=72', 0, 'post', '', 0),
+(90, 1, '2021-10-07 19:11:08', '2021-10-07 17:11:08', '', 'Paramètre', '', 'publish', 'closed', 'closed', '', 'parametre', '', '', '2021-10-07 19:11:18', '2021-10-07 17:11:18', '', 0, 'http://localhost/candidature/?page_id=90', 0, 'page', '', 0),
 (73, 1, '2021-09-29 23:42:56', '2021-09-29 21:42:56', '', 'Point-modulable', '', 'publish', 'closed', 'closed', '', 'point-modulable', '', '', '2021-09-29 23:42:56', '2021-09-29 21:42:56', '', 0, 'http://localhost/candidature/?page_id=73', 0, 'page', '', 0),
 (74, 1, '2021-09-29 23:42:56', '2021-09-29 21:42:56', '', 'Point-modulable', '', 'inherit', 'closed', 'closed', '', '73-revision-v1', '', '', '2021-09-29 23:42:56', '2021-09-29 21:42:56', '', 73, 'http://localhost/candidature/?p=74', 0, 'revision', '', 0),
 (75, 1, '2021-10-01 11:30:30', '2021-10-01 09:30:30', '', 'Classement-final', '', 'publish', 'closed', 'closed', '', 'classement-final', '', '', '2021-10-01 11:30:30', '2021-10-01 09:30:30', '', 0, 'http://localhost/candidature/?page_id=75', 0, 'page', '', 0),
@@ -1037,7 +1046,12 @@ INSERT INTO `ec_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (86, 1, '2021-10-06 14:27:56', '2021-10-06 12:27:56', '{\n    \"blogdescription\": {\n        \"value\": \"\",\n        \"type\": \"option\",\n        \"user_id\": 1,\n        \"date_modified_gmt\": \"2021-10-06 12:27:56\"\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '32165301-6fc9-4925-97d3-b913115dcfd3', '', '', '2021-10-06 14:27:56', '2021-10-06 12:27:56', '', 0, 'http://localhost/candidature/2021/10/06/32165301-6fc9-4925-97d3-b913115dcfd3/', 0, 'customize_changeset', '', 0),
 (87, 1, '2021-10-06 18:07:16', '2021-10-06 16:07:16', '', 'Mot de passe oublie', '', 'inherit', 'closed', 'closed', '', '11-autosave-v1', '', '', '2021-10-06 18:07:16', '2021-10-06 16:07:16', '', 11, 'http://localhost/candidature/?p=87', 0, 'revision', '', 0),
 (88, 1, '2021-10-06 20:34:23', '2021-10-06 18:34:23', '', 'changer mot de passe', '', 'inherit', 'closed', 'closed', '', '9-autosave-v1', '', '', '2021-10-06 20:34:23', '2021-10-06 18:34:23', '', 9, 'http://localhost/candidature/?p=88', 0, 'revision', '', 0),
-(89, 1, '2021-10-07 08:39:30', '2021-10-07 06:39:30', '', 'ussein', '', 'inherit', 'open', 'closed', '', 'ussein', '', '', '2021-10-07 08:39:30', '2021-10-07 06:39:30', '', 0, 'http://localhost/candidature/wp-content/uploads/2021/10/ussein.ico', 0, 'attachment', 'image/x-icon', 0);
+(89, 1, '2021-10-07 08:39:30', '2021-10-07 06:39:30', '', 'ussein', '', 'inherit', 'open', 'closed', '', 'ussein', '', '', '2021-10-07 08:39:30', '2021-10-07 06:39:30', '', 0, 'http://localhost/candidature/wp-content/uploads/2021/10/ussein.ico', 0, 'attachment', 'image/x-icon', 0),
+(92, 1, '2021-10-07 19:12:27', '2021-10-07 17:12:27', '', 'Liste admin niveau2', '', 'publish', 'closed', 'closed', '', 'liste-admin-niveau2', '', '', '2021-10-07 19:12:27', '2021-10-07 17:12:27', '', 0, 'http://localhost/candidature/?page_id=92', 0, 'page', '', 0),
+(93, 1, '2021-10-07 19:12:27', '2021-10-07 17:12:27', '', 'Liste admin niveau2', '', 'inherit', 'closed', 'closed', '', '92-revision-v1', '', '', '2021-10-07 19:12:27', '2021-10-07 17:12:27', '', 92, 'http://localhost/candidature/?p=93', 0, 'revision', '', 0),
+(94, 1, '2021-10-07 19:13:25', '2021-10-07 17:13:25', '', 'Gestion Admin Simple', '', 'publish', 'closed', 'closed', '', 'gestion-admin-simple', '', '', '2021-10-07 19:13:25', '2021-10-07 17:13:25', '', 0, 'http://localhost/candidature/?page_id=94', 0, 'page', '', 0),
+(95, 1, '2021-10-07 19:13:25', '2021-10-07 17:13:25', '', 'Gestion Admin Simple', '', 'inherit', 'closed', 'closed', '', '94-revision-v1', '', '', '2021-10-07 19:13:25', '2021-10-07 17:13:25', '', 94, 'http://localhost/candidature/?p=95', 0, 'revision', '', 0),
+(96, 1, '2021-10-07 19:13:36', '0000-00-00 00:00:00', '', 'Brouillon auto', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2021-10-07 19:13:36', '0000-00-00 00:00:00', '', 0, 'http://localhost/candidature/?page_id=96', 0, 'page', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1051,7 +1065,7 @@ CREATE TABLE IF NOT EXISTS `ec_postuler` (
   `id_candidat` varchar(250) NOT NULL,
   `note` float NOT NULL,
   `date` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_postuler`
@@ -1066,7 +1080,8 @@ INSERT INTO `ec_postuler` (`id_offre`, `id_candidat`, `note`, `date`) VALUES
 (1, 'manemamadouyaya@gmail.com', 10, ''),
 (1, 'manemamadouyaya@gmail.com', 10, ''),
 (3, 'manemamadouyaya@gmail.com', 0, '27 - 09 - 2021'),
-(5, 'mouhamed.sane@etu.ussein.edu.sn', 14, '01 - 10 - 2021');
+(5, 'mouhamed.sane@etu.ussein.edu.sn', 14, '01 - 10 - 2021'),
+(6, 'manemamadouyaya@gmail.com', 91, '07 - 10 - 2021');
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1217,7 @@ INSERT INTO `ec_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (13, 1, 'ec_user_level', '10'),
 (14, 1, 'dismissed_wp_pointers', 'theme_editor_notice'),
 (15, 1, 'show_welcome_panel', '1'),
-(23, 1, 'session_tokens', 'a:2:{s:64:\"ae7e3b081eb377b009bde0fb02c98c8ff857264067312217f858ab3f6f0cac36\";a:4:{s:10:\"expiration\";i:1633717988;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38\";s:5:\"login\";i:1633545188;}s:64:\"73d3937d600c07d7bb60aa9a47912e843b5f308c73f306e2dd8eea2ad227b2b5\";a:4:{s:10:\"expiration\";i:1633761506;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38\";s:5:\"login\";i:1633588706;}}'),
+(23, 1, 'session_tokens', 'a:3:{s:64:\"ae7e3b081eb377b009bde0fb02c98c8ff857264067312217f858ab3f6f0cac36\";a:4:{s:10:\"expiration\";i:1633717988;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38\";s:5:\"login\";i:1633545188;}s:64:\"73d3937d600c07d7bb60aa9a47912e843b5f308c73f306e2dd8eea2ad227b2b5\";a:4:{s:10:\"expiration\";i:1633761506;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38\";s:5:\"login\";i:1633588706;}s:64:\"112ce5ebb884a99b7f0272be479d114b4e7c1815329aadc8e1867e8ba1cc1dc7\";a:4:{s:10:\"expiration\";i:1633799415;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36 Edg/94.0.992.31\";s:5:\"login\";i:1633626615;}}'),
 (17, 1, 'ec_dashboard_quick_press_last_post_id', '71'),
 (18, 1, 'managenav-menuscolumnshidden', 'a:5:{i:0;s:11:\"link-target\";i:1;s:15:\"title-attribute\";i:2;s:11:\"css-classes\";i:3;s:3:\"xfn\";i:4;s:11:\"description\";}'),
 (19, 1, 'metaboxhidden_nav-menus', 'a:2:{i:0;s:12:\"add-post_tag\";i:1;s:15:\"add-post_format\";}'),
@@ -1252,7 +1267,7 @@ CREATE TABLE IF NOT EXISTS `note_age` (
   `nom` text NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `note_age`

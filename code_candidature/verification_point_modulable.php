@@ -185,6 +185,6 @@ $val_distinction_2 = $_POST['distinction2'];
 $update_distinction_1 = mysqli_query($con,"UPDATE ec_note_distinction SET note='$val_distinction_1' WHERE nom='prix_concours'");
 $update_distinction_2 = mysqli_query($con,"UPDATE ec_note_distinction SET note='$val_distinction_2' WHERE nom='decoration'");
 
-
+mysqli_close($con);
 header('Location: http://localhost/candidature/point-modulable/');
 ?>

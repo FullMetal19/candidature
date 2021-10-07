@@ -866,7 +866,7 @@ tr td:last-child{
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="http://localhost/candidature/creation-compte-admin/">
+                <a href="http://localhost/candidature/parametre/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>

@@ -110,9 +110,8 @@ $tab=mysqli_fetch_array($requete);
     }
     div.titre{
         display: flex;
-        text-align: center;
         margin: 0% 10%;
-        justify-content: right;
+        align-items: right;
         color: white;
     }
     div.titre h1{
@@ -302,7 +301,7 @@ input[type=submit]:hover {
                 </a>
             </div>
             <div class="bloc_menu active">
-                <a href="http://localhost/candidature/creation-compte-admin/">
+                <a href="http://localhost/candidature/parametre/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>

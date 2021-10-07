@@ -207,9 +207,7 @@ mysqli_close($con);
   *,* ::before,*::after{
     box-sizing: border-box;
   }
-  body{
-    font-family: sans-serif;
-  }
+
   table{
     width: 100%;
     border-collapse: collapse;
@@ -290,7 +288,7 @@ mysqli_close($con);
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="http://localhost/candidature/creation-compte-admin/">
+                <a href="http://localhost/candidature/parametre/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>
@@ -313,10 +311,6 @@ mysqli_close($con);
                                     ?> 
                 <h1 class="titre_page">Listes des Candidats</h1>
                 <div class="classement_final" >
-               <?php if(isset($_SESSION['classement'])){?>               
-                
-                    <a href="http://localhost/candidature/classement-final/?id=<?php echo $id ?>"> <input type="button"  value="Voir le classement final" class="classement_Fin"></a>
-              <?php  } ?>
             </div>
                             <table>
                             <tr>
@@ -352,7 +346,21 @@ mysqli_close($con);
 
                             </table>
                 </div>
-                <a href="http://localhost/candidature/code_candidature/lien_classement_final.php">  <input type="button" name="finaliser" value="Finaliser" class="bouton_finalisation" ></a>
+                <?php
+                $query4 =mysqli_query($con,"SELECT finaliser FROM ec_offre WHERE id='$id'");
+                $tab_query4 = mysqli_fetch_array($query4);
+                if($tab_query4['finaliser'] == 1){?>               
+                <style>
+                    a.lien{
+                        display: none;
+                    }
+                </style>
+                <a href="http://localhost/candidature/classement-final/?id=<?php echo $id ?>"> <input type="button"  value="Voir le classement final" class="classement_Fin"></a>
+          <?php  }
+          if($tab_query4['finaliser'] == 0){?>               
+                
+                <a href="http://localhost/candidature/code_candidature/verification_finaliser.php?id=<?php echo $id ?>">  <input type="button" name="finaliser" value="Finaliser" class="bouton_finalisation" ></a>
+          <?php  } ?>
         </div>
 
         <script>
@@ -364,3 +372,8 @@ mysqli_close($con);
 
 
 </script>
+
+<?php
+mysqli_close($con);
+
+?>

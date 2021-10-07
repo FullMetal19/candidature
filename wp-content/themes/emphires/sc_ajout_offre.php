@@ -359,7 +359,7 @@ input[type=submit]:hover{
                 </a>
             </div>
             <div class="bloc_menu">
-                <a href="http://localhost/candidature/creation-compte-admin/">
+                <a href="http://localhost/candidature/parametre/">
                     <label>Paramètre</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>
@@ -391,8 +391,8 @@ input[type=submit]:hover{
              
             <input type="text" name="titre" id="titre" placeholder="Titre"><br>
             <!-- <input type="text" name="description" id="description" placeholder="Description"><br> -->
-            <input type="date" name ="date_limite" id="date_limite" placeholder="Date limite de dépot"><br>
-            <input  type="file" id="fichier" name="fichier" ><br>
+            <input type="date" name ="date_limite" placeholder="Date limite de dépot"><br>
+            <input  type="file" name="fichier" ><br>
             <!-- <label class="telecharger" for="fichier">Veuillez choisir un fichier</label> -->
             <label>
             <?php

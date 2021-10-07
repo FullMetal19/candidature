@@ -23,6 +23,7 @@ $tab_offre = mysqli_fetch_array($req);
         .contener{
             display: grid;
             grid-template-rows: auto auto;
+            width:100%;
             margin: 0% 5%;
         }
        .titre p{
@@ -95,6 +96,7 @@ $tab_offre = mysqli_fetch_array($req);
            }
        }
        embed{
+           margin: 5% 0%;
            width:100%;
            height:1000px;
        }
@@ -111,6 +113,10 @@ $tab_offre = mysqli_fetch_array($req);
 }
      .baner:hover{
           animation-play-state: paused;
+     }
+     .download:hover{
+         color:rgb(141,54,20);
+         cursor: pointer;
      }
      @keyframes fondu{
     0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/09/ufr-sfi.png");}
@@ -131,11 +137,12 @@ $tab_offre = mysqli_fetch_array($req);
                
                <div class="fichier">
                     <?php if(strpos($tab_offre['nom_fichier'],'.pdf') or strpos($tab_offre['nom_fichier'],'.PDF')){ ?>
-                    <embed src="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>" type="application/pdf">
+                    <embed src="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>#toolbar=0" type="application/pdf">
                    <?php }
                    elseif(strpos($tab_offre['nom_fichier'],'.png') or strpos($tab_offre['nom_fichier'],'.jpg') or strpos($tab_offre['nom_fichier'],'.JPG') or strpos($tab_offre['nom_fichier'],'.PNG')){ ?>
                         <img src="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>" alt="offre">
                     <?php } ?>
+                        <a class="download" href="http://localhost/candidature/code_candidature/ec_offre/<?php echo $id_offre ?>/<?php echo $tab_offre['nom_fichier'] ?>" download="<?php echo $tab_offre['nom_fichier'] ?>">Télécharger ici le fichier</a>
                    
                    
                 </div>

@@ -1,11 +1,15 @@
 <?php
 session_start();
+$con = mysqli_connect('localhost','root','','ussein_candidature');
 // $UFR=$_POST['ufr'];
-$titre=$_POST['titre'];
+$titre = $_POST['titre'];
+$titres = str_replace("'","''",$titre);
 
 
 // $description=$_POST['description'];
 $dateLimite=$_POST['date_limite'];
+
+
 
 $nom=$_FILES['fichier']['name'];
 $file_name=$nom;
@@ -13,7 +17,7 @@ $file_path = $_FILES['fichier']['tmp_name'];
 
 
 
-        if( empty($titre) || empty($dateLimite)){
+        if( empty($titres) || empty($dateLimite)){
 
                 $_SESSION['obligatoire']="toutes les champs sont obligatoires ";
             header('location: http://localhost/candidature/ajout-offre/') ;  
@@ -21,14 +25,15 @@ $file_path = $_FILES['fichier']['tmp_name'];
         }
         else{
 
+
+        $req = mysqli_query($con,"INSERT INTO ec_offre VALUES(null,'$titres','$file_name','$dateLimite',0)");
+
+        var_dump($req);
+
        
-        
-
-$con = mysqli_connect('localhost','root','','ussein_candidature');
-$req = mysqli_query($con,"INSERT INTO ec_offre VALUES (null,'','$titre','','$file_name','$dateLimite')");
 
 
-$selection = mysqli_query($con,"SELECT id FROM  ec_offre WHERE titre='$titre'");
+$selection = mysqli_query($con,"SELECT id FROM  ec_offre WHERE titre='$titres'");
 $tab_affich = mysqli_fetch_array($selection);
 
 
