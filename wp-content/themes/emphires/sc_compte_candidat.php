@@ -92,6 +92,14 @@ div.info_personnel {
     gap:2em 2em;
     justify-content: center;
 }
+@media(max-width: 1000px){
+    div.info_personnel{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:1em 0 ;
+    }
+}
 div.info{
     width: 100%;
     display: flex;
@@ -121,7 +129,7 @@ input[type=submit]{
 div.enregistrer{
     align-self: center;
 }
-@media(max-width:700px ){
+@media(max-width:780px ){
     div.contenu_info_personnel{
     width:100%;
     display:flex;
@@ -254,7 +262,7 @@ div.case{
       font-size: x-large;
       color:rgb(10, 107, 49);
   }
-  @media(max-width:700px){
+  @media(max-width:780px){
      div.element{
      display: flex;
      gap:1em 0;
@@ -263,7 +271,7 @@ div.case{
      padding:3%;
      align-items:center;
  }
- 
+
     div.experience2{
         display:flex;
         flex-direction:column;
@@ -315,9 +323,24 @@ div.case{
     }
     a.suppression{
         /* border:1px solid red; */
-        border-radius:10%;
+        /* border-radius:10%;
         background-color:rgb(141,54,20);
-        font-size:large;
+        font-size:large; */
+        margin-top : 1em;
+        background-color:white;
+        border :  2px solid rgb(141,54,20);
+        padding : 0.5em 1em;
+        text-decoration : none;
+        font-size : large;
+        font-weight :bold;
+        color:rgb(141,54,20);  
+        transition : all 1s; 
+        border-radius :1em;
+    }
+    a.suppression:hover{
+        background-color :rgb(141,54,20);
+        color:white ;
+        transition : all 1s; 
         
     }
 
@@ -338,7 +361,7 @@ div.case{
                             <div class="candidat_image">
                                 <form action="http://localhost/candidature/code_candidature/charger_image_profil.php" method="POST" enctype="multipart/form-data">
                                 <input type="file" name="image" id="image_profil">
-                                <img src="http://localhost/candidature/code_candidature/ec_repertoire/<?php echo $mail;?>/<?php echo $tab_image['image'];?>" alt="photo profil" id="image_profil">
+                                <img src="http://localhost/candidature/code_candidature/ec_repertoire/<?php echo $mail ?>/<?php echo $tab_image['image']?>" alt="photo profil" id="image_profil">
                                 <label id="erreur_upload_image">
                                 <?php if(isset($_SESSION['erreur'])){
                                     echo $_SESSION['erreur'];
@@ -1142,3 +1165,7 @@ div.case{
 
     
 </body>
+
+<?php
+ get_footer();
+?>

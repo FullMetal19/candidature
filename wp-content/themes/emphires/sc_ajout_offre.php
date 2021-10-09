@@ -160,7 +160,7 @@ $tab=mysqli_fetch_array($requete);
         }
     }
 
-    .principal{
+    /* .principal{
           align-items: center;
           width: 100%;
           height: 100%;
@@ -168,7 +168,7 @@ $tab=mysqli_fetch_array($requete);
         margin-top:-75px;
 
           
-      }
+      } */
         .suppression{
             align-items: center;
             width: 90%;
@@ -194,13 +194,13 @@ $tab=mysqli_fetch_array($requete);
              
          }
         
-
+/* 
     .offre01{
         display: flex;
         flex-direction: column;
         
         
-    }
+    } */
     select{
         outline: none;
         border: none;
@@ -254,10 +254,9 @@ input[type=submit] {
 }
 
 input[type=submit]:hover{
-    background-color: rgba(141, 54, 20,0.6);
     transition:1s all;
-    transform:scale(1.02);
-    border-radius:50%;
+    transform:scale(1.05);
+
    
 }
      
@@ -304,7 +303,7 @@ input[type=submit]:hover{
            color:#fff;
            padding:3%;
         }
-        .titre01 h1, .titre02  h1{
+        .titre01 h1, .entete h1{
              display: flex;
              background-color: rgba(10, 107, 49,0.8);
              padding: 2%;
@@ -331,6 +330,111 @@ input[type=submit]:hover{
                }
 
 </style>
+
+<style>
+div.droite_container{
+    display:flex;
+  flex-direction : column;
+  gap: 3em;
+  align-items:center;
+}
+
+div.Ajout_offre{
+  display:flex;
+  flex-direction : column;
+  gap: 1em;
+  width:100%;
+  
+}
+div.Ajout_offre div.entete{
+    display : flex;
+    justify-content : center;  
+}
+div.Ajout_offre div.entete h1{
+    color : white;
+    text-align : center;
+}
+ div.blog_creation_offre{
+    width :100%;
+    display: flex;
+   flex-direction : column;
+   align-items:center;
+}
+
+div.blog_creation_offre form{
+    display: flex;
+    justify-content: center;
+    margin: 0 10%;
+    width:100%;
+}
+
+ div.blog_creation_offre form div.main{
+  display :flex;
+  flex-direction :column;
+  gap:1em;
+  width :80%;
+  align-items:center;
+  padding : 2em; 
+  border-left :2px solid green;
+  border-right :2px solid green;
+  border-bottom :2px solid green;
+}
+div.main input {
+    width :100%;
+    border-radius:1em;
+    padding:1em;
+    font-size:large;
+    outline :none;
+    border-left :2em solid green;
+    border-right :2em solid green;
+    border-bottom :2px solid green;
+    border-top :2px solid green;
+}
+div.main input#bouton_valider{
+    width :60%;
+    border : 3px solid green;
+    font-size:large;
+
+}
+div.main label{
+    font-size:large;
+    color:brown;
+    font-weight:bold;
+}
+
+
+div.Suppression_offre{
+    display:flex;
+    flex-direction:column;
+    gap:2em 0;
+    width:100%;
+    
+}
+
+.titre01 h1, .entete h1{
+             display: flex;
+             background-color: rgba(10, 107, 49,0.8);
+             padding: 2%;
+             justify-content: center;
+             margin: 2% 0%;
+             color: white;
+             font-size: 30px;
+            box-shadow: 5px -5px 5px rgba(132, 181, 31,0.6);
+            width: 94%;
+            border-radius: 50px;
+         }
+
+         .suppression{
+            align-items: center;
+            width: 90%;
+            margin: auto;
+            padding: 1% 2%;
+            margin: 2% 0%;
+        }
+
+</style>
+
+
 <body>
     <div class="container">
         <div class="gauche">
@@ -372,21 +476,28 @@ input[type=submit]:hover{
             </div>
 
         </div>
-        <div class="droite" id="droite">
-                <div class="droite_container">
+        
+<div class="droite" id="droite">
+               
+<div class="droite_container">
                     <?php
                     if($tab['status']==2){ ?>
                     <p class="phrase">VOUS N'AVEZ PAS ACCES DANS CETTE PAGE !</p>
-                    <?php } else{ ?>
-                <div class="principal">
-    <div class="offre01">
-       <h1> Ajout d'un offre</h1>
-       </div>
+                    <?php }
+                    
+                    else{ ?>
+                
+<div class="Ajout_offre">
 
-<form action="http://localhost/candidature/code_candidature/verification_ajout_offre.php" enctype="multipart/form-data" method="POST">
-<div class="body">
-<fieldset>
-       <div class="main">
+    <div class="entete">
+       <h1> Ajout d'un offre</h1>
+    </div>
+
+    <div class="blog_creation_offre">
+
+        <form action="http://localhost/candidature/code_candidature/verification_ajout_offre.php" enctype="multipart/form-data" method="POST">
+
+        <div class="main">
            
              
             <input type="text" name="titre" id="titre" placeholder="Titre"><br>
@@ -402,16 +513,23 @@ input[type=submit]:hover{
             }
             ?>
             </label>
-            <input type="submit" value="envoyer">
+            <input type="submit" id="bouton_valider" value="Envoyer">
+            
         </div>
-</fieldset>
-</div>
-</form> 
 
-<div class="titre01">
+        </form>
+    
+    </div>
+
+</div> 
+
+<div class="Suppression_offre">
+
+    <div class="titre01">
        <h1>Suppresion Offre</h1>
-       </div>
-<div class="suppression">
+    </div>
+
+    <div class="suppression">
     
        <?php
 
@@ -436,11 +554,15 @@ input[type=submit]:hover{
         </div>
         <?php } ?>
           
+    </div>
+    
+</div> 
 
-
-       </div>
-     </div> 
-        </div>
-        </div>   
+         
 <?php } ?>
-      </body>
+
+</div>
+       
+</div>  
+
+</body>

@@ -16,11 +16,11 @@ get_header();
      .presentation{
           width: 100%;
     height: 300px;
-    margin: 5% auto;
+    margin: 5%  auto;
     box-shadow: 0px 15px 10px -5px #777;
     background-color: #EDEDED;
     background-size: cover;
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
     animation: fondu 15s ease-in-out infinite both;
      }
      .contener{
@@ -32,7 +32,7 @@ get_header();
 
      .offre h1 {
           text-align: center;
-          font-size: 2em;
+          /* font-size: 2em; */
           padding: 1%;
           background-color: rgb(10, 107, 49);
           color :white;
@@ -41,8 +41,8 @@ get_header();
      .offre a p {
           
           margin: 2% 10%;
-          padding: 1%;
-          font-size: 1em;
+          padding: 2%;
+          font-size: x-large;
           background-color: rgb(132, 181, 39);
           color :white;
           transition: 0.5s all;
@@ -87,6 +87,7 @@ get_header();
      p#notification{
           color:rgb(141,54,20);
           font-size:large;
+          font-weight : bold;
      }
      </style>
 
@@ -108,3 +109,7 @@ get_header();
             <?php } ?>
             </div>
      </div>
+
+<?php
+  get_footer();
+?>

@@ -50,15 +50,25 @@ $tab_offre = mysqli_fetch_array($req);
        }
        .bouton{
            position: fixed;
+           width : 100px;
+           height : 100px;
            bottom: 40px;
            right: 25px;
            padding: 1.5%;
-           background-color: rgb(141, 54 , 20);
+           background-color: rgb(10, 107, 49);
            border-radius: 50%;
            transition: 1s all;
+           border : 2px solid black;
+           z-index : 900%;
+           display:flex;
+           flex-direction : column;
+           align-items : center;
+           /* box-shadow : 0 0 10px gray; */
        }
        .bouton a {
            text-decoration: none;
+           padding: 2%;
+           font-size: x-large;
            color: white;
            font-size: 1em;
            display: flex;
@@ -114,9 +124,22 @@ $tab_offre = mysqli_fetch_array($req);
      .baner:hover{
           animation-play-state: paused;
      }
+     .download{
+         text-decoration : none;
+         font-size:large;
+         font-weight : bold;
+         border:2px solid rgb(10, 107, 49);
+         padding : 0.5em 1em;
+         border-radius :1em;
+         color : rgb(10, 107, 49);
+         transition : all 1s;
+         margin :5% 0;
+     }
      .download:hover{
-         color:rgb(141,54,20);
+         background-color :rgb(10, 107, 49);
+         color:white;
          cursor: pointer;
+         transition : all 1s;
      }
      @keyframes fondu{
     0%{background-image: url("http://localhost/candidature/wp-content/uploads/2021/09/ufr-sfi.png");}
@@ -156,3 +179,8 @@ $tab_offre = mysqli_fetch_array($req);
                 <p>Postuler</p>
             </a>
         </div>
+      
+     <?php
+     get_footer();
+     ?>
+

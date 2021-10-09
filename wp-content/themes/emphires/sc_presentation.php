@@ -116,6 +116,93 @@
         }
     }
 </style>
+
+
+
+<style>
+
+footer{
+    background-color:#333;
+    padding :2em;
+}
+
+ div.pied_de_page_general{
+	 display :flex;
+	 flex-wrap :wrap;
+	 justify-content : space-between;
+	 gap:1em;
+	 
+ }
+ div.reseau_sociaux{
+	display :flex;
+	justify-content : center;
+	gap: 3px;
+ }
+ div.blog_gauche{
+     display:flex;
+     flex-direction:column;
+     /* align-items :center; */
+     gap:1em 0;
+ }
+ div.blog_gauche label{
+     font-size:x-large;
+     color:gray;
+ }
+ div.blog_gauche a{
+     color: rgb(132, 181, 39);
+     font-size:large;  
+     text-decoration :none;
+     transition:all 1s;
+ }
+ div.blog_gauche a:hover{
+     color:green;
+     transform:scale(1.03);
+     transition: all 1s;
+ }
+ div.blog_centre{
+	 display :flex;
+	 flex-direction :column;
+	 align-items :center;
+     float : bottom;
+ }
+ div.blog_centre p{
+    font-size:large;
+    color :gray;
+    font-weight:bold;
+}
+ img#icone{
+  width:200px;
+  height: 150px;
+  cursor : pointer;
+ }
+img.aplli_google{
+	cursor : pointer;
+	border-top :2px solid #DB4437;
+	border-right :2px solid #4285f4;
+	border-bottom :2px solid #0F9D58;
+	border-left :2px solid #F4B400;
+	padding:0.5em;
+	transition: all 1s;
+}
+img.aplli_rs{
+	border :2px solid #4285f4;
+    padding:0.5em;
+    transition: all 1s;
+}
+
+img.aplli_google:hover, img.aplli_rs:hover{
+    transform:scale(1.03);
+	transition: all 1s;
+}
+img.google{
+	cursor : pointer;
+	border-left :2px solid #4285f4;
+	border-right :2px solid  #F4B400;
+}
+
+</style>
+
+
 <body>
     <section class="main_body">
         <div class="header">
@@ -165,4 +252,41 @@
         </div>
     </section>
 </body>
+
+<footer>
+
+<div class="pied_de_page_general">
+
+    <div class="blog_gauche">
+    <label > A PROPOS DE L’USSEIN </label> 
+
+		<a href="https://www.ussein.sn/mission/"> MISSION </a>
+        <a href="https://www.ussein.sn/vision/"> VISION </a>
+        <a href="https://www.ussein.sn/defis-et-opportunites/"> DÉFIS ET OPPORTUNITÉS </a>
+	</div>
+
+	<div class="blog_centre"> 
+		<p>Plateforme de candidature a l'Universite Sine Saloum El-Hadji Ibrahima Niasse</p>
+		<p>copyright USSEIN , DISI 2021</p>
+		</div>
+
+	<div class="blog_droite">
+
+	    <div class="reseau_sociaux">
+
+			<a href="https://www.google.com/intl/fr/gmail/about/" > <img class="aplli_google" src="https://img.icons8.com/color/48/000000/gmail-new.png"/> </a>
+			<a href="https://twitter.com/?lang=fr" target="_blank"> <img class="aplli_rs" src="https://img.icons8.com/color/48/000000/twitter--v1.png"/> </a>
+			<a href="https://fr-fr.facebook.com/" target="_blank"> <img class="aplli_rs" src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/> </a>
+			<a href="https://www.google.fr/" target="_blank"> <img class="aplli_google google" src="https://img.icons8.com/color/48/000000/google-logo.png"/>  </a>
+								 
+        </div>
+	
+    </div>
+
+
+</div>
+
+
+</footer>
+
 </html>

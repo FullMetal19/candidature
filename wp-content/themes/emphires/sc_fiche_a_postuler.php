@@ -224,6 +224,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     input.bouton{
        margin-top:2em;
         padding: 1.5% 4%;
+        cursor : pointer;
         color: white;
         font-size: large;
     }
@@ -298,6 +299,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     input#enregistrer_dossier{
         margin-bottom:1em;
         color:white;
+        cursor :pointer;
         font-size:large;
         background:gray;
         padding:1% 4%;
@@ -310,6 +312,18 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         color:rgb(141,54,20);
         font-size:large;
     }
+    p#info{
+        color:rgb(141,54,20);
+        font-size : large;
+        font-weight : bold;
+    }
+    p#info span#gris {
+        color:gray;
+    }
+    p#info span#vert {
+        color:rgb(10,107,49);;
+    }
+
 </style>
 <body>
 
@@ -915,6 +929,8 @@ $title="Pas de fichier justificatif uplaoder";?>
                  <?php if(isset($_SESSION['notif_af'])){echo $_SESSION['notif_af']; unset($_SESSION['notif_af']);} ?></label> 
                  </div>
                  
+                <p id="info">Attention veillez <span id="gris">Enregistrer</span> votre (CV, Demande et Autre dossier suplementaire) avant d'<span id="vert"> Envoyer</span> c'est important pour votre candidature</p>
+
                  </div>
                  <input type="submit" value='Enregistrer' id="enregistrer_dossier">
                

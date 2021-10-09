@@ -863,6 +863,12 @@ $title="Pas de fichier justificatif uplaoder";?>
         </div>
     </div>
     </div>
+
     
 </body>
+<?php
+ get_footer();
+?>
 </html>
+
+

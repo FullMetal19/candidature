@@ -5,9 +5,18 @@ $mail = $_SESSION['mail'];
 $id= strchr($_SESSION['info_candidat'],' ');
 $id_offre =trim($id);
 
-$date = date('d - m - Y');
+
+$date = date('Y-m-d');
 
 $con = mysqli_connect("localhost","root","","ussein_candidature");
+
+$req_delais_offre = mysqli_query($con,"SELECT dateLimite FROM ec_offre WHERE id='$id_offre'");
+$tab_delais_offre = mysqli_fetch_array($req_delais_offre);
+$date_limite = $tab_delais_offre['dateLimite'];
+
+// Comparaison des deux dates
+
+if(strtotime($date) <= strtotime($date_limite)){
 
 
 if(file_exists('ec_repertoire/'.$mail) && is_dir('ec_repertoire/'.$mail)){
@@ -56,9 +65,11 @@ else{
     $_SESSION['notificatiion'] = "Vous venez de postuler pour l'offre : ".$tab_nom_offre['titre'];
 }
 
-// else{
-//     $_SESSION['notificatiion'] = "l'offre : ".$tab_nom_offre['titre']."n'existe plus . Veillez postuler pour d'autre offre";
-// }
+}
+
+else{
+    $_SESSION['notificatiion'] = "Votre candidature n'est pas aprouve car la date limite de l'offre a expire. Veillez postuler pour d'autre offre";
+}
 unset($_SESSION['info_candidat']);
 
 
