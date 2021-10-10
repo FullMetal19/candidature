@@ -7,19 +7,28 @@ $mot_de_passe2 = $_POST['mot_de_passe_2'];
 
 $mail = $_SESSION['mail'];
 
-$con = mysqli_connect("localhost","root","","ussein_candidature");
-$requete = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail' AND mot_de_passe='$mot_de_passe'");
-$val = mysqli_num_rows($requete);
-$tab = mysqli_fetch_array($requete);
+require_once("ouverture_bd_pdo.php");
+
+
+$verification=$con->prepare( "SELECT * FROM ec_connexion WHERE mail=? AND mot_de_passe=?");
+$verification->execute(array($mail,$mot_de_passe));
+$tab_verification = $verification->fetchALL();
+$val = count($tab_verification); 
+// $nombre=$tab_verification['nombre'];
+$verification->closeCursor();
 
 if($val >0){ 
-
+    $verifications=$con->query("SELECT * FROM ec_connexion WHERE mail='$mail' AND mot_de_passe='$mot_de_passe'" );
+    $tab=$verifications->fetch();
     if($tab['status'] == 0){ 
 
     if($mot_de_passe1 == $mot_de_passe2){
- 
-    $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
-    $_SESSION['notification1']="Votre mot de passe est modifié.";
+        $verification=$con->prepare("UPDATE ec_connexion SET  mot_de_passe=:mot_de_passe WHERE mail= :mail");
+        $verification->execute(array(
+            'mot_de_passe'=>$mot_de_passe1, 
+            'mail'=>$mail                     
+        ));
+        $verification->closeCursor();
     header('location: http://localhost/candidature/accueil-offre/');
 }
     else{
@@ -31,7 +40,12 @@ if($val >0){
 if($tab['status'] == 2){ 
     if($mot_de_passe1 == $mot_de_passe2){
  
-        $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
+        $verification=$con->prepare("UPDATE ec_connexion SET  mot_de_passe=:mot_de_passe WHERE mail= :mail");
+        $verification->execute(array(
+            'mot_de_passe'=>$mot_de_passe1, 
+            'mail'=>$mail                     
+        ));
+        $verification->closeCursor();
         $_SESSION['notification1']='<div id="a">
                                         <img src="https://img.icons8.com/fluency/48/000000/verified-account.png" width="20px" height="20px" />
                                         <span>Votre mot de passe est bien modifié.</span>
@@ -47,7 +61,12 @@ if($tab['status'] == 2){
 if($tab['status'] == 1){
     if($mot_de_passe1 == $mot_de_passe2){
  
-        $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_connexion SET mot_de_passe='$mot_de_passe1' WHERE mail='$mail'");
+        $verification=$con->prepare("UPDATE ec_connexion SET  mot_de_passe=:mot_de_passe WHERE mail= :mail");
+        $verification->execute(array(
+            'mot_de_passe'=>$mot_de_passe1, 
+            'mail'=>$mail                     
+        ));
+        $verification->closeCursor();
         $_SESSION['notification1']='<div id="a">
                                         <img src="https://img.icons8.com/fluency/48/000000/verified-account.png" width="20px" height="20px" />
                                         <span>Votre mot de passe est bien modifié.</span>

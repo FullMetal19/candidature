@@ -40,7 +40,7 @@ margin-bottom: 10%;">
     <p style="font-size: x-large;
     text-align: justify;
     color:black;">
-        Bonjour ! '.$prenom.' '.$nom.' ,
+        Bonjour '.$prenom.' '.$nom.' ,
     </p>
     <p style="font-size: x-large;
     text-align: justify;
@@ -67,11 +67,16 @@ $header .="Content-Type:text/html; charset=\"utf-8\"";
 
 // mail($mail,$sujet,$message,$header);
 // 
-$con = mysqli_connect('localhost','root','','ussein_candidature');
+// $con = mysqli_connect('localhost','root','','ussein_candidature');
+$con = new PDO('mysql:host=localhost;dbname=ussein_candidature;charset=utf8', 'root', '');
+$verification=$con->prepare( "SELECT * FROM ec_connexion WHERE mail=?");
+    $verification->execute(array($mail));
+    $tab_verification = $verification->fetchALL();
+    $nb = count($tab_verification); 
 
 
-    $req = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
-    $nb = mysqli_num_rows($req);
+    // $req = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
+    // $nb = mysqli_num_rows($req);
 
     if($nb>0){
             $_SESSION['message_validation'] = "Un compte est déja enregitré sur ce mail.";
@@ -80,7 +85,20 @@ $con = mysqli_connect('localhost','root','','ussein_candidature');
     else{
             if($mot_de_passe == $nouveau_mot_de_passe){
                 if (mail($mail,$sujet,$message,$header)){
-                    $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','','','$status','','','candidat.png')");
+                    $verification=$con->prepare( "INSERT INTO ec_connexion (prenom, nom, mail, mot_de_passe, telephone, date_de_naissance, status,genre, adresse, image) VALUES(:prenom, :nom, :mail, :mot_de_passe, :telephone, :date_de_naissance, :status,:genre, :adresse, :image)");
+                    $verification->execute(array(
+                        'prenom'=>$prenom,
+                        'nom'=>$nom,
+                        'mail'=>$mail,
+                        'mot_de_passe'=>$mot_de_passe,
+                        'telephone'=>'',
+                        'date_de_naissance'=>'',
+                        'status'=>$status,
+                        'genre'=>'',
+                        'adresse'=>'',
+                        'image'=>'candidat.png'                        
+                    ));
+                    // $req = mysqli_query($con,"INSERT INTO ec_connexion VALUES('$prenom','$nom','$mail','$mot_de_passe','','','$status','','','candidat.png')");
                     $_SESSION['message_validation'] = "Veuillez consulter votre mail pour la validation de votre compte.";
                     header('Location: http://localhost/candidature/connexion/');
                 }else{

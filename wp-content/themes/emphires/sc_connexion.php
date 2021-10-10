@@ -145,6 +145,14 @@
         text-align:center;
         color: rgb(10,107,49);
     }
+    .message_validation label{
+        position: relative;
+        text-align: center;
+    }
+    .message_erreur label{
+        position: relative;
+        text-align: center;
+    }
     .titre span{
         font-size: x-large;
         color:rgb(10,107,49) ;
@@ -152,7 +160,7 @@
         font-style: italic;
     }
 .connecter{
-    margin-top:30px;
+    margin-top:20px;
 }
 .mot_de_passe{
     margin-bottom:1px;

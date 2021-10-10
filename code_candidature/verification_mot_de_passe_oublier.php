@@ -2,10 +2,28 @@
 session_start();
 $mail = $_POST['mail'];
 // Connexion à la base de données
-include('ouverture_bd.php');
 
-// envoie de mail
+require_once("ouverture_bd_pdo.php");
 
+$verification=$con->prepare( "SELECT * FROM ec_connexion WHERE mail=?");
+    $verification->execute(array($mail));
+    $tab_verification = $verification->fetchALL();
+    $nb = count($tab_verification); 
+$verification->closeCursor();
+
+
+
+if($nb==0){
+    $_SESSION['message_validation'] = "Aucun compte n'est associé à ce mail, veuillez le vérifier.";
+        header('Location: http://localhost/candidature/mot-de-passe-oublie/');
+}
+else{
+    $verifications=$con->prepare("SELECT * FROM ec_connexion WHERE mail=?" );
+    $verifications->execute($mail);
+            $donnees=$verifications->fetch();
+    $prenom=$donnees['prenom'];
+    $nom=$donnees['nom'];
+    $verifications->closeCursor();
 $sujet = 'Réinitialisation de votre mot de passe.';
 $message = '
 <div class="principal_bloc" style="margin: auto;
@@ -42,7 +60,7 @@ margin-bottom: 10%;">
     color:black;">
     Veuillez cliquer sur ce bouton ci-dessous pour la réinitialisation de votre mot de passe.    
     </p>
-    <a href="http://localhost/candidature/reinitialisation-mot-de-passe/" style="text-decoration: none;
+    <a href="http://localhost/candidature/reinitialisation-mot-de-passe/?mail='.$mail.'" style="text-decoration: none;
     color: black;width: 100%;"><p style="padding: 2%;
     color:white;
     border: 1px solid green;
@@ -60,12 +78,6 @@ $header .="Reply-To:basse618@gmail.com\n";
 $header .="Content-Type:text/html; charset=\"utf-8\"";
 
 mail($destination,$sujet,$message,$header);
-
-if(isset($_POST['envoyer'])){
-    $req = mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
-    $nb = mysqli_num_rows($req);
-
-    if($nb>0){
             if (mail($mail,$sujet,$message,$header)){
                 $_SESSION['message_validation'] = "Veuillez consulter votre mail pour réinitialiser votre mot de passe.";
                 header('Location: http://localhost/candidature/connexion/');
@@ -73,12 +85,13 @@ if(isset($_POST['envoyer'])){
                 $_SESSION['message_validation'] = "Erreur sur la validation, veuillez vérifier votre mail.";
                 header('Location: http://localhost/candidature/mot-de-passe-oublie/');
             }
-    }else{
-        $_SESSION['message_validation'] = "Aucun compte n'est associé à ce mail, veuillez le vérifier.";
-        header('Location: http://localhost/candidature/mot-de-passe-oublie/');
-    }
     
+// }
+
 }
+// envoie de mail
+
+
 
 
 

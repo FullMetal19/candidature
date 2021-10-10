@@ -1,5 +1,8 @@
 <?php
 session_start();
+$mail=$_GET['mail'];
+$_SESSION['mailpw']=$mail;
+
 
 /* Template name: Renitialisation mot de passe */
 ?>
