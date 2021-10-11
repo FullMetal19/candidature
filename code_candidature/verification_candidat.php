@@ -43,26 +43,7 @@ if(!empty($_FILES['fichier_licence'])){
         }
     }
     }
-
-            // lien licence
-        if($url_licence!=""){
-                  $fichier_licence="licence.pdf";
-            
-                  $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-                  $verification1=mysqli_num_rows($requete1);
-                      
-                      if($verification1 >0){
-                      $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_licence' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
-                       } 
-                      else{
-                        $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_licence')");
-                        }
-                        $_SESSION['message_validation_l']="Le fichier pdf est bien enregistré.";
-                }
-
-
-
-// insertion master
+    // insertion master
 
 if(!empty($_FILES['fichier_master'])){
     $erreur_fichier=$_FILES['fichier_master']['error'];
@@ -71,7 +52,7 @@ if(!empty($_FILES['fichier_master'])){
     $extension=strrchr($nom_fichier_orgine,".");
     if($extension== ".pdf" || $extension== ".PDF"){
       $fichier_master="master.pdf";
-
+      
       $requete2=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_master'");
       $verification2=mysqli_num_rows($requete2);
       
@@ -97,23 +78,6 @@ if(!empty($_FILES['fichier_master'])){
     }
     }
 
-     // lien master
-    if($url_master!=""){
-        $fichier_master="master.pdf";
-  
-        $requete2=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_master'");
-        $verification2=mysqli_num_rows($requete2);
-            
-            if($verification2 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_master', lien='$url_master' WHERE auteur='$auteur' AND nom_fichier='$fichier_master' ");
-             } 
-            else{
-              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_master','$auteur','$url_master')");
-              }
-              $_SESSION['message_validation_l']="Le fichier pdf est bien enregistré.";
-      }
-
-
     // insertion doctorat
     if(!empty($_FILES['fichier_doctorat'])){
         $erreur_fichier=$_FILES['fichier_doctorat']['error'];
@@ -122,7 +86,7 @@ if(!empty($_FILES['fichier_master'])){
         $extension=strrchr($nom_fichier_orgine,".");
         if($extension== ".pdf" || $extension== ".PDF"){
           $fichier_doctorat="doctorat.pdf";
-    
+         
           $requete3=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_doctorat'");
           $verification3=mysqli_num_rows($requete3);
           
@@ -148,21 +112,111 @@ if(!empty($_FILES['fichier_master'])){
         }
         }
 
+        // Ajout de lien
+        require_once("ouverture_bd_pdo.php");
+
+            // lien licence
+        if($url_licence!=""){
+                  $fichier_licence="licence.pdf";
+    
+                  $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+                  $verification->execute(array($auteur,$fichier_licence));
+                  $tab_verification = $verification->fetchALL();
+                  $nombre = count($tab_verification); 
+                  // $nombre=$tab_verification['nombre'];
+                  $verification->closeCursor();
+
+                  if($nombre>0){
+                    $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+                    $requete_mise_a_jour->execute(array(
+                        'fichier_licence'=>$fichier_licence,
+                        'url_licence'=>$url_licence,
+                        'auteur'=>$auteur,
+                        'nom_fichier'=>$fichier_licence
+                    ));
+                    $requete_mise_a_jour->closeCursor();
+                    } 
+                    else{
+                        $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+                        $requete->execute(array(
+                            'fichier_licence'=>$fichier_licence,
+                            'url_licence'=>$url_licence,
+                            'auteur'=>$auteur
+                        ));
+                        $requete->closeCursor();
+                    }
+                        $_SESSION['message_validation_l']="Le fichier pdf est bien enregistré.";
+                }
+
+
+            
+
+                
+
+     // lien master
+    if($url_master!=""){
+        $fichier_master="master.pdf";       
+    
+        $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+        $verification->execute(array($auteur,$fichier_master));
+        $tab_verification = $verification->fetchALL();
+        $nombre = count($tab_verification); 
+        // $nombre=$tab_verification['nombre'];
+        $verification->closeCursor();
+
+        if($nombre>0){
+          $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+          $requete_mise_a_jour->execute(array(
+              'fichier_licence'=>$fichier_master,
+              'url_licence'=>$url_master,
+              'auteur'=>$auteur,
+              'nom_fichier'=>$fichier_master
+          ));
+          $requete_mise_a_jour->closeCursor();
+          } 
+          else{
+              $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+              $requete->execute(array(
+                  'fichier_licence'=>$fichier_master,
+                  'url_licence'=>$url_master,
+                  'auteur'=>$auteur
+              ));
+              $requete->closeCursor();
+          }
+      }
+    
+
 
          // lien doctorat
          if($url_doctorat!=""){
             $fichier_doctorat="doctorat.pdf";
-      
-            $requete3=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_doctorat'");
-            $verification3=mysqli_num_rows($requete3);
-                
-                if($verification3 >0){
-                $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_doctorat', lien='$url_doctorat' WHERE auteur='$auteur' AND nom_fichier='$fichier_doctorat' ");
-                 } 
-                else{
-                  $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_doctorat','$auteur','$url_doctorat')");
-                  }
-                  $_SESSION['message_validation_l']="Le fichier pdf est bien enregistré.";
+    
+            $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+            $verification->execute(array($auteur,$fichier_doctorat));
+            $tab_verification = $verification->fetchALL();
+            $nombre = count($tab_verification); 
+            // $nombre=$tab_verification['nombre'];
+            $verification->closeCursor();
+
+            if($nombre>0){
+              $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+              $requete_mise_a_jour->execute(array(
+                  'fichier_licence'=>$fichier_doctorat,
+                  'url_licence'=>$url_doctorat,
+                  'auteur'=>$auteur,
+                  'nom_fichier'=>$fichier_doctorat
+              ));
+              $requete_mise_a_jour->closeCursor();
+              } 
+              else{
+                  $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+                  $requete->execute(array(
+                      'fichier_licence'=>$fichier_doctorat,
+                      'url_licence'=>$url_doctorat,
+                      'auteur'=>$auteur
+                  ));
+                  $requete->closeCursor();
+              }
           }
 
 

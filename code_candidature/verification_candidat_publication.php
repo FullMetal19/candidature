@@ -44,21 +44,6 @@ if(!empty($_FILES['article_domaine'])){
     }
     }
 
-    if($url_article_domaine!=""){
-        $fichier_licence="article_domaine.pdf";
-            
-        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-        $verification1=mysqli_num_rows($requete1);
-            
-            if($verification1 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_article_domaine' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
-             } 
-            else{
-              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_article_domaine')");
-              }
-              $_SESSION['message_erreur_grade']="Le lien est bien enregistré.";
-    }
-
     if(!empty($_FILES['article_hors_domaine'])){
         $erreur_fichier=$_FILES['article_hors_domaine']['error'];
         if($erreur_fichier==0){
@@ -94,23 +79,6 @@ if(!empty($_FILES['article_domaine'])){
     
     }
 
-    if($url_article_hors_domaine!=""){
-        $fichier_licence="article_hors_domaine.pdf";
-            
-        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-        $verification1=mysqli_num_rows($requete1);
-            
-            if($verification1 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_article_hors_domaine' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
-             } 
-            else{
-              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_article_hors_domaine')");
-              }
-              $_SESSION['message_erreur_article_hors_domaine']="Le lien est bien enregistré.";
-    }
-
-
-
     if(!empty($_FILES['livre_domaine'])){
         $erreur_fichier=$_FILES['livre_domaine']['error'];
         if($erreur_fichier==0){
@@ -144,26 +112,6 @@ if(!empty($_FILES['article_domaine'])){
             }
         }
     }
-
-    if($url_livre_domaine!=""){
-        $fichier_licence="livre_domaine.pdf";
-            
-        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-        $verification1=mysqli_num_rows($requete1);
-            
-            if($verification1 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_livre_domaine' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
-             } 
-            else{
-              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_livre_domaine')");
-              }
-              $_SESSION['message_erreur_livre_domaine']="Le lien est bien enregistré.";
-    }
-
-
-
-
-
 
     if(!empty($_FILES['livre_vulgarisation'])){
         $erreur_fichier=$_FILES['livre_vulgarisation']['error'];
@@ -199,19 +147,151 @@ if(!empty($_FILES['article_domaine'])){
         }
     }
 
+      //                          ********************Ajout lien *****************************
+
+      require_once("ouverture_bd_pdo.php");
+
+
+
+    if($url_article_domaine!=""){
+        $fichier_licence="article_domaine.pdf";
+            
+        $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+        $verification->execute(array($auteur,$fichier_licence));
+        $tab_verification = $verification->fetchALL();
+        $nombre = count($tab_verification); 
+        // $nombre=$tab_verification['nombre'];
+        $verification->closeCursor();
+
+        if($nombre>0){
+          $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+          $requete_mise_a_jour->execute(array(
+              'fichier_licence'=>$fichier_licence,
+              'url_licence'=>$url_article_domaine,
+              'auteur'=>$auteur,
+              'nom_fichier'=>$fichier_licence
+          ));
+          $requete_mise_a_jour->closeCursor();
+          } 
+          else{
+              $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+              $requete->execute(array(
+                  'fichier_licence'=>$fichier_licence,
+                  'url_licence'=>$url_article_domaine,
+                  'auteur'=>$auteur
+              ));
+              $requete->closeCursor();
+          }
+              $_SESSION['message_validation_article_domaine']="Le lien est bien enregistré.";
+    }
+
+   
+
+    if($url_article_hors_domaine!=""){
+        $fichier_licence="article_hors_domaine.pdf";
+            
+        $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+        $verification->execute(array($auteur,$fichier_licence));
+        $tab_verification = $verification->fetchALL();
+        $nombre = count($tab_verification); 
+        // $nombre=$tab_verification['nombre'];
+        $verification->closeCursor();
+
+        if($nombre>0){
+          $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+          $requete_mise_a_jour->execute(array(
+              'fichier_licence'=>$fichier_licence,
+              'url_licence'=>$url_article_hors_domaine,
+              'auteur'=>$auteur,
+              'nom_fichier'=>$fichier_licence
+          ));
+          $requete_mise_a_jour->closeCursor();
+          } 
+          else{
+              $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+              $requete->execute(array(
+                  'fichier_licence'=>$fichier_licence,
+                  'url_licence'=>$url_article_hors_domaine,
+                  'auteur'=>$auteur
+              ));
+              $requete->closeCursor();
+          }
+              $_SESSION['message_validation_article_hors_domaine']="Le lien est bien enregistré.";
+    }
+
+
+
+    
+
+    if($url_livre_domaine!=""){
+        $fichier_licence="livre_domaine.pdf";
+            
+        $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+        $verification->execute(array($auteur,$fichier_licence));
+        $tab_verification = $verification->fetchALL();
+        $nombre = count($tab_verification); 
+        // $nombre=$tab_verification['nombre'];
+        $verification->closeCursor();
+
+        if($nombre>0){
+          $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+          $requete_mise_a_jour->execute(array(
+              'fichier_licence'=>$fichier_licence,
+              'url_licence'=>$url_livre_domaine,
+              'auteur'=>$auteur,
+              'nom_fichier'=>$fichier_licence
+          ));
+          $requete_mise_a_jour->closeCursor();
+          } 
+          else{
+              $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+              $requete->execute(array(
+                  'fichier_licence'=>$fichier_licence,
+                  'url_licence'=>$url_livre_domaine,
+                  'auteur'=>$auteur
+              ));
+              $requete->closeCursor();
+          }
+              $_SESSION['message_validation_livre_domaine']="Le lien est bien enregistré.";
+    }
+
+
+
+
+
+
+   
+
     if($url_livre_vulgarisation!=""){
         $fichier_licence="livre_vulgarisation.pdf";
             
-        $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND nom_fichier='$fichier_licence'");
-        $verification1=mysqli_num_rows($requete1);
-            
-            if($verification1 >0){
-            $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier SET nom_fichier='$fichier_licence', lien='$url_livre_vulgarisation' WHERE auteur='$auteur' AND nom_fichier='$fichier_licence' ");
-             } 
-            else{
-              $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$fichier_licence','$auteur','$url_livre_vulgarisation')");
-              }
-              $_SESSION['message_erreur_livre_vulgarisation']="Le lien est bien enregistré.";
+        $verification=$con->prepare( "SELECT * FROM ec_dossier WHERE auteur=? AND nom_fichier=?");
+        $verification->execute(array($auteur,$fichier_licence));
+        $tab_verification = $verification->fetchALL();
+        $nombre = count($tab_verification); 
+        // $nombre=$tab_verification['nombre'];
+        $verification->closeCursor();
+
+        if($nombre>0){
+          $requete_mise_a_jour=$con->prepare("UPDATE ec_dossier SET nom_fichier=:fichier_licence, lien=:url_licence WHERE auteur=:auteur AND nom_fichier=:fichier_licence ");
+          $requete_mise_a_jour->execute(array(
+              'fichier_licence'=>$fichier_licence,
+              'url_licence'=>$url_livre_vulgarisation,
+              'auteur'=>$auteur,
+              'nom_fichier'=>$fichier_licence
+          ));
+          $requete_mise_a_jour->closeCursor();
+          } 
+          else{
+              $requete=$con->prepare("INSERT INTO ec_dossier VALUES (:fichier_licence,:auteur,:url_licence) ");
+              $requete->execute(array(
+                  'fichier_licence'=>$fichier_licence,
+                  'url_licence'=>$url_livre_vulgarisation,
+                  'auteur'=>$auteur
+              ));
+              $requete->closeCursor();
+          }
+              $_SESSION['message_validation_livre_vulgarisation']="Le lien est bien enregistré.";
     }
 
 
