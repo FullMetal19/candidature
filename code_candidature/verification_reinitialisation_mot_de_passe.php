@@ -12,6 +12,7 @@ require_once("ouverture_bd_pdo.php");
             'mot_de_passe'=>$nouveau_mot_de_passe, 
             'mail'=>$mail                     
         ));
+        $verification->closeCursor();
         $_SESSION['message_validation'] = "Votre mot de passe est changer. Vous pouvez procéder à la connexion.";
         unset($_SESSION['mailpw']);
         header('Location: http://localhost/candidature/connexion/');

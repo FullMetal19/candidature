@@ -19,10 +19,12 @@ if($nb==0){
 }
 else{
     $verifications=$con->prepare("SELECT * FROM ec_connexion WHERE mail=?" );
-    $verifications->execute($mail);
+    $verifications->execute(array($mail));;
             $donnees=$verifications->fetch();
-    $prenom=$donnees['prenom'];
+                $prenom=$donnees['prenom'];
     $nom=$donnees['nom'];
+
+    
     $verifications->closeCursor();
 $sujet = 'Réinitialisation de votre mot de passe.';
 $message = '
@@ -53,7 +55,7 @@ margin-bottom: 10%;">
     <p style="font-size: x-large;
     text-align: justify;
     color:black;">
-     Bonjour ! '.$prenom.' '.$nom.',
+     Bonjour  '.$prenom.' '.$nom.',
     </p>
     <p style="font-size: x-large;
     text-align: justify;
