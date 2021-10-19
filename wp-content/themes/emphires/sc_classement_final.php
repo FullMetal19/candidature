@@ -259,6 +259,36 @@ $id=$_GET['id'];
   th{
     background-color: rgb(10, 107, 49);
   }
+  .bouton_valider{
+      color: white;
+      transition: 1s;
+	 background:rgb(141, 54, 20);
+     padding : 0.4em 1em;
+      
+  }
+  .bouton_valider:hover{
+           background: rgb(10, 107, 49);
+           transform:scale(1.04);
+            color: white;
+            transition: 1s;
+			background:rgb(141, 54, 20);
+  }
+  div.zone_saisir_candidat{
+      text-align:center;
+      margin-bottom:5px;
+     
+  }
+  .text_pour_saisir{
+      margin-right:25px;
+      font-size:large;
+      font-weight:bold; 
+  }
+  .saisir{
+    margin-right:30px; 
+    color:black;
+    padding : 0.4em 2em;
+
+  }
   
 </style>
     <!-- <div class="container"> -->
@@ -301,12 +331,27 @@ $id=$_GET['id'];
             </div>
 
         </div>
+
+    
         <div class="droite" id="droite">
                 <div class="droite_container">
 
 
 
 <h1 class="titre_page">Classement final</h1>
+
+
+<div class="zone_saisir_candidat">
+       <form action="http://localhost/candidature/code_candidature/notification_finale_mail.php?id=<?php echo $id ?>" method="POST">
+
+        <label class="text_pour_saisir">Veuillez saisir le nombre de candidat retenu</label> 
+        <input type="number" name="quota" class="saisir" >
+        <input type="submit" value="Valider" class="bouton_valider"> 
+     
+       </form>
+    </div>
+
+
 <table>
   <tr>
     <th>Nº</th>
