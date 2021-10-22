@@ -34,7 +34,7 @@ if(file_exists('ec_repertoire/'.$mail) && is_dir('ec_repertoire/'.$mail)){
         }
     }
     else{
-        $_SESSION['notificatiion'] = "l'offre : ".$tab_nom_offre['titre']."n'existe plus . Veillez postuler pour d'autre offre";
+        $_SESSION['notificatiion'] = "l'offre : ".$tab_nom_offre['titre']." n'existe plus . Veillez consulter d'autres offres";
     }
         while($fichier = readdir($acces)){
             if(!in_array($fichier,$table)){
@@ -55,8 +55,9 @@ $tab_nom_offre = mysqli_fetch_array($req_nom_offre);
 
 $req_candidat = mysqli_query($con,"SELECT * FROM ec_offre WHERE id_offre='$id_offre' AND id_candidat='$mail'");
 $num_rows_candidat = mysqli_num_rows($req_candidat);
-
+echo "good";
 if($num_rows_candidat >0){
+    echo 'good';
     $req = mysqli_query($con,"UPDATE ec_postuler SET date='$date' WHERE id_candidat='$mail' and id_offre='$id_offre'");
     $_SESSION['notificatiion'] = "Vous venez de repostuler pour l'offre : ".$tab_nom_offre['titre'];
 }
@@ -68,11 +69,11 @@ else{
 }
 
 else{
-    $_SESSION['notificatiion'] = "Votre candidature n'est pas aprouve car la date limite de l'offre a expire. Veillez postuler pour d'autre offre";
+    $_SESSION['notificatiion'] = "Votre candidature n'a pas été envoyé car la date limite de l'offre a expire. Veillez postuler pour d'autre offre";
 }
 unset($_SESSION['info_candidat']);
 
 
 mysqli_close($con);
-header('location: http://localhost/candidature/accueil-offre/');
+// header('location: http://localhost/candidature/accueil-offre/');
 ?> 

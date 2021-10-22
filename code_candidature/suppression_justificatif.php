@@ -11,6 +11,13 @@ $requete1=mysqli_query($con,"SELECT * FROM ec_dossier WHERE auteur='$auteur' AND
                       
                       if($verification1 >0){
                         $requete=mysqli_query($con,"DELETE FROM ec_dossier WHERE nom_fichier='$nom_fichier' AND auteur='$auteur' ");
+
+                        $repertoire = opendir("ec_repertoire") ;
+                        // copy('ec_repertoire/'.$nom_fichier,'sd_corbeille/'.$nom_doc);
+                        unlink('ec_repertoire/'.$auteur.'/'.$nom_fichier);
+                        closedir($repertoire);
+
+
                         $_SESSION['message_validation_l']="Le fichier est bien supprimé.";
                         header('Location:http://localhost/candidature/mon-compte/');
                         exit;

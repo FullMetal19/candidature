@@ -359,7 +359,7 @@ mysqli_close($con);
           <?php  }
           if($tab_query4['finaliser'] == 0){?>               
                 
-                <a href="http://localhost/candidature/code_candidature/verification_finaliser.php?id=<?php echo $id ?>">  <input type="button" name="finaliser" value="Finaliser" class="bouton_finalisation" ></a>
+                <a onclick="return confirm('Si vous finalisez vous pourrez plus changer les notes')" href="http://localhost/candidature/code_candidature/verification_finaliser.php?id=<?php echo $id ?>">  <input type="button" name="finaliser" value="Finaliser" class="bouton_finalisation" ></a>
           <?php  } ?>
         </div>
 
