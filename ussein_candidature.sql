@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 22 oct. 2021 à 11:59
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Généré le : lun. 25 oct. 2021 à 01:03
+-- Version du serveur :  10.6.3-MariaDB
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,8 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ussein_candidature`
+-- Base de données : `ussein_candidature`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ec_admin`
+--
+
+DROP TABLE IF EXISTS `ec_admin`;
+CREATE TABLE IF NOT EXISTS `ec_admin` (
+  `mail` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ec_candidat`
+--
+
+DROP TABLE IF EXISTS `ec_candidat`;
+CREATE TABLE IF NOT EXISTS `ec_candidat` (
+  `mail` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -96,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `ec_connexion` (
   `adresse` varchar(250) NOT NULL COMMENT 'pour status=0: adresse du candidat; pour statut=2:l''ensemble des offres que gère l''admin',
   `image` varchar(100) NOT NULL,
   PRIMARY KEY (`mail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_connexion`
@@ -126,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `ec_dossier` (
   `auteur` varchar(100) NOT NULL,
   `lien` text NOT NULL COMMENT 'si lien !="" donc le fichier est un pdf sinon on a un lien.',
   PRIMARY KEY (`nom_fichier`,`auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_dossier`
@@ -179,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_aid` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_aid`
@@ -203,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_aihd` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_aihd`
@@ -227,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_autre_experience` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_autre_experience`
@@ -252,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_brevet` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_brevet`
@@ -274,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_communication_conference` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_communication_conference`
@@ -300,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_diplome` (
   `note` int(11) NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_diplome`
@@ -326,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_distinction` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_distinction`
@@ -349,7 +370,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_doctorat` (
   `nom` varchar(100) NOT NULL,
   `note` int(11) NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_doctorat`
@@ -390,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_pedagogique` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_experience_pedagogique`
@@ -413,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_experience_recherche` (
   `nom` varchar(100) NOT NULL,
   `note` float NOT NULL,
   `defaut` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_experience_recherche`
@@ -437,7 +458,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_grade` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_grade`
@@ -462,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_ldd` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_ldd`
@@ -486,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_licence_master` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_licence_master`
@@ -512,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_lv` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_lv`
@@ -536,7 +557,7 @@ CREATE TABLE IF NOT EXISTS `ec_note_proccedings` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_note_proccedings`
@@ -560,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `ec_offre` (
   `dateLimite` text NOT NULL,
   `finaliser` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_offre`
@@ -586,7 +607,7 @@ CREATE TABLE IF NOT EXISTS `ec_options` (
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`),
   KEY `autoload` (`autoload`)
-) ENGINE=MyISAM AUTO_INCREMENT=673 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=691 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Déchargement des données de la table `ec_options`
@@ -697,7 +718,7 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (102, 'WPLANG', 'fr_FR', 'yes'),
 (103, 'widget_block', 'a:6:{i:2;a:1:{s:7:\"content\";s:19:\"<!-- wp:search /-->\";}i:3;a:1:{s:7:\"content\";s:159:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Articles récents</h2><!-- /wp:heading --><!-- wp:latest-posts /--></div><!-- /wp:group -->\";}i:4;a:1:{s:7:\"content\";s:233:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Commentaires récents</h2><!-- /wp:heading --><!-- wp:latest-comments {\"displayAvatar\":false,\"displayDate\":false,\"displayExcerpt\":false} /--></div><!-- /wp:group -->\";}i:5;a:1:{s:7:\"content\";s:146:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Archives</h2><!-- /wp:heading --><!-- wp:archives /--></div><!-- /wp:group -->\";}i:6;a:1:{s:7:\"content\";s:151:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Catégories</h2><!-- /wp:heading --><!-- wp:categories /--></div><!-- /wp:group -->\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (104, 'sidebars_widgets', 'a:9:{s:19:\"wp_inactive_widgets\";a:0:{}s:17:\"cspt-sidebar-post\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:17:\"cspt-sidebar-page\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}s:19:\"cspt-sidebar-search\";a:0:{}s:13:\"cspt-footer-1\";a:0:{}s:13:\"cspt-footer-2\";a:0:{}s:13:\"cspt-footer-3\";a:0:{}s:13:\"cspt-footer-4\";a:0:{}s:13:\"array_version\";i:3;}', 'yes'),
-(105, 'cron', 'a:5:{i:1634906218;a:6:{s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1634908297;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1634908300;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635251818;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}s:7:\"version\";i:2;}', 'yes'),
+(105, 'cron', 'a:6:{i:1635125818;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1635165418;a:5:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1635167497;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635167500;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635251818;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}s:7:\"version\";i:2;}', 'yes'),
 (106, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (107, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (108, 'widget_archives', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -711,10 +732,10 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (116, 'widget_nav_menu', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (117, 'widget_custom_html', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (119, 'recovery_keys', 'a:0:{}', 'yes'),
-(121, 'https_detection_errors', 'a:2:{s:23:\"ssl_verification_failed\";a:1:{i:0;s:32:\"La vérification SSL a échoué.\";}s:17:\"bad_response_code\";a:1:{i:0;s:9:\"Not Found\";}}', 'yes'),
+(121, 'https_detection_errors', 'a:1:{s:20:\"https_request_failed\";a:1:{i:0;s:28:\"La demande HTTPS a échoué.\";}}', 'yes'),
 (120, 'theme_mods_twentytwentyone', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1631625136;s:4:\"data\";a:3:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:9:\"sidebar-2\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}}}}', 'yes'),
-(669, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:10:\"no_content\";s:0:\"\";s:11:\"new_bundled\";s:0:\"\";s:7:\"partial\";s:0:\"\";s:8:\"rollback\";s:0:\"\";}s:7:\"current\";s:5:\"5.8.1\";s:7:\"version\";s:5:\"5.8.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.6\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1634900135;s:15:\"version_checked\";s:5:\"5.8.1\";s:12:\"translations\";a:1:{i:0;a:7:{s:4:\"type\";s:4:\"core\";s:4:\"slug\";s:7:\"default\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"5.8.1\";s:7:\"updated\";s:19:\"2021-10-20 22:02:44\";s:7:\"package\";s:64:\"https://downloads.wordpress.org/translation/core/5.8.1/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}}', 'no'),
-(670, '_site_transient_update_themes', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1634900136;s:7:\"checked\";a:4:{s:8:\"emphires\";s:3:\"2.1\";s:14:\"twentynineteen\";s:3:\"2.1\";s:12:\"twentytwenty\";s:3:\"1.8\";s:15:\"twentytwentyone\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:9:\"no_update\";a:3:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.2.1.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:12:\"twentytwenty\";a:6:{s:5:\"theme\";s:12:\"twentytwenty\";s:11:\"new_version\";s:3:\"1.8\";s:3:\"url\";s:42:\"https://wordpress.org/themes/twentytwenty/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/theme/twentytwenty.1.8.zip\";s:8:\"requires\";s:3:\"4.7\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:15:\"twentytwentyone\";a:6:{s:5:\"theme\";s:15:\"twentytwentyone\";s:11:\"new_version\";s:3:\"1.4\";s:3:\"url\";s:45:\"https://wordpress.org/themes/twentytwentyone/\";s:7:\"package\";s:61:\"https://downloads.wordpress.org/theme/twentytwentyone.1.4.zip\";s:8:\"requires\";s:3:\"5.3\";s:12:\"requires_php\";s:3:\"5.6\";}}s:12:\"translations\";a:0:{}}', 'no'),
+(688, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-5.8.1.zip\";s:10:\"no_content\";s:0:\"\";s:11:\"new_bundled\";s:0:\"\";s:7:\"partial\";s:0:\"\";s:8:\"rollback\";s:0:\"\";}s:7:\"current\";s:5:\"5.8.1\";s:7:\"version\";s:5:\"5.8.1\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.6\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1635122564;s:15:\"version_checked\";s:5:\"5.8.1\";s:12:\"translations\";a:1:{i:0;a:7:{s:4:\"type\";s:4:\"core\";s:4:\"slug\";s:7:\"default\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"5.8.1\";s:7:\"updated\";s:19:\"2021-10-20 22:02:44\";s:7:\"package\";s:64:\"https://downloads.wordpress.org/translation/core/5.8.1/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}}', 'no'),
+(689, '_site_transient_update_themes', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1635122565;s:7:\"checked\";a:4:{s:8:\"emphires\";s:3:\"2.1\";s:14:\"twentynineteen\";s:3:\"2.1\";s:12:\"twentytwenty\";s:3:\"1.8\";s:15:\"twentytwentyone\";s:3:\"1.4\";}s:8:\"response\";a:0:{}s:9:\"no_update\";a:3:{s:14:\"twentynineteen\";a:6:{s:5:\"theme\";s:14:\"twentynineteen\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:44:\"https://wordpress.org/themes/twentynineteen/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/theme/twentynineteen.2.1.zip\";s:8:\"requires\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:12:\"twentytwenty\";a:6:{s:5:\"theme\";s:12:\"twentytwenty\";s:11:\"new_version\";s:3:\"1.8\";s:3:\"url\";s:42:\"https://wordpress.org/themes/twentytwenty/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/theme/twentytwenty.1.8.zip\";s:8:\"requires\";s:3:\"4.7\";s:12:\"requires_php\";s:5:\"5.2.4\";}s:15:\"twentytwentyone\";a:6:{s:5:\"theme\";s:15:\"twentytwentyone\";s:11:\"new_version\";s:3:\"1.4\";s:3:\"url\";s:45:\"https://wordpress.org/themes/twentytwentyone/\";s:7:\"package\";s:61:\"https://downloads.wordpress.org/theme/twentytwentyone.1.4.zip\";s:8:\"requires\";s:3:\"5.3\";s:12:\"requires_php\";s:3:\"5.6\";}}s:12:\"translations\";a:0:{}}', 'no'),
 (134, 'auto_core_update_notified', 'a:4:{s:4:\"type\";s:7:\"success\";s:5:\"email\";s:21:\"candidature@gmail.com\";s:7:\"version\";s:5:\"5.8.1\";s:9:\"timestamp\";i:1631536646;}', 'no'),
 (142, '_transient_health-check-site-status-result', '{\"good\":13,\"recommended\":6,\"critical\":0}', 'yes'),
 (160, 'finished_updating_comment_type', '1', 'yes'),
@@ -728,9 +749,9 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (157, '_transient_emphires_merlin_redirect', '1', 'yes'),
 (214, 'merlin_emphires_completed', '1633539392', 'yes'),
 (215, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
-(666, '_site_transient_timeout_theme_roots', '1634901933', 'no'),
-(667, '_site_transient_theme_roots', 'a:4:{s:8:\"emphires\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";s:12:\"twentytwenty\";s:7:\"/themes\";s:15:\"twentytwentyone\";s:7:\"/themes\";}', 'no'),
-(671, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1634900138;s:8:\"response\";a:1:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.2.1\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.2.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"5.0\";s:6:\"tested\";s:5:\"5.8.1\";s:12:\"requires_php\";b:0;}}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:1:{s:9:\"hello.php\";O:8:\"stdClass\":10:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:5:\"1.7.2\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/hello-dolly.1.7.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=2052855\";s:2:\"1x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=2052855\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:66:\"https://ps.w.org/hello-dolly/assets/banner-772x250.jpg?rev=2052855\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"4.6\";}}s:7:\"checked\";a:2:{s:19:\"akismet/akismet.php\";s:6:\"4.1.10\";s:9:\"hello.php\";s:5:\"1.7.2\";}}', 'no'),
+(685, '_site_transient_timeout_theme_roots', '1635124355', 'no'),
+(686, '_site_transient_theme_roots', 'a:4:{s:8:\"emphires\";s:7:\"/themes\";s:14:\"twentynineteen\";s:7:\"/themes\";s:12:\"twentytwenty\";s:7:\"/themes\";s:15:\"twentytwentyone\";s:7:\"/themes\";}', 'no'),
+(690, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1635122566;s:8:\"response\";a:1:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.2.1\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.2.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"5.0\";s:6:\"tested\";s:5:\"5.8.1\";s:12:\"requires_php\";b:0;}}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:1:{s:9:\"hello.php\";O:8:\"stdClass\":10:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:5:\"1.7.2\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/hello-dolly.1.7.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=2052855\";s:2:\"1x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=2052855\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:66:\"https://ps.w.org/hello-dolly/assets/banner-772x250.jpg?rev=2052855\";}s:11:\"banners_rtl\";a:0:{}s:8:\"requires\";s:3:\"4.6\";}}s:7:\"checked\";a:2:{s:19:\"akismet/akismet.php\";s:6:\"4.1.10\";s:9:\"hello.php\";s:5:\"1.7.2\";}}', 'no'),
 (641, '_site_transient_browser_080845ddfc9fd28cc64d421dcdca199d', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"94.0.4606.81\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
 (640, '_site_transient_timeout_browser_080845ddfc9fd28cc64d421dcdca199d', '1635287260', 'no'),
 (637, '_site_transient_timeout_php_check_7772753a7ea0fe5c6dd1e8406c9ba6ba', '1635280686', 'no'),
@@ -813,7 +834,6 @@ INSERT INTO `ec_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (61, 44, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
 (62, 44, '_menu_item_xfn', ''),
 (63, 44, '_menu_item_url', ''),
-(76, 46, '_wp_trash_meta_status', 'publish'),
 (65, 45, '_menu_item_type', 'post_type'),
 (66, 45, '_menu_item_menu_item_parent', '0'),
 (67, 45, '_menu_item_object_id', '38'),
@@ -822,12 +842,7 @@ INSERT INTO `ec_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (70, 45, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
 (71, 45, '_menu_item_xfn', ''),
 (72, 45, '_menu_item_url', ''),
-(75, 46, '_edit_lock', '1632315326:1'),
 (74, 22, '_wp_old_date', '2021-09-16'),
-(77, 46, '_wp_trash_meta_time', '1632315328'),
-(78, 49, '_edit_lock', '1632315567:1'),
-(79, 49, '_wp_trash_meta_status', 'publish'),
-(80, 49, '_wp_trash_meta_time', '1632315615'),
 (97, 65, '_wp_attached_file', '2021/09/banner_cand.png'),
 (98, 65, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1042;s:6:\"height\";i:264;s:4:\"file\";s:23:\"2021/09/banner_cand.png\";s:5:\"sizes\";a:14:{s:6:\"medium\";a:4:{s:4:\"file\";s:22:\"banner_cand-300x76.png\";s:5:\"width\";i:300;s:6:\"height\";i:76;s:9:\"mime-type\";s:9:\"image/png\";}s:5:\"large\";a:4:{s:4:\"file\";s:24:\"banner_cand-1024x259.png\";s:5:\"width\";i:1024;s:6:\"height\";i:259;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:23:\"banner_cand-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:23:\"banner_cand-768x195.png\";s:5:\"width\";i:768;s:6:\"height\";i:195;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-600x780\";a:4:{s:4:\"file\";s:23:\"banner_cand-600x264.png\";s:5:\"width\";i:600;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-600x800\";a:4:{s:4:\"file\";s:23:\"banner_cand-600x264.png\";s:5:\"width\";i:600;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-770x350\";a:4:{s:4:\"file\";s:23:\"banner_cand-770x264.png\";s:5:\"width\";i:770;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-770x635\";a:4:{s:4:\"file\";s:23:\"banner_cand-770x264.png\";s:5:\"width\";i:770;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-770x500\";a:4:{s:4:\"file\";s:23:\"banner_cand-770x264.png\";s:5:\"width\";i:770;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:17:\"cspt-img-770x9999\";a:4:{s:4:\"file\";s:23:\"banner_cand-770x195.png\";s:5:\"width\";i:770;s:6:\"height\";i:195;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-770x770\";a:4:{s:4:\"file\";s:23:\"banner_cand-770x264.png\";s:5:\"width\";i:770;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-300x300\";a:4:{s:4:\"file\";s:23:\"banner_cand-300x264.png\";s:5:\"width\";i:300;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-500x560\";a:4:{s:4:\"file\";s:23:\"banner_cand-500x264.png\";s:5:\"width\";i:500;s:6:\"height\";i:264;s:9:\"mime-type\";s:9:\"image/png\";}s:16:\"cspt-img-800x256\";a:4:{s:4:\"file\";s:23:\"banner_cand-800x256.png\";s:5:\"width\";i:800;s:6:\"height\";i:256;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (83, 52, '_wp_attached_file', '2021/09/USSEIN-LOGO-1.png'),
@@ -977,14 +992,12 @@ INSERT INTO `ec_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (43, 1, '2021-09-22 13:50:07', '2021-09-22 11:50:07', '', 'Mon dossier', '', 'inherit', 'closed', 'closed', '', '41-autosave-v1', '', '', '2021-09-22 13:50:07', '2021-09-22 11:50:07', '', 41, 'http://localhost/candidature/?p=43', 0, 'revision', '', 0),
 (44, 1, '2021-10-01 12:32:12', '2021-09-22 11:57:58', ' ', '', '', 'publish', 'closed', 'closed', '', '44', '', '', '2021-10-01 12:32:12', '2021-10-01 10:32:12', '', 0, 'http://localhost/candidature/?p=44', 2, 'nav_menu_item', '', 0),
 (45, 1, '2021-10-01 12:32:12', '2021-09-22 11:57:58', '', 'Mon profil', '', 'publish', 'closed', 'closed', '', '45', '', '', '2021-10-01 12:32:12', '2021-10-01 10:32:12', '', 0, 'http://localhost/candidature/?p=45', 3, 'nav_menu_item', '', 0),
-(46, 1, '2021-09-22 14:55:28', '2021-09-22 12:55:28', '{\n    \"custom_css[emphires]\": {\n        \"value\": \"div.cspt-title-bar-wrapper.cspt-bg-color-customt:before{\\n\\tbackground-color:white;\\n\\tdisplay:none;\\n}\",\n        \"type\": \"custom_css\",\n        \"user_id\": 1,\n        \"date_modified_gmt\": \"2021-09-22 12:55:23\"\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '4108ea06-6acc-4b55-b7b1-a1f67f5a633e', '', '', '2021-09-22 14:55:28', '2021-09-22 12:55:28', '', 0, 'http://localhost/candidature/?p=46', 0, 'customize_changeset', '', 0),
 (35, 1, '2021-09-22 10:35:58', '2021-09-22 08:35:58', '', 'Fiche a postuler', '', 'publish', 'closed', 'closed', '', 'fiche-a-postuler', '', '', '2021-09-22 10:35:58', '2021-09-22 08:35:58', '', 0, 'http://localhost/candidature/?page_id=35', 0, 'page', '', 0),
 (34, 1, '2021-09-22 10:23:00', '2021-09-22 08:23:00', '', 'Accueil offre', '', 'inherit', 'closed', 'closed', '', '18-revision-v1', '', '', '2021-09-22 10:23:00', '2021-09-22 08:23:00', '', 18, 'http://localhost/candidature/?p=34', 0, 'revision', '', 0),
 (36, 1, '2021-09-22 10:35:58', '2021-09-22 08:35:58', '', 'Fiche a postuler', '', 'inherit', 'closed', 'closed', '', '35-revision-v1', '', '', '2021-09-22 10:35:58', '2021-09-22 08:35:58', '', 35, 'http://localhost/candidature/?p=36', 0, 'revision', '', 0),
 (47, 1, '2021-09-22 14:55:28', '2021-09-22 12:55:28', '', 'emphires', '', 'publish', 'closed', 'closed', '', 'emphires', '', '', '2021-09-22 15:00:15', '2021-09-22 13:00:15', '', 0, 'http://localhost/candidature/2021/09/22/emphires/', 0, 'custom_css', '', 0),
 (50, 1, '2021-09-22 15:00:15', '2021-09-22 13:00:15', '', 'emphires', '', 'inherit', 'closed', 'closed', '', '47-revision-v1', '', '', '2021-09-22 15:00:15', '2021-09-22 13:00:15', '', 47, 'http://localhost/candidature/?p=50', 0, 'revision', '', 0),
 (48, 1, '2021-09-22 14:55:28', '2021-09-22 12:55:28', 'div.cspt-title-bar-wrapper.cspt-bg-color-customt:before{\n	background-color:white;\n	display:none;\n}', 'emphires', '', 'inherit', 'closed', 'closed', '', '47-revision-v1', '', '', '2021-09-22 14:55:28', '2021-09-22 12:55:28', '', 47, 'http://localhost/candidature/?p=48', 0, 'revision', '', 0),
-(49, 1, '2021-09-22 15:00:15', '2021-09-22 13:00:15', '{\n    \"custom_css[emphires]\": {\n        \"value\": \"\",\n        \"type\": \"custom_css\",\n        \"user_id\": 1,\n        \"date_modified_gmt\": \"2021-09-22 13:00:15\"\n    }\n}', '', '', 'trash', 'closed', 'closed', '', '911e9f49-8539-4180-baf8-56e524643602', '', '', '2021-09-22 15:00:15', '2021-09-22 13:00:15', '', 0, 'http://localhost/candidature/?p=49', 0, 'customize_changeset', '', 0),
 (53, 1, '2021-09-22 15:27:07', '2021-09-22 13:27:07', '', 'accueil', '', 'publish', 'closed', 'closed', '', 'accueil', '', '', '2021-09-22 15:27:07', '2021-09-22 13:27:07', '', 0, 'http://localhost/candidature/?page_id=53', 0, 'page', '', 0),
 (54, 1, '2021-09-22 15:27:07', '2021-09-22 13:27:07', '', 'accueil', '', 'inherit', 'closed', 'closed', '', '53-revision-v1', '', '', '2021-09-22 15:27:07', '2021-09-22 13:27:07', '', 53, 'http://localhost/candidature/?p=54', 0, 'revision', '', 0),
 (55, 1, '2021-09-24 13:49:38', '2021-09-24 11:49:38', '', 'Ajout offre', '', 'publish', 'closed', 'closed', '', 'ajout-offre', '', '', '2021-09-24 13:50:12', '2021-09-24 11:50:12', '', 0, 'http://localhost/candidature/?page_id=55', 0, 'page', '', 0),
@@ -1037,7 +1050,7 @@ CREATE TABLE IF NOT EXISTS `ec_postuler` (
   `note` float NOT NULL,
   `date` varchar(30) NOT NULL,
   PRIMARY KEY (`id_offre`,`id_candidat`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `ec_postuler`
@@ -1232,7 +1245,7 @@ CREATE TABLE IF NOT EXISTS `note_age` (
   `note` float NOT NULL,
   `defaut` float NOT NULL,
   PRIMARY KEY (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `note_age`

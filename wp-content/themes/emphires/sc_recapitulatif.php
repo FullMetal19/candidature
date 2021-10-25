@@ -155,6 +155,12 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     <title>Document</title>
 </head>
 <style>
+    body{
+        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-position: 0;
+        background-repeat: repeat-y;
+        background-size: contain;
+    }
      .cspt-title-bar-wrapper{
                display: none;
           }         
@@ -162,8 +168,6 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        color:black;
-        background-color: white;
     }
     div.fichier_recapitulatif{
         display:flex;
@@ -171,7 +175,8 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
         gap:4em 0;
         padding: 1% 1%;
         margin: 2% 8%;
-        box-shadow: 2px 2px 10px gray;    
+        box-shadow: 2px 2px 10px gray;  
+        background-color: rgba(255,255,255,0.8);  
     }
     div.bordure_interne_du_fichier{
        padding: 2% 4%;

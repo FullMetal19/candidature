@@ -28,6 +28,15 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
 <link rel="profile" href="<?php echo esc_url('https://gmpg.org/xfn/11') ?>">
 <?php wp_head(); ?>
 </head>
+<style>
+	.cspt-responsive-header-bgcolor-white{
+		/* background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-position: 0;
+        background-repeat: repeat-y;
+        background-size: cover; */
+		background-color: #333;
+	}
+</style>
 <body <?php body_class(); ?>>
 <?php cspt_preloader(); ?>
 <?php 

@@ -31,6 +31,12 @@ $tab_genre = array('Masculin','Feminin');
 </head>
 
 <style>
+    body{
+        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-position: 0;
+        background-repeat: repeat-y;
+        background-size: contain;
+    }
     *{
         margin:0;
         padding:0;
@@ -192,6 +198,7 @@ div.case{
       align-items: center;
       padding:1em 2em;
       box-shadow:0 0 20px gray;
+    background-color: rgba(255,255,255,0.8);
   }
    div.critere{
     width: 100%;

@@ -151,18 +151,23 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Postuler</title>
 </head>
 <style>
+    body{
+        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-position: 0;
+        background-repeat: repeat-y;
+        background-size: contain;
+    }
     *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         color:black;
-        background-color: white;
     }
     div.fichier_recapitulatif{
-        background-color:rgba(10,107,49,0.5);
+        background-color:rgba(255,255,255,0.8);
         display:flex;
         flex-direction:column;
         gap:4em 0;

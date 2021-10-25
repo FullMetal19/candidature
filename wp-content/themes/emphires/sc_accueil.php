@@ -6,6 +6,12 @@ get_header();
 ?>
 
      <style>
+          body{
+        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-position: 0;
+        background-repeat: repeat-y;
+        background-size: contain;
+    }
           *{
                margin: 0;
                padding: 0;
@@ -16,18 +22,22 @@ get_header();
      .presentation{
           width: 100%;
     height: 300px;
-    margin: 5%  auto;
+    margin: 5%  0%;
     box-shadow: 0px 15px 10px -5px #777;
     background-color: #EDEDED;
     background-size: cover;
     /* background-attachment: scroll; */
     animation: fondu 15s ease-in-out infinite both;
      }
+     div.offre{
+          width: 100%;
+     }
      .contener{
           display: grid;
           grid-template-rows: auto auto;
           width:100%;
-          margin: 2% 10%;
+          margin: -3% 10%;
+          margin-bottom: 2%;
      }
 
      .offre h1 {
@@ -91,6 +101,8 @@ get_header();
      }
      </style>
 
+<body>
+     
 
      <div class="contener">
             <div class="presentation"></div>
@@ -109,6 +121,7 @@ get_header();
             <?php } ?>
             </div>
      </div>
+     </body>
 
 <?php
   get_footer();
