@@ -170,7 +170,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
       
     
     body{
-        background-image:url("http://localhost/candidature/wp-content/uploads/2021/09/background-scaled.jpg");
+        background-image:url("http://localhost/candidature/wp-content/uploads/2021/10/background.jpg");
     }
     div.fichier_recapitulatif{
         /* background-color:rgba(10,107,49,0.5) */

@@ -80,5 +80,5 @@ unset($_SESSION['info_candidat']);
 
 
 mysqli_close($con);
-// header('location: http://localhost/candidature/accueil-offre/');
+header('location: http://localhost/candidature/accueil-offre/');
 ?> 

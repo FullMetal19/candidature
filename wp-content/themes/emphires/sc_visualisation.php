@@ -20,7 +20,7 @@ $tab3=mysqli_fetch_array($requete3);
     }
     body{
         
-        background-image: url('http://localhost/candidature/wp-content/uploads/2021/09/background-scaled.jpg');
+        background-image: url('http://localhost/candidature/wp-content/uploads/2021/10/background.jpg');
         background-position: 0;
         background-repeat: no-repeat;
         background-size: cover;
