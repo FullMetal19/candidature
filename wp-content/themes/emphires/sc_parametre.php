@@ -266,8 +266,8 @@ rgb(192, 206, 0); -->
                     <input class="form-control" type="text" name="per_ufr" id="per_ufr" required>
                 </div>
                 <div class="form-group">
-                    <label for="per_ot_de_passe">Mot de passe</label>
-                    <input class="form-control" type="password" name="per_ot_de_passe" id="per_ot_de_passe" required>
+                    <label for="per_mot_de_passe">Mot de passe</label>
+                    <input class="form-control" type="password" name="per_mot_de_passe" id="per_mot_de_passe" required>
                 </div>
             
       </div>

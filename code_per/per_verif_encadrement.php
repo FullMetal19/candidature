@@ -39,7 +39,7 @@ if(isset($_POST['lien_DES'])){
 
 
 // récupération information de fichier
-$auteur= $_SESSION['matricule'];
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 $identifiant_PER = $_SESSION['matricule'];
 
@@ -58,7 +58,7 @@ if(!empty($_FILES['fileLicence'])){
       
       
       $chemin_fichier_origine=$_FILES['fileLicence']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -93,7 +93,7 @@ if(!empty($_FILES['fileIngenieur'])){
       
       
       $chemin_fichier_origine=$_FILES['fileIngenieur']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -129,7 +129,7 @@ if(!empty($_FILES['fileMaster'])){
       
       
       $chemin_fichier_origine=$_FILES['fileMaster']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -164,7 +164,7 @@ if(!empty($_FILES['fileDED'])){
           
           
           $chemin_fichier_origine=$_FILES['fileDED']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
     
@@ -200,7 +200,7 @@ if(!empty($_FILES['fileDoctoratU'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDoctoratU']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -229,14 +229,14 @@ if(!empty($_FILES['fileDES'])){
     $nom_fichier_orgine=$_FILES['fileDES']['name'];
     $extension=strrchr($nom_fichier_orgine,".");
     if($extension== ".pdf" || $extension== ".PDF"){
-        $nom_fichier="des.pdf";                              //Modifier le nom du fichier en fonction du critère
+        $nom_fichier="desa.pdf";                              //Modifier le nom du fichier en fonction du critère
 
       $requete1=mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$identifiant_PER' AND nom_fichier='$nom_fichier'");
       $verification1=mysqli_num_rows($requete1);
       
       
       $chemin_fichier_origine=$_FILES['fileDES']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -456,7 +456,7 @@ if($url_doctorat_unique!=""){
 
 // insertion -	DES
 if($url_des!=""){
-    $fichier_licence="des.pdf";          //nom fichier à enregistrer  
+    $fichier_licence="desa.pdf";          //nom fichier à enregistrer  
 
     $verification=$con->prepare( "SELECT * FROM ec_dossier_per WHERE matricule=? AND nom_fichier=?");
     $verification->execute(array($identifiant_PER,$fichier_licence));
@@ -491,5 +491,6 @@ if($url_des!=""){
           $_SESSION['message_validation_secondaire']="Le lien est bien enregistré.";
   }
 
-  header("location :".$_SERVER['HTTP_REFERER']);
+  header("location: ".$_SERVER['HTTP_REFERER']);      
+
 ?>

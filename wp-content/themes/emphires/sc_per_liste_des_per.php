@@ -11,6 +11,7 @@
         <th>UFR</th>
         <th>EMAIL</th>
         <th>NOTE</th>
+        <th></th>
     </tr>
     <?php
     $con = mysqli_connect("localhost","root","","ussein_candidature");
@@ -18,20 +19,34 @@
     $result = mysqli_query($con, $query);
     $i=1;
     while ($ligne1 =  mysqli_fetch_array ($result)) { ?>
-         <td><?php echo $i?></td>
+    
+         <tr> 
+        <td><?php echo $i?></td>
         <td><?php echo $ligne1['matricule'] ?></td>
         <td><?php echo $ligne1['prenom'] ?></td>
         <td> <?php echo $ligne1['nom'] ?> </td>
         <td> <?php echo $ligne1['ufr'] ?> </td>
         <td><?php echo $ligne1['email'] ?></td>
         <td><?php echo $ligne1['note'] ?></td>
-        </a>
+        <td class="lien_consulter"><a href='http://localhost/candidature/notation_per?matricule=<?php echo $ligne1['matricule'] ;?>&mail=<?php echo $ligne1['email'] ;?>' >Consulter </a></td>
     </tr>
+
 
     <?php $i+=1; } ?>
   </table>
 
   <style>
+      .lien_Consulter{ 
+          width:5%;
+      }
+      .lien_Consulter a{
+      text-decoration: none;
+      background-color: rgb(192, 206, 0);
+      padding: 0 25px;
+      font-weight: bold;
+
+    }
+
       *,* ::before,*::after{
     box-sizing: border-box;
   }
@@ -44,7 +59,7 @@
   th,td{
     padding: 3px;
     text-align: left;
-    border: solid 1px green;
+    border: solid 1px grey;
    
   }
   tr:nth-child(odd){

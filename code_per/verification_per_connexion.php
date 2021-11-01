@@ -18,9 +18,9 @@ catch(Exception $e)
 
 
 
-if(!empty($matricule) && !empty($mot_de_passe)){
+// if(!empty($matricule) && !empty($mot_de_passe)){
 // Requete préparé de la vérification des données saisies par l'utilisateur
-    $verification=$con->prepare( "SELECT * FROM ec_per_connexion WHERE matricule=? AND mot_de_passe=?");
+    $verification=$con->prepare( "SELECT * FROM ec_connexion_per WHERE matricule=? AND mot_de_passe=?");
     $verification->execute(array($matricule,$mot_de_passe));
     $tab_verification = $verification->fetchALL();
     $nombre = count($tab_verification); 
@@ -28,28 +28,29 @@ if(!empty($matricule) && !empty($mot_de_passe)){
 
     if($nombre!=0){
         
-        $verifications=$con->prepare( "SELECT * FROM ec_per_connexion WHERE matricule=? AND mot_de_passe=?");
+        $verifications=$con->prepare( "SELECT * FROM ec_connexion_per WHERE matricule=? AND mot_de_passe=?");
         $verifications->execute(array($matricule,$mot_de_passe));
         $donnees=$verifications->fetch();
 
         // Déclaration des variables session (à continuer)
         $_SESSION['per_nom'] = $donnees['nom'];
         $_SESSION['per_prenom'] = $donnees['prenom'];
-        $_SESSION['per_matricule'] = $donnees['matricule'];
-        $_SESSION['per_mail'] = $donnees['mail'];
+        $_SESSION['matricule'] = $donnees['matricule'];
+        $_SESSION['per_mail'] = $donnees['email'];
         $_SESSION['per_ufr'] = $donnees['ufr'];
         $verifications->closeCursor();
-
-        header("Location http://localhost/candidature/.......");
-    }else{
-        $_SESSION['per_erreur'] = "Les informations saisies ne sont pas valide.";
-        header("location :".$_SERVER['HTTP_REFERER']);
-    }
-
+  
+   header("Location: http://localhost/candidature/document_per_prod/");
 }else{
-    $_SESSION['per_erreur'] = "La matricule et/ou le Mot de passe ne peuvent pas être nuls.";
-    header("location :".$_SERVER['HTTP_REFERER']);
+    $_SESSION['per_erreur'] = "Les informations saisies ne sont pas valide.";
+    header("location: ".$_SERVER['HTTP_REFERER']);
+    // echo "condition else";
 }
+
+// }else{
+//     $_SESSION['per_erreur'] = "La matricule et/ou le Mot de passe ne peuvent pas être nuls.";
+//     header("location: ".$_SERVER['HTTP_REFERER']);
+// }
 
 
 ?>

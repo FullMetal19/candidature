@@ -5,7 +5,7 @@ $url_Brevet=$_POST['lien_brevet'];
 $url_Distinction=$_POST['lien_distinction'];
 
 
-// $auteur= $_SESSION['mail'];
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 
 $identifiant_PER = $_SESSION['matricule'];
@@ -27,7 +27,7 @@ if(!empty($_FILES['fileBrevet'])){
       
       
       $chemin_fichier_origine=$_FILES['fileBrevet']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -63,7 +63,7 @@ if(!empty($_FILES['fileDistinction'])){
       
 
       $chemin_fichier_origine=$_FILES['fileDistinction']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -164,7 +164,8 @@ if(!empty($_FILES['fileDistinction'])){
               $_SESSION['message_erreur_coordonnateur']="Le lien est bien enregistré.";
             }        
 
-header("location :".$_SERVER['HTTP_REFERER']);
+            header("location: ".$_SERVER['HTTP_REFERER']);      
+
 
 
 

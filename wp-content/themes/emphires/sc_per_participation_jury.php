@@ -3,9 +3,10 @@
 
 session_start();
 // get_header();
-$auteur ="mouhamed.sane@etu.ussein.edu.sn";
+$auteur =$_SESSION['matricule'];
+$mail=$_SESSION['per_email'];
 $title="";
-$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$auteur.'/';
+$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$mail.'/';
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $lien_suppression="http://localhost/candidature/code_per/suppression_justificatif_per.php/?fiche=";
 
@@ -47,6 +48,19 @@ else  if(isset($selecteur_Master_ou_Equivalent_mjd['nom_fichier'])){
     $Master_ou_Equivalent_mjd= $lien.$selecteur_Master_ou_Equivalent_mjd['nom_fichier'];
 }
 
+         
+                $requete_docteur = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur.pdf'");
+                $selecteur_docteur = mysqli_fetch_array($requete_docteur);
+                
+                $docteur="";
+                if(($selecteur_docteur['lien']!="")){
+                    $docteur=$selecteur_docteur['lien'] ;                         
+                }
+                else if(isset($selecteur_docteur['nom_fichier'])){
+                
+                    $docteur= $lien.$selecteur_docteur['nom_fichier'];
+                }
+                
 
 
 
@@ -75,6 +89,20 @@ else  if(isset($selecteur_DES['nom_fichier'])){
 
     $DES= $lien.$selecteur_DES['nom_fichier'];
 }
+
+$requete_docteurMPOV = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur_MPOV.pdf'");
+$selecteur_docteurMPOV = mysqli_fetch_array($requete_docteurMPOV);
+
+$docteurMPOV="";
+if(($selecteur_docteurMPOV['lien']!="")){
+    $docteurMPOV=$selecteur_docteurMPOV['lien'] ;                         
+}
+else if(isset($selecteur_docteurMPOV['nom_fichier'])){
+
+    $docteurMPOV= $lien.$selecteur_docteurMPOV['nom_fichier'];
+}
+
+
 
 //   Verification et recuperation d'un fichier
 $requete_Evaluation_These_Doctorat_Unique = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='E_T_D_U.pdf'");
@@ -645,24 +673,6 @@ else  if(isset($selecteur_Evaluation_These_Doctorat_Unique['nom_fichier'])){
                 <!-- Fin critère -->
 
 
-                
-                <?php
-                
-                $requete_docteurMPOV = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur_MPOV.pdf'");
-                $selecteur_docteurMPOV = mysqli_fetch_array($requete_docteurMPOV);
-                
-                $docteurMPOV="";
-                if(($selecteur_docteurMPOV['lien']!="")){
-                    $docteurMPOV=$selecteur_docteurMPOV['lien'] ;                         
-                }
-                else if(isset($selecteur_docteurMPOV['nom_fichier'])){
-                
-                    $docteurMPOV= $lien.$selecteur_docteurMPOV['nom_fichier'];
-                }
-                
-
-                ?>
-
                    
                 <!-- case d'un critere -->
                 <div class="col-12 col-sm-6 col-lg-4  ">
@@ -732,22 +742,7 @@ else  if(isset($selecteur_Evaluation_These_Doctorat_Unique['nom_fichier'])){
 
 
               
-                <?php
                 
-                $requete_docteur = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur.pdf'");
-                $selecteur_docteur = mysqli_fetch_array($requete_docteur);
-                
-                $docteur="";
-                if(($selecteur_docteur['lien']!="")){
-                    $docteur=$selecteur_docteur['lien'] ;                         
-                }
-                else if(isset($selecteur_docteur['nom_fichier'])){
-                
-                    $docteur= $lien.$selecteur_docteur['nom_fichier'];
-                }
-                
-
-                ?>
 
                    
                 <!-- case d'un critere -->

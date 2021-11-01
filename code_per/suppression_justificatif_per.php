@@ -1,11 +1,11 @@
 
 <?php
-// session_start();
+session_start();
 
 $nom_fichier=$_GET['fiche'];
-// $auteur=$_SESSION['mail'];
 echo $nom_fichier;
-$auteur ='mouhamed.sane@etu.ussein.edu.sn';
+$auteur =$_SESSION['matricule'];
+$mail=$_SESSION['per_mail'];
 
 $con=mysqli_connect('localhost','root','','ussein_candidature');
 
@@ -24,13 +24,15 @@ $requete1=mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$aute
 
 
                         $_SESSION['message_validation_l']="Le fichier est bien supprimé.";
-                        // header('Location:http://localhost/candidature/mon-compte/');
+                        header("location: ".$_SERVER['HTTP_REFERER']);
+
                         exit;
                        } 
                       else{
                           echo 'bad';
                         $_SESSION['message_validation_l']="Le fichier n'existe pas.";
-                        // header('Location:http://localhost/candidature/mon-compte/');
+                        header("location: ".$_SERVER['HTTP_REFERER']);
+
                         exit;
                 }
 

@@ -14,7 +14,7 @@ $url_Master=$_POST['lien_master'];
 $url_DocteurMPOV=$_POST['lien_docteurMPOV'];
 $url_Docteur=$_POST['lien_docteur'];
 
-
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 $identifiant_PER = $_SESSION['matricule'];
 
@@ -34,7 +34,7 @@ if(!empty($_FILES['file_D_I_Ou_E'])){
       
       
       $chemin_fichier_origine=$_FILES['file_D_I_Ou_E']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -70,7 +70,7 @@ if(!empty($_FILES['file_M_ou_E'])){
       
 
       $chemin_fichier_origine=$_FILES['file_M_ou_E']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -105,7 +105,7 @@ if(!empty($_FILES['file_M_ou_E'])){
           
     
           $chemin_fichier_origine=$_FILES['file_d_en_mpov']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
               
@@ -141,7 +141,7 @@ if(!empty($_FILES['file_M_ou_E'])){
           
     
           $chemin_fichier_origine=$_FILES['file_DES']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
               
@@ -176,7 +176,7 @@ if(!empty($_FILES['file_E_T_D_U'])){
       
 
       $chemin_fichier_origine=$_FILES['file_E_T_D_U']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -211,7 +211,7 @@ if(!empty($_FILES['fileIngenieur'])){
       
       
       $chemin_fichier_origine=$_FILES['fileIngenieur']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -247,7 +247,7 @@ if(!empty($_FILES['fileMaster'])){
       
 
       $chemin_fichier_origine=$_FILES['fileMaster']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -284,7 +284,7 @@ if(!empty($_FILES['fileDocteurMPOV'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDocteurMPOV']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -320,7 +320,7 @@ if(!empty($_FILES['fileDocteur'])){
       
 
       $chemin_fichier_origine=$_FILES['fileDocteur']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_per/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_per/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -665,6 +665,7 @@ if(!empty($_FILES['fileDocteur'])){
                       $_SESSION['message_erreur_coordonnateur']="Le lien est bien enregistré.";
                     }        
 
- header("location :".$_SERVER['HTTP_REFERER']);;
+                    header("location: ".$_SERVER['HTTP_REFERER']);      
+
 
 ?>

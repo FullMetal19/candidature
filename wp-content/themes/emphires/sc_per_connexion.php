@@ -1,7 +1,9 @@
 <?php
 /* template name:sc_per_connexion */
+session_start();
+get_header();
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +24,12 @@
             <form action="http://localhost/candidature/code_per/verification_per_connexion.php" method="POST" >
                 <div class="mb-3">
                     <label for="matricule" class="form-label">Matricule</label>
-                    <input type="text" class="form-control" id="Matricule" aria-describedby="matriculeHelp">
+                    <input type="text" name="matricule" class="form-control" id="Matricule" aria-describedby="matriculeHelp">
                     <!-- <div id="matriculeHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="mot_de_passe" class="form-control" id="exampleInputPassword1">
                 </div>
                 
                 <button type="submit" class="btn btn-success">Submit</button>

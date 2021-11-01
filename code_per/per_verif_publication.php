@@ -16,7 +16,7 @@ $url_conferencier_inter=$_POST['lien_conferencier_inter'];
 
 
 
-// $auteur= $_SESSION['mail'];
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 $identifiant_PER = $_SESSION['matricule'];
 
@@ -34,7 +34,7 @@ if(!empty($_FILES['fileIndexe'])){
       
       
       $chemin_fichier_origine=$_FILES['fileIndexe']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -70,7 +70,7 @@ if(!empty($_FILES['fileNonIndexe'])){
       
 
       $chemin_fichier_origine=$_FILES['fileNonIndexe']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -105,7 +105,7 @@ if(!empty($_FILES['fileNonIndexe'])){
           
     
           $chemin_fichier_origine=$_FILES['fileProceeding']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
               
@@ -113,7 +113,7 @@ if(!empty($_FILES['fileNonIndexe'])){
               $requete_mise_a_jour=mysqli_query($con,"UPDATE ec_dossier_per SET nom_fichier='$nom_fichier', lien='' WHERE matricule='$identifiant_PER' AND nom_fichier='$nom_fichier'");
                } 
               else{
-                $requete=mysqli_query($con,"INSERT INTO ec_dossier VALUES ('$nom_fichier',$identifiant_PER','')");
+                $requete=mysqli_query($con,"INSERT INTO ec_dossier_per VALUES ('$nom_fichier','$identifiant_PER','')");
                 }
 
             }
@@ -141,7 +141,7 @@ if(!empty($_FILES['fileNonIndexe'])){
           
     
           $chemin_fichier_origine=$_FILES['fileChapitre']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
               
@@ -176,7 +176,7 @@ if(!empty($_FILES['fileMelange'])){
       
 
       $chemin_fichier_origine=$_FILES['fileMelange']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -212,7 +212,7 @@ if(!empty($_FILES['fileOuvrage'])){
       
 
       $chemin_fichier_origine=$_FILES['fileOuvrage']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -248,7 +248,7 @@ if(!empty($_FILES['fileRevue'])){
       
 
       $chemin_fichier_origine=$_FILES['fileRevue']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -283,7 +283,7 @@ if(!empty($_FILES['fileFicheTechnique'])){
       
 
       $chemin_fichier_origine=$_FILES['fileFicheTechnique']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -322,7 +322,7 @@ if(!empty($_FILES['fileVulgarisation'])){
       
 
       $chemin_fichier_origine=$_FILES['fileVulgarisation']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -359,7 +359,7 @@ if(!empty($_FILES['fileVulgarisation'])){
               
         
               $chemin_fichier_origine=$_FILES['fileconf_internationales']['tmp_name'];
-              $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+              $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
         
               if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
                   
@@ -396,7 +396,7 @@ if(!empty($_FILES['fileconf_nationales'])){
       
 
       $chemin_fichier_origine=$_FILES['fileconf_nationales']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
           
@@ -433,7 +433,7 @@ if(!empty($_FILES['fileconf_nationales'])){
               
         
               $chemin_fichier_origine=$_FILES['fileconferencier_inter']['tmp_name'];
-              $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+              $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
         
               if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
                   
@@ -869,7 +869,7 @@ if(!empty($_FILES['fileconf_nationales'])){
                                       $_SESSION['message_erreur_coordonnateur']="Le lien est bien enregistré.";
                                     }
 
- header("location :".$_SERVER['HTTP_REFERER']);       
+                                    header("location: ".$_SERVER['HTTP_REFERER']);      
     
     
     

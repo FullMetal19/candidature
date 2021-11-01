@@ -2,17 +2,12 @@
 /* template name:sc_per_developpement_institutionnel*/
 
 session_start();
-// get_header();
-// $auteur =$_SESSION['matricule'];
-// $auteur ='mouhamed.sane@etu.ussein.edu.sn';
-// $title="";
-// $lien = 'http://localhost/sc_per/repertoire_per/'.$auteur.'/';
-// $con = mysqli_connect("localhost","root","","ussein_candidature");
-// $lien_suppression="http://localhost/sc_per/suppression_justificatif_per.php/?fiche=";
+
 
 $auteur =$_SESSION['matricule'];
+$mail=$_SESSION['per_email'];
 $title="";
-$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$auteur.'/';
+$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$mail.'/';
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $lien_suppression="http://localhost/candidature/code_per/suppression_justificatif_per.php/?fiche=";
 

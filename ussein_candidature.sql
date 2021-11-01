@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 01 nov. 2021 à 17:19
+-- Généré le :  lun. 01 nov. 2021 à 21:33
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -144,7 +144,7 @@ INSERT INTO `ec_connexion` (`prenom`, `nom`, `mail`, `mot_de_passe`, `telephone`
 
 DROP TABLE IF EXISTS `ec_connexion_per`;
 CREATE TABLE IF NOT EXISTS `ec_connexion_per` (
-  `matricule` int(11) NOT NULL,
+  `matricule` varchar(255) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -158,8 +158,9 @@ CREATE TABLE IF NOT EXISTS `ec_connexion_per` (
 --
 
 INSERT INTO `ec_connexion_per` (`matricule`, `nom`, `prenom`, `email`, `ufr`, `mot_de_passe`, `note`) VALUES
-(221, 'MANE', 'mamadou yaya', 'mamadou.mane@etu.ussein.edu.sn', 'SFI', '1234', 100),
-(333, 'niang', 'al housseynou', 'niang@etu.ussein.edu.sn', 'SFI', '4456', 100);
+('221', 'MANE', 'mamadou yaya', 'mamadou.mane@etu.ussein.edu.sn', 'SFI', '1234', 100),
+('333', 'niang', 'al housseynou', 'niang@etu.ussein.edu.sn', 'SFI', '4456', 100),
+('AZ12345', 'DISI', 'Stage', 'stage@disi.ussein', 'USSEIN', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -201,6 +202,57 @@ CREATE TABLE IF NOT EXISTS `ec_dossier_per` (
   `matricule` varchar(255) NOT NULL,
   `lien` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `ec_dossier_per`
+--
+
+INSERT INTO `ec_dossier_per` (`nom_fichier`, `matricule`, `lien`) VALUES
+('A-S-Indexe.pdf', '', ''),
+('A-S-Indexe.pdf', 'AZ12345', ''),
+('A-S-NonIndexe.pdf', 'AZ12345', ''),
+('conf_nationales.pdf', 'AZ12345', ''),
+('Chapitre.pdf', 'AZ12345', ''),
+('Melange.pdf', 'AZ12345', ''),
+('Ouvrage.pdf', 'AZ12345', ''),
+('Revue.pdf', 'AZ12345', ''),
+('FicheTechnique.pdf', 'AZ12345', ''),
+('conf_internationales.pdf', 'AZ12345', ''),
+('conferencier_inter.pdf', 'AZ12345', ''),
+('Proceeding.pdf', 'AZ12345', ''),
+('licence.pdf', 'AZ12345', ''),
+('ingenieur.pdf', 'AZ12345', ''),
+('master.pdf', 'AZ12345', ''),
+('diplome_etat_docteur.pdf', 'AZ12345', ''),
+('doctorat_unique.pdf', 'AZ12345', ''),
+('desa.pdf', 'AZ12345', ''),
+('Diplome_Ingenieur_Ou_Equivalent.pdf', 'AZ12345', ''),
+('Master_ou_Equivalent.pdf', 'AZ12345', ''),
+('DES.pdf', 'AZ12345', ''),
+('E_T_D_U.pdf', 'AZ12345', ''),
+('Docteur_MPOV.pdf', 'AZ12345', ''),
+('Docteur.pdf', 'AZ12345', ''),
+('responsable_niveau.pdf', 'AZ12345', ''),
+('responsable_formation.pdf', 'AZ12345', ''),
+('chef_departement.pdf', 'AZ12345', ''),
+('directeur_etudes_if.pdf', 'AZ12345', ''),
+('directeur_etudes_iu.pdf', 'AZ12345', ''),
+('a_directeur_adjoint_u.pdf', 'AZ12345', ''),
+('directeur_central.pdf', 'AZ12345', ''),
+('responsable_form_doct.pdf', 'AZ12345', ''),
+('directeur_revue.pdf', 'AZ12345', ''),
+('directeur_lab_chef_service.pdf', 'AZ12345', ''),
+('directeur_ecole_doct.pdf', 'AZ12345', ''),
+('chef_etablissement_1.pdf', 'AZ12345', ''),
+('chef_etablissement_2.pdf', 'AZ12345', ''),
+('Promotion-P.pdf', 'AZ12345', ''),
+('Promotion-R.pdf', 'AZ12345', ''),
+('Promotion-G.pdf', 'AZ12345', ''),
+('service-C.pdf', 'AZ12345', ''),
+('Capacite-M-R-P.pdf', 'AZ12345', ''),
+('Brevet.pdf', 'AZ12345', ''),
+('Distinction.pdf', 'AZ12345', ''),
+('Vulgarisation.pdf', 'AZ12345', '');
 
 -- --------------------------------------------------------
 
@@ -874,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `ec_options` (
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`),
   KEY `autoload` (`autoload`)
-) ENGINE=MyISAM AUTO_INCREMENT=756 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=761 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Déchargement des données de la table `ec_options`
@@ -985,7 +1037,7 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (102, 'WPLANG', 'fr_FR', 'yes'),
 (103, 'widget_block', 'a:6:{i:2;a:1:{s:7:\"content\";s:19:\"<!-- wp:search /-->\";}i:3;a:1:{s:7:\"content\";s:159:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Articles récents</h2><!-- /wp:heading --><!-- wp:latest-posts /--></div><!-- /wp:group -->\";}i:4;a:1:{s:7:\"content\";s:233:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Commentaires récents</h2><!-- /wp:heading --><!-- wp:latest-comments {\"displayAvatar\":false,\"displayDate\":false,\"displayExcerpt\":false} /--></div><!-- /wp:group -->\";}i:5;a:1:{s:7:\"content\";s:146:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Archives</h2><!-- /wp:heading --><!-- wp:archives /--></div><!-- /wp:group -->\";}i:6;a:1:{s:7:\"content\";s:151:\"<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Catégories</h2><!-- /wp:heading --><!-- wp:categories /--></div><!-- /wp:group -->\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (104, 'sidebars_widgets', 'a:9:{s:19:\"wp_inactive_widgets\";a:0:{}s:17:\"cspt-sidebar-post\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:17:\"cspt-sidebar-page\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}s:19:\"cspt-sidebar-search\";a:0:{}s:13:\"cspt-footer-1\";a:0:{}s:13:\"cspt-footer-2\";a:0:{}s:13:\"cspt-footer-3\";a:0:{}s:13:\"cspt-footer-4\";a:0:{}s:13:\"array_version\";i:3;}', 'yes'),
-(105, 'cron', 'a:6:{i:1635781018;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1635813418;a:4:{s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1635856618;a:2:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635858697;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635858700;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
+(105, 'cron', 'a:6:{i:1635802618;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1635813418;a:4:{s:18:\"wp_https_detection\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1635856618;a:2:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635858697;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1635858700;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}s:7:\"version\";i:2;}', 'yes'),
 (106, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (107, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (108, 'widget_archives', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -1024,7 +1076,7 @@ INSERT INTO `ec_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (729, '_transient_dash_v2_bd94b8f41e74bae2f4dc72e9bd8379af', '<div class=\"rss-widget\"><p><strong>Erreur RSS :</strong> WP HTTP Error: cURL error 28: Operation timed out after 10012 milliseconds with 3759 bytes received</p></div><div class=\"rss-widget\"><p><strong>Erreur RSS :</strong> WP HTTP Error: cURL error 28: Operation timed out after 10000 milliseconds with 6558 bytes received</p></div>', 'no'),
 (719, 'cspt-merlin-all-done', 'yes', 'yes'),
 (720, 'cspt-ratings-done', 'yes', 'yes'),
-(726, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1635811615', 'no'),
+(726, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1635832148', 'no'),
 (747, '_site_transient_timeout_browser_b2c0be2b70fa1c41f19983d9350123b1', '1636372600', 'no'),
 (748, '_site_transient_browser_b2c0be2b70fa1c41f19983d9350123b1', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"95.0.4638.54\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no');
 

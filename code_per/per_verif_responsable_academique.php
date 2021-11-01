@@ -100,7 +100,7 @@ if(isset($_POST['lien_ChefE2'])){
 
 
 // récupération information de fichier
-$auteur= $_SESSION['matricule'];
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 $identifiant_PER = $_SESSION['matricule'];
 
@@ -122,7 +122,7 @@ if(!empty($_FILES['fileResponNiveau'])){
       
       
       $chemin_fichier_origine=$_FILES['fileResponNiveau']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -157,7 +157,7 @@ if(!empty($_FILES['fileResponFormation'])){
       
       
       $chemin_fichier_origine=$_FILES['fileResponFormation']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -193,7 +193,7 @@ if(!empty($_FILES['fileChefDept'])){
       
       
       $chemin_fichier_origine=$_FILES['fileChefDept']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -229,7 +229,7 @@ if(!empty($_FILES['fileDEIF'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDEIF']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -264,7 +264,7 @@ if(!empty($_FILES['fileDEIU'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDEIU']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -299,7 +299,7 @@ if(!empty($_FILES['fileADAU'])){
       
       
       $chemin_fichier_origine=$_FILES['fileADAU']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -340,7 +340,7 @@ if(!empty($_FILES['fileDirecteurCentral'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDirecteurCentral']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -376,7 +376,7 @@ if(!empty($_FILES['fileRFD'])){
       
       
       $chemin_fichier_origine=$_FILES['fileRFD']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -411,7 +411,7 @@ if(!empty($_FILES['fileDRevue'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDRevue']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -446,7 +446,7 @@ if(!empty($_FILES['fileDLCS'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDLCS']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -482,7 +482,7 @@ if(!empty($_FILES['fileDED'])){
       
       
       $chemin_fichier_origine=$_FILES['fileDED']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -517,7 +517,7 @@ if(!empty($_FILES['fileChefE1'])){
       
       
       $chemin_fichier_origine=$_FILES['fileChefE1']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -552,7 +552,7 @@ if(!empty($_FILES['fileChefE2'])){
       
       
       $chemin_fichier_origine=$_FILES['fileChefE2']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -1059,6 +1059,7 @@ if($url_chef_etablissement_2!=""){
           $_SESSION['message_validation_secondaire']="Le lien est bien enregistré.";
   }
 
-  header("location :".$_SERVER['HTTP_REFERER']);
+  header("location: ".$_SERVER['HTTP_REFERER']);      
+
 
 ?>

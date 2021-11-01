@@ -4,8 +4,9 @@
 session_start();
 // get_header();
 $auteur =$_SESSION['matricule'];
-
-$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$auteur.'/';
+$mail=$_SESSION['per_email'];
+$title="";
+$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$mail.'/';
 $con = mysqli_connect("localhost","root","","ussein_candidature");
 $lien_suppression="http://localhost/candidature/code_per/suppression_justificatif_per.php/?fiche=";
 

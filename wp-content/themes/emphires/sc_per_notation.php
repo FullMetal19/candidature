@@ -1,12 +1,14 @@
 <?php
 /* template name:sc_per_notation */
-
+session_start();
 // Recupération des variables
 
 
-$auteur="mouhamed.sane@etu.ussein.edu.sn";
-$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$auteur.'/';
+$auteur =$_GET['matricule'];
+$mail=$_GET['mail'];
+$lien = 'http://localhost/candidature/code_per/repertoire_per/'.$mail.'/';
 $con = mysqli_connect("localhost","root","","ussein_candidature");
+
 
 // $ligne = 0; // compteur de ligne
 // $fic = fopen("test.csv", "r+"); 
@@ -26,7 +28,133 @@ $con = mysqli_connect("localhost","root","","ussein_candidature");
 // $ligne ++;
 // }
 
-$XXX="";
+
+// Les variables pour communications 
+$req1 = mysqli_query($con,"SELECT note FROM ec_note_per_communications");
+$tab1 = mysqli_fetch_all($req1);
+
+$ps_c_a1 = $tab1[0][0];
+$ps_c_a2 = $tab1[1][0];
+$ps_c_a3 = $tab1[2][0];
+
+// Les variables pour ec_note_per_developpement_institu
+$req2 = mysqli_query($con,"SELECT note FROM ec_note_per_developpement_institu");
+$tab2 = mysqli_fetch_all($req2);
+
+$di_a1 = $tab2[0][0];
+$di_a2 = $tab2[1][0];
+$di_a3 = $tab2[2][0];
+$di_a4 = $tab2[3][0];
+$di_a5 = $tab2[4][0];
+$di_a6 = $tab2[5][0];
+
+// Les variables pour ec_note_per_encadrement
+$req3 = mysqli_query($con,"SELECT note FROM ec_note_per_encadrement");
+$tab3 = mysqli_fetch_all($req3);
+
+$encadrement_a1 = $tab3[0][0];
+$encadrement_a2 = $tab3[1][0];
+$encadrement_a3 = $tab3[2][0];
+$encadrement_a4 = $tab3[3][0];
+$encadrement_a5 = $tab3[4][0];
+$encadrement_a6 = $tab3[5][0];
+
+// Les variables pour ec_note_per_innovations_brevets_distinctions
+$req4 = mysqli_query($con,"SELECT note FROM ec_note_per_innovations_brevets_distinctions");
+$tab4 = mysqli_fetch_all($req4);
+
+$ibd_a1 = $tab4[0][0];
+$ibd_a2 = $tab4[1][0];
+
+// Les variables pour ec_note_per_membre_jury_d
+$req5 = mysqli_query($con,"SELECT note FROM ec_note_per_membre_jury_d");
+$tab5 = mysqli_fetch_all($req5);
+
+$mjd_a1 = $tab5[0][0];
+$mjd_a2 = $tab5[1][0];
+$mjd_a3 = $tab5[2][0];
+$mjd_a4 = $tab5[3][0];
+$mjd_a5 = $tab5[4][0];
+
+// Les variables pour ec_note_per_president_jury_d
+$req6 = mysqli_query($con,"SELECT note FROM ec_note_per_president_jury_d");
+$tab6 = mysqli_fetch_all($req6);
+
+$pjd_a1 = $tab6[0][0];
+$pjd_a2 = $tab6[1][0];
+$pjd_a3 = $tab6[2][0];
+$pjd_a4 = $tab6[3][0];
+
+// Les variables pour ec_note_per_publications
+$req7 = mysqli_query($con,"SELECT note FROM ec_note_per_publications");
+$tab7 = mysqli_fetch_all($req7);
+
+// Les variables Articles scientifiques indexés
+$ps_p_a1 = $tab7[0][0];
+$ps_p_a2 = $tab7[1][0];
+$ps_p_a3 = $tab7[2][0];
+$ps_p_a4 = $tab7[3][0];
+$ps_p_a5 = $tab7[4][0];
+
+// Les variables Articles scientifiques non indexés
+$ps_p_b1 = $tab7[5][0];
+$ps_p_b2 = $tab7[6][0];
+$ps_p_b3 = $tab7[7][0];
+$ps_p_b4 = $tab7[8][0];
+$ps_p_b5 = $tab7[9][0];
+
+// Les variables Proceedings de conférence
+$ps_p_c1 = $tab7[10][0];
+$ps_p_c2 = $tab7[11][0];
+$ps_p_c3 = $tab7[12][0];
+$ps_p_c4 = $tab7[13][0];
+$ps_p_c5 = $tab7[14][0];
+
+// Les variables Chapitres de livre 
+$ps_p_d1 = $tab7[15][0];
+$ps_p_d2 = $tab7[16][0];
+$ps_p_d3 = $tab7[17][0];
+$ps_p_d4 = $tab7[18][0];
+$ps_p_d5 = $tab7[19][0];
+
+// Les variables Mélanges
+$ps_p_e1 = $tab7[20][0];
+$ps_p_e2 = $tab7[21][0];
+$ps_p_e3 = $tab7[22][0];
+$ps_p_e4 = $tab7[23][0];
+$ps_p_e5 = $tab7[24][0];
+
+// variable Ouvrages
+$ps_p_f1 = $tab7[24][0];
+
+// variable Directeur de Revue
+$ps_p_g1 = $tab7[25][0];
+
+// variable Fiches techniques 
+$ps_p_h1 = $tab7[26][0];
+
+// variable Documents de vulgarisation ou de valorisation 
+$ps_p_i1 = $tab7[27][0];
+
+
+// Les variables ec_note_per_reponsabilite_academique
+$req8 = mysqli_query($con,"SELECT note FROM ec_note_per_reponsabilite_academique");
+$tab8 = mysqli_fetch_all($req8);
+
+$respo_aca_a1 = $tab8[0][0];
+$respo_aca_a2 = $tab8[1][0];
+$respo_aca_a3 = $tab8[2][0];
+$respo_aca_a4 = $tab8[3][0];
+$respo_aca_a5 = $tab8[4][0];
+$respo_aca_a6 = $tab8[5][0];
+$respo_aca_a7 = $tab8[6][0];
+$respo_aca_a8 = $tab8[7][0];
+$respo_aca_a9 = $tab8[8][0];
+$respo_aca_aa1 = $tab8[9][0];
+$respo_aca_aa2 = $tab8[10][0];
+$respo_aca_aa3 = $tab8[11][0];
+$respo_aca_aa4 = $tab8[12][0];
+
 //Requetes recupération des fichiers pdf s'il existe 
 // A-S-Indexe.pdf
 $requete_article_indexe = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='A-S-Indexe.pdf'");
@@ -893,6 +1021,28 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                     $distinction= $lien.$selecteur_distinction['nom_fichier'];
                 }
                 
+                $requete_docteurMPOV = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur_MPOV.pdf'");
+                $selecteur_docteurMPOV = mysqli_fetch_array($requete_docteurMPOV);
+                
+                $docteurMPOV="";
+                if(($selecteur_docteurMPOV['lien']!="")){
+                    $docteurMPOV=$selecteur_docteurMPOV['lien'] ;                         
+                }
+                else if(isset($selecteur_docteurMPOV['nom_fichier'])){
+                
+                    $docteurMPOV= $lien.$selecteur_docteurMPOV['nom_fichier'];
+                }
+                $requete_docteur = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE matricule='$auteur' and nom_fichier='Docteur.pdf'");
+                $selecteur_docteur = mysqli_fetch_array($requete_docteur);
+                
+                $docteur="";
+                if(($selecteur_docteur['lien']!="")){
+                    $docteur=$selecteur_docteur['lien'] ;                         
+                }
+                else if(isset($selecteur_docteur['nom_fichier'])){
+                
+                    $docteur= $lien.$selecteur_docteur['nom_fichier'];
+                }
 
 
 
@@ -1162,18 +1312,18 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                         ?>
                                 <tr><th >	Participation et communication dans des conférences internationales  </th> <td colspan=4 >Aucun</td></tr>
                                 <tr class='d-none' ><th>	Participation et communication dans des conférences internationales </th> <td > <a class="nav-link " href="<?php echo $conf_internationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a1" id="ps_c_a1" onchange="calc_Conf_internationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a1" id="ps_c_a1" onchange="calc_Conf_internationale()" value="0" ></td> <td disabled><input id='n_ps_c_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                     <tr class='d-none' ><th>	Participation à des conférences nationales </th> <td > <a class="nav-link " href="<?php echo $conf_nationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_internationale()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                         <?php
 
                             }
                             else{
                             ?> 
                                 <tr ><th>	Participation et communication dans des conférences internationales </th> <td > <a class="nav-link " href="<?php echo $conf_internationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a1" id="ps_c_a1" onchange="calc_Conf_internationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a1" id="ps_c_a1" onchange="calc_Conf_internationale()" value="0" ></td> <td disabled><input id='n_ps_c_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                     <tr class='d-none' ><th>	Participation à des conférences nationales </th> <td > <a class="nav-link " href="<?php echo $conf_nationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a1" id="ps_c_a1" onchange="calc_Conf_internationale()" value="0" ></td> <td disabled><input id='n_ps_c_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                 
                             <?php
                             }
@@ -1183,13 +1333,13 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                         ?>
                                 <tr><th >	Participation à des conférences nationales  </th> <td colspan=4 >Aucun</td></tr>
                                 <tr class='d-none' ><th>	Participation à des conférences nationales </th> <td > <a class="nav-link " href="<?php echo $conf_nationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                         <?php
                             }
                             else{
                             ?> 
                                 <tr ><th>	Participation à des conférences nationales </th> <td > <a class="nav-link " href="<?php echo $conf_nationales?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale ()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="ps_c_a2" id="ps_c_a2" onchange="calc_Conf_nationale()" value="0" ></td> <td disabled><input id='n_ps_c_a2' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                 
                             <?php
                             }
@@ -1538,14 +1688,14 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                         ?>
                                 <tr><th >Évaluateur thèse Doctorat unique</th> <td colspan=4 >Aucun</td></tr>
                                 <tr class="d-none"><th>Évaluateur thèse Doctorat unique</th> <td > <a class="nav-link " href="<?php echo $docteur ?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="pjd_a5" id="pjd_a5" onchange="calc_Docteur_unique_pjd()" value="0" ></td> <td disabled><input id='n_pjd_a5' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="pjd_a4" id="pjd_a4" onchange="calc_Docteur_unique_pjd()" value="0" ></td> <td disabled><input id='n_pjd_a4' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                 
                         <?php
                             }
                             else{
                             ?> 
                                 <tr ><th>Évaluateur thèse Doctorat unique</th> <td > <a class="nav-link " href="<?php echo $docteur ?>">Voir </a></td>
-                                    <td class='text-center '><input class='text-center form-control' name="pjd_a5" id="pjd_a5" onchange="calc_Docteur_unique_pjd()" value="0" ></td> <td disabled><input id='n_pjd_a5' class='form-control text-center' disabled  value="0" type="text"></td></tr>
+                                    <td class='text-center '><input class='text-center form-control' name="pjd_a4" id="pjd_a4" onchange="calc_Docteur_unique_pjd()" value="0" ></td> <td disabled><input id='n_pjd_a4' class='form-control text-center' disabled  value="0" type="text"></td></tr>
                                 
                             <?php
                             }
@@ -1660,7 +1810,7 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                         ?>
                                 <tr><th >	Directeur des Études (Instituts d’Université) </th> <td colspan=4 >Aucun</td></tr>
                                 <tr class="d-none"><th>	Directeur des Études (Instituts d’Université) </th> <td > <a class="nav-link " href="<?php echo $directeur_etudes_iu?>">Voir </a></td>
-                                    <td class='text-center '><select name="respo_aca_a6" id="respo_aca_a6" onchange="calc_Dr_Inst_Universite()">
+                                    <td class='text-center '><select name="respo_aca_a5" id="respo_aca_a5" onchange="calc_Dr_Inst_Universite()">
                                         <?php for($i=0; $i<=1; $i++){
                                             echo "<option value=".$i.">".$i."</option>";
                                         }
@@ -1671,7 +1821,7 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                             else{
                             ?> 
                                 <tr ><th>	Directeur des Études (Instituts d’Université) </th> <td > <a class="nav-link " href="<?php echo $directeur_etudes_iu?>">Voir </a></td>
-                                    <td class='text-center '><select name="respo_aca_a6" id="respo_aca_a6" onchange="calc_Dr_Inst_Universite()">
+                                    <td class='text-center '><select name="respo_aca_a5" id="respo_aca_a5" onchange="calc_Dr_Inst_Universite()">
                                         <?php for($i=0; $i<=1; $i++){
                                             echo "<option value=".$i.">".$i."</option>";
                                         }
@@ -2034,7 +2184,7 @@ $requete_distinction = mysqli_query($con,"SELECT * FROM ec_dossier_per WHERE mat
                         if($brevet==""){
                     ?>
                             <tr><th >Brevets </th> <td colspan=4 >Aucun</td></tr>
-                            <tr class="d-none" ><th>Brevets </th> <td > <a class="nav-link " href="<?php echo $breve ?>">Voir </a></td>
+                            <tr class="d-none" ><th>Brevets </th> <td > <a class="nav-link " href="<?php echo $brevet ?>">Voir </a></td>
                                 <td class='text-center '><input class='text-center form-control' name="ibd_a1" id="ibd_a1" onchange="calc_Brevets()" value="0" ></td> <td disabled><input id='n_ibd_a1' class='form-control text-center' disabled  value="0" type="text"></td></tr>
 
                     <?php
@@ -2123,7 +2273,7 @@ function calc_indexe (){
 
     note_auteur1.value = nbr_auteur1 * <?php echo json_encode($ps_p_a1) ?> ;
     note_auteur2.value = nbr_auteur2 * <?php echo json_encode($ps_p_a2) ?> ;
-    note_auteur3.value = nbr+auteur3 * <?php echo json_encode($ps_p_a3) ?> ;
+    note_auteur3.value = nbr_auteur3 * <?php echo json_encode($ps_p_a3) ?> ;
     note_auteur4.value = nbr_auteur4 * <?php echo json_encode($ps_p_a4) ?> ;
     note_auteur5.value = nbr_auteur5 * <?php echo json_encode($ps_p_a5)  ?> ;
    
@@ -2145,7 +2295,7 @@ let note_auteur5 = document.getElementById("n_ps_p_b5");
 
 note_auteur1.value = nbr_auteur1 * <?php echo json_encode($ps_p_b1) ?> ;
 note_auteur2.value = nbr_auteur2 * <?php echo json_encode($ps_p_b2) ?> ;
-note_auteur3.value = nbr+auteur3 * <?php echo json_encode($ps_p_b3) ?> ;
+note_auteur3.value = nbr_auteur3 * <?php echo json_encode($ps_p_b3) ?> ;
 note_auteur4.value = nbr_auteur4 * <?php echo json_encode($ps_p_b4) ?> ;
 note_auteur5.value = nbr_auteur5 * <?php echo json_encode($ps_p_b5)  ?> ;
 
@@ -2168,7 +2318,7 @@ let note_auteur5 = document.getElementById("n_ps_p_c5");
 
 note_auteur1.value = nbr_auteur1 * <?php echo json_encode($ps_p_c1) ?> ;
 note_auteur2.value = nbr_auteur2 * <?php echo json_encode($ps_p_c2) ?> ;
-note_auteur3.value = nbr+auteur3 * <?php echo json_encode($ps_p_c3) ?> ;
+note_auteur3.value = nbr_auteur3 * <?php echo json_encode($ps_p_c3) ?> ;
 note_auteur4.value = nbr_auteur4 * <?php echo json_encode($ps_p_c4) ?> ;
 note_auteur5.value = nbr_auteur5 * <?php echo json_encode($ps_p_c5)  ?> ;
 
@@ -2190,7 +2340,7 @@ let note_auteur5 = document.getElementById("n_ps_p_d5");
 
 note_auteur1.value = nbr_auteur1 * <?php echo json_encode($ps_p_d1) ?> ;
 note_auteur2.value = nbr_auteur2 * <?php echo json_encode($ps_p_d2) ?> ;
-note_auteur3.value = nbr+auteur3 * <?php echo json_encode($ps_p_d3) ?> ;
+note_auteur3.value = nbr_auteur3 * <?php echo json_encode($ps_p_d3) ?> ;
 note_auteur4.value = nbr_auteur4 * <?php echo json_encode($ps_p_d4) ?> ;
 note_auteur5.value = nbr_auteur5 * <?php echo json_encode($ps_p_d5)  ?> ;
 
@@ -2212,7 +2362,7 @@ let note_auteur5 = document.getElementById("n_ps_p_e5");
 
 note_auteur1.value = nbr_auteur1 * <?php echo json_encode($ps_p_e1) ?> ;
 note_auteur2.value = nbr_auteur2 * <?php echo json_encode($ps_p_e2) ?> ;
-note_auteur3.value = nbr+auteur3 * <?php echo json_encode($ps_p_e3) ?> ;
+note_auteur3.value = nbr_auteur3 * <?php echo json_encode($ps_p_e3) ?> ;
 note_auteur4.value = nbr_auteur4 * <?php echo json_encode($ps_p_e4) ?> ;
 note_auteur5.value = nbr_auteur5 * <?php echo json_encode($ps_p_e5)  ?> ;
 
@@ -2314,7 +2464,7 @@ function calc_DES (){
 
 let nbr_des = document.getElementById("encadrement_a6").value;
 let note_des = document.getElementById("n_encadrement_a6");
-note_conf_internationale_domaine.value = nbr_des * <?php echo json_encode($encadrement_a6) ?> ;
+note_des.value = nbr_des * <?php echo json_encode($encadrement_a6) ?> ;
 }
 
 
@@ -2332,14 +2482,14 @@ function calc_Master_mjd (){
 
 let nbr_master_mjd = document.getElementById("mjd_a2").value;
 let note_master_mjd = document.getElementById("n_mjd_a2");
-note_master_mjd.value = nbr_conf_internationale_domaine * <?php echo json_encode($mjd_a2) ?> ;
+note_master_mjd.value = nbr_master_mjd * <?php echo json_encode($mjd_a2) ?> ;
 }
 
 function calc_DocteurMPOV_mjd (){
 
 let nbr_docteurMPOV_mjd = document.getElementById("mjd_a3").value;
 let note_docteurMPOV_mjd = document.getElementById("n_mjd_a3");
-note_docteurMPOV.value_mjd = nbr_docteurMPOV_mjd * <?php echo json_encode($mjd_a3) ?> ;
+note_docteurMPOV_mjd.value = nbr_docteurMPOV_mjd * <?php echo json_encode($mjd_a3) ?> ;
 }
 
 function calc_DES_mjd (){
@@ -2537,6 +2687,7 @@ function calc_Brevets (){
 let nbr_brevet = document.getElementById("ibd_a1").value;
 let note_brevet = document.getElementById("n_ibd_a1");
 note_brevet.value = nbr_brevet * <?php echo json_encode($ibd_a1) ?> ;
+note_brevet.value = nbr_brevet * 10 ;
 }
 
 function calc_Distinctions (){

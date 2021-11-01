@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-// $auteur= $_SESSION['mail'];
+$auteur= $_SESSION['per_mail'];
 $con=mysqli_connect("localhost","root","","ussein_candidature");
 $identifiant_PER = $_SESSION['matricule'];
 
@@ -20,7 +20,7 @@ if(!empty($_FILES['file_Pedagogique'])){
       
     
       $chemin_fichier_origine=$_FILES['file_Pedagogique']['tmp_name'];
-      $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+      $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
 
       if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
 
@@ -57,7 +57,7 @@ if(!empty($_FILES['file_Pedagogique'])){
           $verification=mysqli_num_rows($requete);
         
           $chemin_fichier_origine=$_FILES['file_Recherche']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
     
@@ -94,7 +94,7 @@ if(!empty($_FILES['file_Pedagogique'])){
           $verification=mysqli_num_rows($requete);
         
           $chemin_fichier_origine=$_FILES['file_Gouvernance']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
     
@@ -130,7 +130,7 @@ if(!empty($_FILES['file_Pedagogique'])){
               $verification=mysqli_num_rows($requete);
             
               $chemin_fichier_origine=$_FILES['file_Service']['tmp_name'];
-              $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+              $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
         
               if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
         
@@ -167,7 +167,7 @@ if(!empty($_FILES['file_Pedagogique'])){
           $verification=mysqli_num_rows($requete);
         
           $chemin_fichier_origine=$_FILES['file_Capacite']['tmp_name'];
-          $chemin_fichier_arriver='repertoire_PER/'.$identifiant_PER.'/'.$nom_fichier;
+          $chemin_fichier_arriver='repertoire_PER/'.$auteur.'/'.$nom_fichier;
     
           if(move_uploaded_file($chemin_fichier_origine,$chemin_fichier_arriver)){
     
@@ -397,6 +397,7 @@ if (isset($_POST['lien_Capacite'])) {
         }
     }
 }
-header("location :".$_SERVER['HTTP_REFERER']);
+header("location: ".$_SERVER['HTTP_REFERER']);      
+
 
 ?>

@@ -72,12 +72,12 @@
                 <Div class=" row exit my-0 mt-3 justify-content-between">
                     <div class="col-5 ">
                         <li class="nav-item text-center">
-                            <a class="nav-link bg-success border p-1"   href="#">ACCUEIL</a>
+                            <a class="nav-link bg-success border p-1"   href="http://localhost/candidature/accueil-offre/">ACCUEIL</a>
                         </li>
                     </div>
                     <div class="col-5">
                         <li class=" nav-item  text-center">
-                            <a class="nav-link  border p-1"   href="#">DECONNEXION</a>
+                            <a class="nav-link  border p-1"   href="http://localhost/candidature/espace-pers/">DECONNEXION</a>
                         </li>
                     </div>
                    

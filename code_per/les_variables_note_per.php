@@ -95,7 +95,7 @@ $ps_p_e1 = $tab7[20][0];
 $ps_p_e2 = $tab7[21][0];
 $ps_p_e3 = $tab7[22][0];
 $ps_p_e4 = $tab7[23][0];
-$ps_ped5 = $tab7[24][0];
+$ps_p_e5 = $tab7[24][0];
 
 // variable Ouvrages
 $ps_p_f1 = $tab7[24][0];
@@ -111,7 +111,7 @@ $ps_p_i1 = $tab7[27][0];
 
 
 // Les variables ec_note_per_reponsabilite_academique
-$req8 = mysqli_query($con,"SELECT note FROM ec_note_per_responsabilite_academique");
+$req8 = mysqli_query($con,"SELECT note FROM ec_note_per_reponsabilite_academique");
 $tab8 = mysqli_fetch_all($req8);
 
 $respo_aca_a1 = $tab8[0][0];
