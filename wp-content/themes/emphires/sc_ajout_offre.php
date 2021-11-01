@@ -26,7 +26,7 @@ $tab=mysqli_fetch_array($requete);
     }
     body{
         
-        background-image: url('http://localhost/candidature/wp-content/uploads/2021/10/background.jpg');
+        background-image: url('http://localhost/candidature/wp-content/uploads/2021/09/background-scaled.jpg');
         background-position: 0;
         background-repeat: no-repeat;
         background-size: cover;
@@ -465,6 +465,12 @@ div.Suppression_offre{
             <div class="bloc_menu">
                 <a href="http://localhost/candidature/parametre/">
                     <label>Paramètre</label>
+                    <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
+                </a>
+            </div>
+            <div class="bloc_menu">
+                <a href="http://localhost/candidature/liste_des_pers/">
+                    <label>Admin-PER</label>
                     <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
                 </a>
             </div>
