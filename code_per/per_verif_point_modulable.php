@@ -191,6 +191,6 @@ $req_respo_aca_aa4 = mysqli_query($con,"UPDATE ec_note_per_reponsabilite_academi
 
 mysqli_close($con);
 
-                                    header("Location: http://localhost/candidature/document_per_prod/");      
+header("Location: http://localhost/candidature/point-modulable/");      
 
 ?>

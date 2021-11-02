@@ -4,7 +4,7 @@
 session_start();
 // get_header();
 $auteur =$_SESSION['matricule'];
-$mail=$_SESSION['per_email'];
+$mail=$_SESSION['per_mail'];
 $title="";
 $lien = 'http://localhost/candidature/code_per/repertoire_per/'.$mail.'/';
 $con = mysqli_connect("localhost","root","","ussein_candidature");

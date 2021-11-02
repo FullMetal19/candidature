@@ -1,7 +1,26 @@
 <?php
 /* template name:sc_per_liste */
+
 ?>
-<h1 class="titre_per">P.E.R</h1>
+
+
+
+    <!-- Partie Gauche -->
+    <?php 
+    
+$_SESSION['0'] = "";
+$_SESSION['1'] = "";
+$_SESSION['2'] = "";
+$_SESSION['3'] = "";
+$_SESSION['4'] = "active";
+$_SESSION['5'] = "";
+        include('sc_admin_partie_gauche.php');
+        ?>
+
+<div class="droite" id="droite">
+                <div class="droite_container">
+
+<h1 class="titre_per">L'ensemble des PERs</h1>
 <table>
     <tr>
         <th>Nº</th>
@@ -34,7 +53,8 @@
 
     <?php $i+=1; } ?>
   </table>
-
+                </div>
+</div>
   <style>
       .lien_Consulter{ 
           width:5%;
@@ -55,6 +75,8 @@
     width: 90%;
     border-collapse: collapse;
     margin-left: 55px;
+    color: #fff;
+    background-color: rgba(10, 107, 49,0.6);
   }
   th,td{
     padding: 3px;
@@ -72,11 +94,11 @@
     background-color: rgba(10, 107, 49,0.9);
   }
   .titre_per{
-      background-color:rgb(10, 107, 49);
-      color: white;
-       width: 90%;
-       text-align: center;
-       margin-left: 55px;
+    text-align: center;
+        background-color: rgb(10, 107, 49);
+        color: white;
+        border-radius: 15px;
+        margin: 1% 0%;;
       
   }
   </style>

@@ -11,6 +11,13 @@ if(!is_page( 'connexion' ) &&  !$_SESSION['mail']  ){
     
 }
 
+$_SESSION['0'] = "";
+$_SESSION['1'] = "";
+$_SESSION['2'] = "active";
+$_SESSION['3'] = "";
+$_SESSION['4'] = "";
+$_SESSION['5'] = "";
+
  
 
 $con = mysqli_connect("localhost","root","","ussein_candidature");
@@ -148,163 +155,160 @@ $mail=$_SESSION['mail'];
 $requete=mysqli_query($con,"SELECT * FROM ec_connexion WHERE mail='$mail'");
 $tab=mysqli_fetch_array($requete); 
    ?>
+
+<?php
+
+$con = mysqli_connect("localhost","root","","ussein_candidature");
+
+// Les variables pour communications 
+$req1 = mysqli_query($con,"SELECT note FROM ec_note_per_communications");
+$tab1 = mysqli_fetch_all($req1);
+
+$ps_c_a1 = $tab1[0][0];
+$ps_c_a2 = $tab1[1][0];
+$ps_c_a3 = $tab1[2][0];
+
+// Les variables pour ec_note_per_developpement_institu
+$req2 = mysqli_query($con,"SELECT note FROM ec_note_per_developpement_institu");
+$tab2 = mysqli_fetch_all($req2);
+
+$di_a1 = $tab2[0][0];
+$di_a2 = $tab2[1][0];
+$di_a3 = $tab2[2][0];
+$di_a4 = $tab2[3][0];
+$di_a5 = $tab2[4][0];
+$di_a6 = $tab2[5][0];
+
+// Les variables pour ec_note_per_encadrement
+$req3 = mysqli_query($con,"SELECT note FROM ec_note_per_encadrement");
+$tab3 = mysqli_fetch_all($req3);
+
+$encadrement_a1 = $tab3[0][0];
+$encadrement_a2 = $tab3[1][0];
+$encadrement_a3 = $tab3[2][0];
+$encadrement_a4 = $tab3[3][0];
+$encadrement_a5 = $tab3[4][0];
+$encadrement_a6 = $tab3[5][0];
+
+// Les variables pour ec_note_per_innovations_brevets_distinctions
+$req4 = mysqli_query($con,"SELECT note FROM ec_note_per_innovations_brevets_distinctions");
+$tab4 = mysqli_fetch_all($req4);
+
+$ibd_a1 = $tab4[0][0];
+$ibd_a2 = $tab4[1][0];
+
+// Les variables pour ec_note_per_membre_jury_d
+$req5 = mysqli_query($con,"SELECT note FROM ec_note_per_membre_jury_d");
+$tab5 = mysqli_fetch_all($req5);
+
+$mjd_a1 = $tab5[0][0];
+$mjd_a2 = $tab5[1][0];
+$mjd_a3 = $tab5[2][0];
+$mjd_a4 = $tab5[3][0];
+$mjd_a5 = $tab5[4][0];
+
+// Les variables pour ec_note_per_president_jury_d
+$req6 = mysqli_query($con,"SELECT note FROM ec_note_per_president_jury_d");
+$tab6 = mysqli_fetch_all($req6);
+
+$pjd_a1 = $tab6[0][0];
+$pjd_a2 = $tab6[1][0];
+$pjd_a3 = $tab6[2][0];
+$pjd_a4 = $tab6[3][0];
+
+// Les variables pour ec_note_per_publications
+$req7 = mysqli_query($con,"SELECT note FROM ec_note_per_publications");
+$tab7 = mysqli_fetch_all($req7);
+
+// Les variables Articles scientifiques indexés
+$ps_p_a1 = $tab7[0][0];
+$ps_p_a2 = $tab7[1][0];
+$ps_p_a3 = $tab7[2][0];
+$ps_p_a4 = $tab7[3][0];
+$ps_p_a5 = $tab7[4][0];
+
+// Les variables Articles scientifiques non indexés
+$ps_p_b1 = $tab7[5][0];
+$ps_p_b2 = $tab7[6][0];
+$ps_p_b3 = $tab7[7][0];
+$ps_p_b4 = $tab7[8][0];
+$ps_p_b5 = $tab7[9][0];
+
+// Les variables Proceedings de conférence
+$ps_p_c1 = $tab7[10][0];
+$ps_p_c2 = $tab7[11][0];
+$ps_p_c3 = $tab7[12][0];
+$ps_p_c4 = $tab7[13][0];
+$ps_p_c5 = $tab7[14][0];
+
+// Les variables Chapitres de livre 
+$ps_p_d1 = $tab7[15][0];
+$ps_p_d2 = $tab7[16][0];
+$ps_p_d3 = $tab7[17][0];
+$ps_p_d4 = $tab7[18][0];
+$ps_p_d5 = $tab7[19][0];
+
+// Les variables Mélanges
+$ps_p_e1 = $tab7[20][0];
+$ps_p_e2 = $tab7[21][0];
+$ps_p_e3 = $tab7[22][0];
+$ps_p_e4 = $tab7[23][0];
+$ps_p_e5 = $tab7[24][0];
+
+// variable Ouvrages
+$ps_p_f1 = $tab7[24][0];
+
+// variable Directeur de Revue
+$ps_p_g1 = $tab7[25][0];
+
+// variable Fiches techniques 
+$ps_p_h1 = $tab7[26][0];
+
+// variable Documents de vulgarisation ou de valorisation 
+$ps_p_i1 = $tab7[27][0];
+
+
+// Les variables ec_note_per_reponsabilite_academique
+$req8 = mysqli_query($con,"SELECT note FROM ec_note_per_reponsabilite_academique");
+$tab8 = mysqli_fetch_all($req8);
+
+$respo_aca_a1 = $tab8[0][0];
+$respo_aca_a2 = $tab8[1][0];
+$respo_aca_a3 = $tab8[2][0];
+$respo_aca_a4 = $tab8[3][0];
+$respo_aca_a5 = $tab8[4][0];
+$respo_aca_a6 = $tab8[5][0];
+$respo_aca_a7 = $tab8[6][0];
+$respo_aca_a8 = $tab8[7][0];
+$respo_aca_a9 = $tab8[8][0];
+$respo_aca_aa1 = $tab8[9][0];
+$respo_aca_aa2 = $tab8[10][0];
+$respo_aca_aa3 = $tab8[11][0];
+$respo_aca_aa4 = $tab8[12][0];
+
+
+mysqli_close($con);
+?>
     
 
 
 
 <style>
-         *{
-        margin: 0;
-        padding: 0;
-    }
-    body{
-        
-        background-image: url('http://localhost/candidature/wp-content/uploads/2021/09/background-scaled.jpg');
-        background-position: 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    
-    /* div.container{
-        display: grid;
-        grid-template-columns:300px auto;
-        position: absolute;
-        box-sizing: border-box;
-        height: 100%;
-        width: 100%;
-    } */
-
-   
-    div.gauche{
-        background-color: rgba(10, 107, 49,0.6);
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 21%;
-        left: -15%;
-        gap: 2%;
-        transition: all 1.5s;
-        z-index: 100;
-    }
-    div.gauche:hover{
-        left: 0%;
-
-    }
-    div.droite{
-        height: 100%;
-        box-sizing: border-box;
-        position: fixed;
-        top: 0;
-        left: -15%;
-        right: 0;
-        width: calc(100%-21%);
-        margin-left: 21%;
-        transition: all 1.5s;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-    div.droite_container{
-        margin: 5%;
-    }
-    
-    div.bloc_menu a img{
-        width: 30px;
-        height: 30px;
-    }
-    div.bloc_menu a label{
-        vertical-align: 0.9em;
-        font-size: large;
-        margin-right: 15%;
-        cursor: pointer;
-        color: white;
-    }
-    div.bloc_menu{
-        margin-top:5%;
-        background-color: rgba(132, 181, 39,0.6);
-        padding: 1em;
-        text-align: right;
-    }
-    div.bloc_menu:hover{
-        background-color: rgba(141, 54, 20,0.6);
-    }    
-    div.bloc_menu a{
-        text-decoration: none;
-        color: black;
-        transition: 1s;
-    }
-    div.bloc_menu a:hover{
-        color: white;
-        transition: 1s;
-    }
-    div.titre{
-        display: flex;
-        text-align: center;
-        margin: 0% 10%;
-        justify-content: right;
-        color: white;
-    }
-    div.titre h1{
-        margin-top: 5%;
-        margin-right: 15%;
-    }
-    div.titre img{
-        width: 30px;
-        height: 30px;
-        position: relative;
-        top: 20%;
-    }
-    div.active{
-        background-color: rgba(141, 54, 20,0.6);
-    }  
-    
-    @media(max-width:900px){
-        div.titre h1{
-            font-size: 1.2em;
-        }
-        div.bloc_menu a label{
-            font-size: 0.8em;
-        }
-    }
-    @media(max-width:750px){
-        div.titre h1{
-            font-size: 1em;
-        }
-        div.bloc_menu a label{
-            font-size: 0.6em
-        }
-        div.gauche,div.droite{
-            left: -13%;
-        }
-    }
-    @media(max-width:630px){
-        div.bloc_menu a label,div.titre h1{
-            display: none;
-        }
-        div.gauche,div.droite{
-            left: -11%;
-        }
-    }
-    @media(max-width:600px){
-        div.gauche,div.droite{
-            left: -5%;
-        }
-    }
+         
     div.droite_container h1{
         color: white;
-        background-color: rgba(10, 107, 49,0.6);
+        background-color: rgb(10, 107, 49);
         padding: 1%;
         text-align: center;
         box-shadow: 5px 5px 5px rgba(132, 181, 39,0.6);
     }
     details{
         color: white;
-        margin: 3%;
+        margin: 1%;
+        margin-top: 0;
     }
     summary{
-        background-color: rgba(10, 107, 49,0.6);
+        background-color: rgb(10, 107, 49);
         padding: 1%;
         cursor: pointer;
     }
@@ -391,45 +395,10 @@ div.div_reinitialiser:hover{
         transform: translateX(5%);
 }
 </style>
-<div class="gauche">
-            <div class="titre">
-                <h1>Dashboard</h1>
-                <img src="https://img.icons8.com/ios-filled/50/000000/menu--v4.png"/>
-            </div>
-            
-            <hr>
-            <div class="bloc_menu">
-                <a href="http://localhost/candidature/ajout-offre/">
-                    <label>Les Offres</label>
-                    <img src="https://img.icons8.com/material-rounded/50/000000/discount-finder.png"/>
-                </a>
-            </div>
-            <div class="bloc_menu">
-                <a href="http://localhost/candidature/visualisation/">
-                    <label>Visualisation</label>
-                    <img src="https://img.icons8.com/ios/50/000000/doughnut-chart--v2.png"/>
-                </a>
-            </div>
-            <div class="bloc_menu active">
-                <a href="http://localhost/candidature/point-modulable/">
-                    <label>Point Modulable</label>
-                    <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-calculator-back-to-school-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>
-                </a>
-            </div>
-            <div class="bloc_menu">
-                <a href="http://localhost/candidature/parametre/">
-                    <label>Paramètre</label>
-                    <img src="https://img.icons8.com/ios/50/000000/settings--v1.png"/>
-                </a>
-            </div>
-            <div class="bloc_menu">
-                <a href="http://localhost/candidature/code_candidature/verification_deconnexion.php">
-                    <label> Déconnexion</label>
-                    <img src="https://img.icons8.com/ios/50/000000/exit.png"/>
-                </a>
-            </div>
-
-        </div>
+<!-- Partie Gauche -->
+<?php 
+        include('sc_admin_partie_gauche.php');
+        ?>
         <div class="droite" id="droite">
                 <div class="droite_container">
 
@@ -437,8 +406,8 @@ div.div_reinitialiser:hover{
                     if($tab['status']==2){ ?>
                     <p class="phrase">VOUS N'AVEZ PAS ACCES DANS CETTE PAGE !</p>
                     <?php } else{ ?>
-
-                    <h1>Paramétrer Les Points</h1>
+<details>
+                    <summary>Pondérations Espace candidature</summary>
                 <form action="http://localhost/candidature/code_candidature/verification_point_modulable.php" method="post">
                         <!-- Partie Formulaire âge -->
                         <details>
@@ -781,6 +750,364 @@ div.div_reinitialiser:hover{
                 </form>
                 
                 <a class="reinitialiser" href="http://localhost/candidature/code_candidature/verification_point_modulable_defaut.php"><div class="div_reinitialiser">Revenir à la configuration d'origine</div></a>
+      
+</details>
+<details>
+                <summary>Pondérations Espace PER</summary>
+<form class="body"    action="http://localhost/candidature/code_per/per_verif_point_modulable.php" method="POST">
+ <details> <summary>PRODUCTION SCIENTIFIQUE</summary>
+
+<details class="publication">
+    <summary>Publications</summary>
+<table>
+<tr>
+<th>            </th>
+<th>Description</th>
+<th>Pondération</th>
+
+</tr>
+
+<tr><td rowspan="6">Articles scientifiques indexés</td></tr> 
+    <tr><td>Auteur1</td>   <td><input type="text" name="ps_p_a1" value="<?php echo $ps_p_a1 ?>"></td></tr>
+    <tr><td>Auteur2</td>  <td><input type="text" name="ps_p_a2" value="<?php echo $ps_p_a2 ?>" ></td></tr>
+    <tr><td>Auteur3</td> <td><input type="text" name="ps_p_a3" value="<?php echo $ps_p_a3 ?>" ></td></tr>
+    <tr><td>Autre auteur</td> <td><input type="text" name="ps_p_a4" value="<?php echo $ps_p_a4 ?>" ></td> </tr>  
+    <tr><td>Le responsable du laboratoire ou du projet</td> <td><input type="text" name="ps_p_a5" value="<?php echo $ps_p_a5 ?>" ></td> </tr>
+     <!--finide la liaison--> 
+
+    
+
+<tr><td rowspan="6">Articles scientifiques non indexés</td></tr>
+    <tr><td>Auteur1</td>   <td><input type="text" name="ps_p_b1" value="<?php echo $ps_p_b1 ?>"         ></td></tr>
+    <tr><td>Auteur2</td>  <td><input type="text" name="ps_p_b2" value="<?php echo $ps_p_b2 ?>"      ></td></tr>
+    <tr><td>Auteur3</td> <td><input type="text" name="ps_p_b3" value="<?php echo $ps_p_b3 ?>"       ></td></tr>
+    <tr><td>Autre auteur</td> <td><input type="text" name="ps_p_b4" value="<?php echo $ps_p_b4 ?>"   ></td> </tr> 
+    <tr><td>Le responsable du laboratoire ou du projet</td> <td><input type="text" name="ps_p_b5" value="<?php echo $ps_p_b5 ?>" ></td></tr>
+ <!--finide la liaison-->
+ 
+
+
+<tr><td rowspan="6">Proceedings de conférence</td></tr>
+   <tr><td>Auteur1</td>   <td> <input type="text" name="ps_p_c1" value="<?php echo $ps_p_c1 ?>"    ></td></tr>
+    <tr><td>Auteur2</td>  <td><input type="text" name="ps_p_c2" value="<?php echo $ps_p_c2 ?>"    ></td></tr>
+    <tr><td>Auteur3</td> <td><input type="text" name="ps_p_c3" value="<?php echo $ps_p_c3 ?>"    ></td></tr>
+    <tr><td>Autre auteur</td> <td><input type="text" name="ps_p_c4" value="<?php echo $ps_p_c4 ?>"    ></td> </tr>   
+    <tr><td>Le responsable du laboratoire ou du projet</td> <td><input type="text" name="ps_p_c5" value="<?php echo $ps_p_c5 ?>" ></td> </tr>
+ <!--finide la liaison-->
+    
+<tr><td rowspan="6">Chapitres de livre </td></tr>
+    <tr><td>Auteur1</td>   <td><input type="text" name="ps_p_d1" value="<?php echo $ps_p_d1 ?>"   ></td></tr>
+    <tr><td>Auteur2</td>  <td><input type="text" name="ps_p_d2" value="<?php echo $ps_p_d2 ?>"   ></td></tr>
+    <tr><td>Auteur3</td> <td><input type="text" name="ps_p_d3" value="<?php echo $ps_p_d3 ?>"    ></td></tr>
+    <tr><td>Autre auteur</td> <td><input type="text" name="ps_p_d4" value="<?php echo $ps_p_d4 ?>"   ></td> </tr> 
+    <tr><td>Le responsable du laboratoire ou du projet</td> <td><input type="text" name="ps_p_d5" value="<?php echo $ps_p_d5 ?>" ></td> </tr>
+ <!--finide la liaison--> 
+
+
+<tr><td  rowspan="6">Mélanges</td></tr>
+    <tr><td>Auteur1</td>   <td><input type="text" name="ps_p_e1" value="<?php echo $ps_p_e1 ?>"   ></td></tr>
+    <tr><td>Auteur2</td>  <td><input type="text" name="ps_p_e2" value="<?php echo $ps_p_e2 ?>"   ></td></tr>
+    <tr><td>Auteur3</td>  <td><input type="text" name="ps_p_e3" value="<?php echo $ps_p_e3 ?>"   ></td></tr>
+    <tr><td>Autre auteur</td><td><input type="text" name="ps_p_e4" value="<?php echo $ps_p_e4 ?>"   ></td> </tr>  
+    <tr><td>Le responsable du laboratoire ou du projet</td> <td><input type="text" name="ps_p_e5" value="<?php echo $ps_p_e5 ?>" ></td> </tr>
+   <!--finide la liaison--> 
+
+
+<tr>
+<td rowspan="2">Ouvrages</td></tr>
+<tr><td></td> <td><input type="text" name="ps_p_f1" value="<?php echo $ps_p_f1 ?>"   ></td></tr>
+
+   
+
+
+<tr>
+    <td rowspan="2">Directeur de Revue</td></tr>
+    <tr><td></td><td><input type="text" name="ps_p_g1" value="<?php echo $ps_p_g1 ?>"   ></td></tr>
+    
+   
+
+
+<tr>
+    <td rowspan="2">Fiches techniques </td></tr>
+   <tr><td></td><td><input type="text" name="ps_p_h1" value="<?php echo $ps_p_h1 ?>"   ></td></tr> 
+  
+    
+
+<tr>
+    <td rowspan="2">Documents de vulgarisation ou de valorisation</td></tr>
+   <tr><td></td> <td><input type="text" name="ps_p_i1" value="<?php echo $ps_p_i1 ?>"   ></td> </tr> 
+   
+    
+</table>
+</details>
+
+
+<!-- debut communication -->
+<details><summary>Communications</summary>
+<table class="a">
+<tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+
+ 
+    <tr><td>Participation et communication dans des conférences internationales  </td><td><input type="text" name="ps_c_a1" value="<?php echo $ps_c_a1 ?>"></td></tr>
+    <tr><td>Participation à des conférences nationales  </td><td><input type="text" name="ps_c_a2" value="<?php echo $ps_c_a2 ?>"></td></tr>
+    <tr><td>Conférencier ou animateur de séminaire dans le domaine au niveau international</td><td><input type="text" name="ps_c_a3" value="<?php echo $ps_c_a3 ?>"></td></tr>
+   
+
+     <!--finide la liaison--> 
+</table>
+</details>
+</details>
+
+<!-- debut encadrement -->
+<details>
+    <summary> ENCADREMENT</summary>
+<table class="a">
+<tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+<tr><td>Licence ou équivalent</td><td><input type="text" name="encadrement_a1" value="<?php echo $encadrement_a1 ?>"></td></tr>
+    <tr><td>Diplôme d’Ingénieur  ou équivalent</td><td><input type="text" name="encadrement_a2" value="<?php echo $encadrement_a2 ?>"></td></tr>
+    <tr><td>Master ou équivalents</td><td><input type="text" name="encadrement_a3" value="<?php echo $encadrement_a3 ?>"></td></tr>
+    <tr><td>Diplôme d’État de Docteur en MPOV</td><td><input type="text" name="encadrement_a4" value="<?php echo $encadrement_a4 ?>"></td></tr>
+    <tr><td>Doctorat unique</td><td><input type="text" name="encadrement_a5" value="<?php echo $encadrement_a5 ?>"></td></tr>
+    <tr><td>DES</td><td><input type="text" name="encadrement_a6" value="<?php echo $encadrement_a6 ?>"></td></tr>
+
+     <!--finide la liaison--> 
+</table>
+</details>
+
+
+<!-- debut  encadrement 
+<details>
+    <summary> ENCADREMENT</summary>
+<table>
+<tr>
+<th>            </th>
+<th>Description</th>
+<th>Pondération</th>
+</tr>
+<tr><td>Licence ou équivalent</td>  <td>mémoire</td>  <td><input type="text" name=" " value=" "></td></tr>
+    <tr><td>Diplôme d’Ingénieur  ou équivalent</td>  <td>mémoire</td>  <td><input type="text" name=" " value=" "></td></tr>
+    <tr><td>Master ou équivalents</td>  <td>mémoire</td>  <td><input type="text" name=" " value=" "></td></tr>
+    <tr><td>Diplôme d’État de Docteur en MPOV</td>  <td>thése</td>  <td><input type="text" name=" " value=" "></td></tr>
+    <tr><td>Doctorat unique</td>  <td>thése</td>  <td><input type="text" name=" " value=" "></td></tr>
+    <tr><td>DES</td>  <td>mémoire</td>  <td><input type="text" name=" " value=" "></td></tr>
+
+     
+</table>
+</details> -->
+
+<!-- debut participation jurys -->
+<details>
+<summary>PARTICIPATION AUX JURYS</summary>
+<details>
+    <summary>Membre jury délibération  </summary>
+  <table class="a"> <th>            </th>
+<th>Pondération</th>
+</tr> 
+    <tr><td>Diplôme Ingénieur ou équivalents</td><td><input type="text" name="mjd_a1" value="<?php echo $mjd_a1 ?>"></td></tr>
+    <tr><td>Master ou équivalents</td><td><input type="text" name="mjd_a2" value="<?php echo $mjd_a2 ?>"></td></tr>
+    <tr><td>Diplôme d’État de Docteur en MPOV</td><td><input type="text" name="mjd_a3" value="<?php echo $mjd_a3 ?>"></td></tr>
+    <tr><td>DES</td><td><input type="text" name="mjd_a4" value="<?php echo $mjd_a4 ?>"></td></tr>
+    <tr><td>Évaluateur thèse Doctorat unique </td><td><input type="text" name="mjd_a5" value="<?php echo $mjd_a5 ?>"></td></tr>
+    
+</table>
+</details>
+
+<details>
+    <summary>Président jury délibération  </summary>
+    <table class="a">
+<tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+<tr><td>Diplôme Ingénieur ou équivalent</td><td><input type="text" name="pjd_a1" value="<?php echo $pjd_a1 ?>"></td></tr>
+    <tr><td>Master ou équivalents</td><td><input type="text" name="pjd_a2" value="<?php echo $pjd_a2 ?>"></td></tr>
+    <tr><td>Diplôme d’État de Docteur en MPOV</td><td><input type="text" name="pjd_a3" value="<?php echo $pjd_a3 ?>"></td></tr>
+    <tr><td>Thèse Doctorat unique</td><td><input type="text" name="pjd_a4" value="<?php echo $pjd_a4 ?>"></td></tr>
+    </table>
+</details>
+
+</details>
+<details>
+    <summary>RESPONSABILITES ACADÉMIQUES</summary>
+ 
+ <table class="a">   <tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+<tr><td>Responsable de niveau </td><td><input type="text" name="respo_aca_a1" value="<?php echo $respo_aca_a1 ?>"></td></tr>
+<tr><td>Responsable de formation </td><td><input type="text" name="respo_aca_a2" value="<?php echo $respo_aca_a2 ?>"></td></tr>
+<tr><td>Chef de département  </td><td><input type="text" name="respo_aca_a3" value="<?php echo $respo_aca_a3 ?>"></td></tr>
+<tr><td>Directeur des Études (Instituts de faculté)</td>  <td><input type="text" name="respo_aca_a4" value="<?php echo $respo_aca_a4 ?>"></td></tr>
+<tr><td>Directeur des Études (Instituts d’Université) </td>  <td><input type="text" name="respo_aca_a5" value="<?php echo $respo_aca_a5 ?>"></td></tr>
+<tr><td>Assesseur, Directeur d’UFR adjoint  </td>    <td><input type="text" name="respo_aca_a6" value="<?php echo $respo_aca_a6 ?>"></td></tr>
+<tr><td>Directeur central  </td>   <td><input type="text" name="respo_aca_a7" value="<?php echo $respo_aca_a7 ?>"></td></tr>
+<tr><td>Responsable de formation doctorale </td>  <td><input type="text" name="respo_aca_a8" value="<?php echo $respo_aca_a8 ?>"></td></tr>
+<tr><td>Directeur de revue </td>    <td><input type="text" name="respo_aca_a9" value="<?php echo $respo_aca_a9 ?>"></td></tr>
+<tr><td>Directeur de laboratoire/Chef de service  </td>   <td><input type="text" name="respo_aca_aa1" value="<?php echo $respo_aca_aa1 ?>"></td></tr>
+<tr><td>Directeur d’École doctorale </td>    <td><input type="text" name="respo_aca_aa2" value="<?php echo $respo_aca_aa2 ?>"></td></tr>
+<tr><td>Chef d’Établissement (Directeur d’UFR, Directeurs d’Écoles et d’instituts ayant de rang de faculté) </td>   <td><input type="text" name="respo_aca_aa3" value="<?php echo $respo_aca_aa3 ?>"></td></tr>
+<tr><td>Chef d’Établissement (Directeurs d’Institut d’Université) </td>  <td><input type="text" name="respo_aca_aa4" value="<?php echo $respo_aca_aa4 ?>"></td></tr>
+</table>
+</details>
+
+<details>
+    <summary>DEVELOPPEMENT INSTITUTIONNEL</summary>
+    <table class="a">   <tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+<tr><td>Promotion de la pédagogie  </td><td><input type="text" name="di_a1" value="<?php echo $di_a1 ?>"></td></tr>
+<tr><td>Promotion de la recherche  </td><td><input type="text" name="di_a2" value="<?php echo $di_a2 ?>"></td></tr>
+<tr><td>Promotion de la gouvernance  </td><td><input type="text" name="di_a3" value="<?php echo $di_a3 ?>"></td></tr>
+<tr><td>Services à la communauté  </td> <td><input type="text" name="di_a4" value="<?php echo $di_a4 ?>"></td></tr>
+<tr><td>Capacité à mobiliser des ressources et des partenaires(Pour le chercheur principal)</td><td><input type="text" name="di_a5" value="<?php echo $di_a5 ?>"></td></tr>
+<tr><td>Capacité à mobiliser des ressources et des partenaires(Pour le chercheur associé)</td><td><input type="text" name="di_a6" value="<?php echo $di_a6 ?>"></td></tr>
+
+    </table>
+</details>
+
+<details>
+    <summary>INNOVATIONS, BREVETS, DISTINCTIONS</summary>
+    <table class="a">   <tr>
+<th>            </th>
+<th>Pondération</th>
+</tr>
+<tr><td>Brevets  </td><td><input type="text" name="ibd_a1" value="<?php echo $ibd_a1 ?>"></td></tr>
+<tr><td>Distinctions </td></td>  <td><input type="text" name="ibd_a2" value="<?php echo $ibd_a2 ?>"></td></tr>
+</table>
+</details>
+
+<input type="submit" value="Enregistrer les modifications">
+                </form>
+                
+                <!-- <a class="reinitialiser" href="http://localhost/candidature/code_candidature/verification_point_modulable_defaut.php"><div class="div_reinitialiser">Revenir à la configuration d'origine</div></a> -->
+                <a class="reinitialiser" href="http://localhost/candidature/code_per/per_verif_point_modulable_defaut.php"><div class="div_reinitialiser">Revenir à la configuration d'origine</div></a>
+
+
+
+
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .body{
+        display: flex;
+        flex-direction: column;
+    }
+input[type=text]{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 1em;
+        outline: none;
+        border: none;
+        background-color: rgba(10,107,49,0.5);
+        color: #fff;}
+
+*,* ::before,*::after{
+    box-sizing: border-box;
+  }
+  *{
+      margin: 0;
+      padding: 0;
+  }
+
+  table{
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: 55px;
+  }
+  th,td{
+    padding: 3px;
+    text-align: left;
+    border: solid 1px green;
+   
+  }
+  tr:nth-child(odd){
+    background-color: rgba(10,107,49,0.1);
+  }
+  th{
+    color: white;
+  }
+  th{
+    background-color: rgb(10, 107, 49);
+  }
+  .a td:last-child{
+        width: 10%;
+    }
+    summary{
+        background-color: rgb(10, 107, 49);
+        padding: 1%;
+        cursor: pointer;
+        margin: 0% 2%;
+        color: #fff;
+    }
+    table{
+        margin: 0% 5%;
+    }
+    details details summary{
+        margin: 1% 5%;
+        padding: 1%;
+    }
+    input[type=submit]{
+        padding: 1%;
+        width:80%;
+        cursor: pointer;
+        background-color: rgba(132, 181, 39,0.6);
+        color: #fff;
+        font-size: large;
+        margin: 0% 10%;
+        border: none;
+        transition: 1s all;
+    }
+    input[type=submit]:hover{
+        background-color: rgba(10, 107, 49,0.6);
+        transition: 1s all;
+        transform: translateX(5%);
+    }
+    a.reinitialiser{
+        text-decoration: none;
+        color: #fff;
+        width: 100%;
+}
+div.div_reinitialiser{
+    background-color: rgba(141, 54, 20,0.6);
+    text-align: center;
+    padding: 1%;
+    margin: 2% 10%;
+    font-size: large;
+    transition: 1s all;
+}
+div.div_reinitialiser:hover{
+    background-color: rgba(10, 107, 49,0.6);
+        transition: 1s all;
+        transform: translateX(5%);
+}
+</style>
                 
                 </div>
         </div>

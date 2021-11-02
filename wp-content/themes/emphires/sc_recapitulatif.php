@@ -152,15 +152,12 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Récapitulatif</title>
 </head>
+<?php 
+include("bg_body.php");
+?>
 <style>
-    body{
-        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
-        background-position: 0;
-        background-repeat: repeat-y;
-        background-size: contain;
-    }
      .cspt-title-bar-wrapper{
                display: none;
           }         
