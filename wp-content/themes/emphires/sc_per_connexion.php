@@ -3,6 +3,7 @@
 session_start();
 get_header();
 ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,11 @@ get_header();
         crossorigin="anonymous"
     >
     <title>Login</title>
+    <!-- <style>
+        .cspt-title-bar-wrapper,.cspt-bg-color-custom,.cspt-titlebar-style-left{
+            display: none;
+        }
+    </style> -->
 </head>
 <body class="container mt-3" >
     <div class="row w-100 mt-3 my-auto">

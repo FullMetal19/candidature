@@ -3,15 +3,11 @@
 Template name: accueil candidat
 */
 get_header();
+include("bg_body.php");
 ?>
 
+
      <style>
-          body{
-        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
-        background-position: 0;
-        background-repeat: repeat-y;
-        background-size: contain;
-    }
           *{
                margin: 0;
                padding: 0;

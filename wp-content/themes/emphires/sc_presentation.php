@@ -22,7 +22,7 @@
         grid-template-rows: 150px auto 150px;
     }
     body{
-        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-image: url("http://localhost/candidature/wp-content/uploads/2021/11/bg_cand.jpg");
         background-position: 0;
         background-repeat: repeat-y;
         background-size: contain;
@@ -31,7 +31,7 @@
         margin-bottom: 2%
     }
     div.header{
-        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
+        background-image: url("http://localhost/candidature/wp-content/uploads/2021/11/bg_cand.jpg");
         background-position: 0;
         background-repeat: no-repeat;
         background-size: cover;

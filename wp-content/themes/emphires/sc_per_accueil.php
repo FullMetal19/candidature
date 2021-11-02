@@ -31,7 +31,7 @@
         <div class="sticky-top "> 
         <nav class="  p-0 m-0 flex-column  navbar navbar-expand-lg justify-content-center">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.png" width="10" height="10" alt="I" />
+                    <img src="http://localhost/candidature/wp-content/uploads/2021/10/ussein.ico" width="60" height="60" alt="I" />
                     <p>PERs USSEIN</p> 
                 </a>
                 <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

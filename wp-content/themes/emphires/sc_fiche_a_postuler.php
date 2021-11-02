@@ -144,7 +144,7 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
 
 // ***   FIN DE CODE PHP POUR LES PUBLICATIONS   ***  
 
-
+include('bg_body.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -154,12 +154,6 @@ $selecteur_communication_conference = mysqli_fetch_array($requete_communication_
     <title>Postuler</title>
 </head>
 <style>
-    body{
-        background-image: url("http://localhost/candidature/code_candidature/bg.jpg");
-        background-position: 0;
-        background-repeat: repeat-y;
-        background-size: contain;
-    }
     *{
         margin: 0;
         padding: 0;
