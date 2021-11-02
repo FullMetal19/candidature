@@ -42,7 +42,7 @@
                 <ul class="nav nav-pills flex-column lien_nav justify-content-center ">
                     <div class='document nav-link nav-item my-0 mb-3 border-bottom border-top'>
                         <li class="nav-item fw-bold pl-0  my-0 ">
-                            <a class="nav-link fw-bold"   href="sc_per_profil">PROFIL</a>
+                            <a class="nav-link fw-bold"   href="http://localhost/candidature/per-profil/">PROFIL</a>
                         </li>
 
                     </div>

@@ -40,6 +40,42 @@ $nb = mysqli_num_rows($req);
 // }
 
 
+
+
+// if(isset($_FILES['file'])){
+//     $con = mysqli_connect("localhost","root","","ussein_candidature");
+
+// $fileName = $_FILES["file"]["tmp_name"];
+
+// if($_FILES["file"]["size"] > 0){
+//     $files = fopen($fileName,"r");
+
+//     $heading= fgetcsv($files,10000,";");
+
+//     if($heading[0] =="matricule" && $heading[1] =="nom" && $heading[2] =="prenom" && $heading[3] =="email" && $heading[4] =="ufr" && $heading[5] =="mot_de_passe"){
+//         while(($column = fgetcsv($files,10000,";"))!== FALSE){
+//          if($column[0]!=="matricule"){
+//        $sql = "INSERT INTO ec_connexion_per VALUES ('".$column[0]."','".$column[1]."','".$column[2]."','".$column[3]."','".$column[4]."','".$column[5]."')";
+//             $req = mysqli_query($con,$sql);
+//   }
+//         }
+// $_SESSION['per_notification'] = "Erreur ! L'en-tête n'est pas conforme.";
+        
+//     }else{
+//         $_SESSION['per_notification'] = "Erreur ! L'en-tête n'est pas conforme.";
+//     }
+    
+// }else{
+//     $_SESSION['per_notification'] = "Erreur ! Ce fichier est vide.";
+// }
+
+// // Précisons le fichier csv doit être créé avec comme séparateur ; et avec comme heading les nom sur la bd
+// }
+
+
+
+
+
 header("location: ".$_SERVER['HTTP_REFERER']);
 
 ?>
