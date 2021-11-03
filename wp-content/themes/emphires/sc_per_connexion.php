@@ -34,11 +34,11 @@ get_header();
                     <!-- <div id="matriculeHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
                     <input type="password" name="mot_de_passe" class="form-control" id="exampleInputPassword1">
                 </div>
                 
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Se connecter</button>
                 </form>
 
 

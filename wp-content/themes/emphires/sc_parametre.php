@@ -115,30 +115,38 @@ rgb(192, 206, 0); -->
         </button> -->
       </div>
       <div class="modal-body">
-      <form action="http://localhost/candidature/code_per/per_verif_ajout_per.php" method="post">
+      <form action="http://localhost/candidature/code_per/per_verif_ajout_per.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="per_nom">Nom</label>
-                    <input class="form-control" type="text" name="per_nom" id="per_nom" required>
+                    <input class="form-control" type="text" name="per_nom" id="per_nom" >
                 </div>
                 <div class="form-group">
                     <label for="per_prenom">Prénom</label>
-                    <input class="form-control" type="text" name="per_prenom" id="per_prenom" required>
+                    <input class="form-control" type="text" name="per_prenom" id="per_prenom" >
                 </div>
                 <div class="form-group">
                     <label for="per_matricule">Matricule</label>
-                    <input class="form-control" type="text" name="per_matricule" id="per_matricule" required>
+                    <input class="form-control" type="text" name="per_matricule" id="per_matricule" >
                 </div>
                 <div class="form-group">
                     <label for="per_email">E-mail</label>
-                    <input class="form-control" type="email" name="per_email" id="per_email" required>
+                    <input class="form-control" type="email" name="per_email" id="per_email" >
                 </div>
                 <div class="form-group">
                     <label for="per_ufr">UFR</label>
-                    <input class="form-control" type="text" name="per_ufr" id="per_ufr" required>
+                    <input class="form-control" type="text" name="per_ufr" id="per_ufr" >
                 </div>
                 <div class="form-group">
                     <label for="per_mot_de_passe">Mot de passe</label>
-                    <input class="form-control" type="password" name="per_mot_de_passe" id="per_mot_de_passe" required>
+                    <input class="form-control" type="password" name="per_mot_de_passe" id="per_mot_de_passe" >
+                </div>
+                <hr>
+                <hr>
+                <div class="form-group">
+                    <label>Ou téléverser un fichier CSV</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="file" name="file" id="file" >
                 </div>
             
       </div>
@@ -189,7 +197,7 @@ rgb(192, 206, 0); -->
         <script>
             setTimeout(function(){
         document.getElementById('a').style.display="none";
-    },5000);
+    },10000);
         </script>
 
 <!-- <script type="text/javascript" src="js_per.js"></script> -->
